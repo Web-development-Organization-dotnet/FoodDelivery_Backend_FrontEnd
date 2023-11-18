@@ -1,0 +1,1628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Food_Delivery_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_admin_info">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="reg_date" Type="varchar(max)" />
+          <Property Name="phone" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="photo_id_no" Type="varchar(max)" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_agent_category">
+          <Key>
+            <PropertyRef Name="agent_type_cd" />
+          </Key>
+          <Property Name="agent_type_cd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type_description" Type="varchar(max)" />
+          <Property Name="comm_pct" Type="numeric" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbl_agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="agent_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="reg_date" Type="varchar(max)" />
+          <Property Name="phone" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="photo_id_no" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="agent_type_cd" Type="varchar" MaxLength="50" />
+          <Property Name="agent_img" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_cart_info">
+          <Key>
+            <PropertyRef Name="slno" />
+          </Key>
+          <Property Name="slno" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="food_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="food_name" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="cust_address_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="cart_regist_date" Type="datetime" />
+          <Property Name="process_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_cust_addr">
+          <Key>
+            <PropertyRef Name="cust_address_id" />
+          </Key>
+          <Property Name="cust_address_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="cust_pin" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="cust_address" Type="varchar" MaxLength="50" />
+          <Property Name="longitude" Type="varchar" MaxLength="50" />
+          <Property Name="latitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_cust_info">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_type_cd" Type="varchar" MaxLength="50" />
+          <Property Name="cust_name" Type="varchar" MaxLength="50" />
+          <Property Name="cust_email" Type="varchar" MaxLength="50" />
+          <Property Name="cust_phno" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="cust_pin" Type="numeric" Precision="6" Scale="0" />
+        </EntityType>
+        <EntityType Name="tbl_cust_payment_mode">
+          <Key>
+            <PropertyRef Name="payment_mode_id" />
+          </Key>
+          <Property Name="payment_mode_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="payment_mode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_cust_type">
+          <Key>
+            <PropertyRef Name="cust_type_cd" />
+          </Key>
+          <Property Name="cust_type_cd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type_desc" Type="varchar" MaxLength="50" />
+          <Property Name="order_limit" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="total_turnover" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tbl_cust_wallet">
+          <Key>
+            <PropertyRef Name="cust_wallet_id" />
+          </Key>
+          <Property Name="cust_wallet_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="wallet_balance" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="last_updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_delivery_info">
+          <Key>
+            <PropertyRef Name="sl_no" />
+          </Key>
+          <Property Name="sl_no" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transaction_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="agent_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="delivery_initiate_datetime" Type="varchar(max)" />
+          <Property Name="delivered_datetime" Type="varchar(max)" />
+          <Property Name="delivery_status" Type="varchar" MaxLength="50" />
+          <Property Name="comm_amt" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbl_food_info">
+          <Key>
+            <PropertyRef Name="food_id" />
+          </Key>
+          <Property Name="food_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="food_type_cd" Type="varchar" MaxLength="50" />
+          <Property Name="food_name" Type="varchar" MaxLength="50" />
+          <Property Name="food_description" Type="varchar(max)" />
+          <Property Name="food_qty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="food_img" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_food_type">
+          <Key>
+            <PropertyRef Name="food_type_cd" />
+          </Key>
+          <Property Name="food_type_cd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="food_type" Type="varchar" MaxLength="50" />
+          <Property Name="type_desc" Type="varchar(max)" />
+          <Property Name="food_category" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_issue_info">
+          <Key>
+            <PropertyRef Name="dispute_no" />
+          </Key>
+          <Property Name="dispute_no" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="raised_on" Type="datetime" />
+          <Property Name="issue_desc" Type="varchar(max)" />
+          <Property Name="ticket_stat" Type="varchar(max)" />
+          <Property Name="resolution" Type="varchar(max)" />
+          <Property Name="resolved_on" Type="datetime" />
+          <Property Name="trans_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="order_id" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tbl_order_breakup">
+          <Key>
+            <PropertyRef Name="slno" />
+          </Key>
+          <Property Name="slno" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="order_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="food_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="food_name" Type="varchar(max)" />
+          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="price_per_item" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_order_info">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="agent_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="trans_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="order_date" Type="datetime" />
+          <Property Name="delivery_addr" Type="varchar(max)" />
+          <Property Name="order_status" Type="varchar" MaxLength="50" />
+          <Property Name="cust_otp" Type="int" />
+          <Property Name="ship_to_pin" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_supplier_info">
+          <Key>
+            <PropertyRef Name="supplier_id" />
+          </Key>
+          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplier_name" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_address" Type="varchar(max)" />
+          <Property Name="supplier_gst_num" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="reg_date" Type="varchar(max)" />
+          <Property Name="pincode" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="supplier_type" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_status" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_menu_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="longtitude" Type="varchar(max)" />
+          <Property Name="latitude" Type="varchar(max)" />
+          <Property Name="serv_pin_list" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_supplier_menu">
+          <Key>
+            <PropertyRef Name="supplier_menu_id" />
+          </Key>
+          <Property Name="item_name" Type="varchar" MaxLength="50" />
+          <Property Name="item_rate" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="item_type" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_menu_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="food_type_code" Type="varchar" MaxLength="50" />
+          <Property Name="food_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="available_qty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="serv_cl_time" Type="varchar(max)" />
+          <Property Name="serv_op_time" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_supplier_type">
+          <Key>
+            <PropertyRef Name="supplier_type" />
+          </Key>
+          <Property Name="supplier_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="yearly_turnover" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tbl_transaction_info">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="order_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="agent_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="numeric" Precision="16" Scale="2" />
+          <Property Name="trans_mode" Type="varchar" MaxLength="50" />
+          <Property Name="trans_datetime" Type="datetime" />
+          <Property Name="trans_status" Type="varchar" MaxLength="50" />
+          <Property Name="trans_remarks" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_tbl_agent_info_tbl_agent_category">
+          <End Role="tbl_agent_category" Type="Self.tbl_agent_category" Multiplicity="0..1" />
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_category">
+              <PropertyRef Name="agent_type_cd" />
+            </Principal>
+            <Dependent Role="tbl_agent_info">
+              <PropertyRef Name="agent_type_cd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_cust_addr">
+          <End Role="tbl_cust_addr" Type="Self.tbl_cust_addr" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_addr">
+              <PropertyRef Name="cust_address_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="cust_address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_food_info">
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_info">
+              <PropertyRef Name="food_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="food_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_addr_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cust_addr" Type="Self.tbl_cust_addr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cust_addr">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_info_tbl_cust_type">
+          <End Role="tbl_cust_type" Type="Self.tbl_cust_type" Multiplicity="0..1" />
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_type">
+              <PropertyRef Name="cust_type_cd" />
+            </Principal>
+            <Dependent Role="tbl_cust_info">
+              <PropertyRef Name="cust_type_cd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_payment_mode_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cust_payment_mode" Type="Self.tbl_cust_payment_mode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cust_payment_mode">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_wallet_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cust_wallet" Type="Self.tbl_cust_wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cust_wallet">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_delivery_info_tbl_agent_info">
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="0..1" />
+          <End Role="tbl_delivery_info" Type="Self.tbl_delivery_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="tbl_delivery_info">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_food_info_tbl_food_type">
+          <End Role="tbl_food_type" Type="Self.tbl_food_type" Multiplicity="0..1" />
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_type">
+              <PropertyRef Name="food_type_cd" />
+            </Principal>
+            <Dependent Role="tbl_food_info">
+              <PropertyRef Name="food_type_cd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_issue_info_tbl_order_info">
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="0..1" />
+          <End Role="tbl_issue_info" Type="Self.tbl_issue_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_order_info">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="tbl_issue_info">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_issue_info_tbl_transaction_info">
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="0..1" />
+          <End Role="tbl_issue_info" Type="Self.tbl_issue_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_transaction_info">
+              <PropertyRef Name="trans_id" />
+            </Principal>
+            <Dependent Role="tbl_issue_info">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_breakup_tbl_food_info">
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="0..1" />
+          <End Role="tbl_order_breakup" Type="Self.tbl_order_breakup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_info">
+              <PropertyRef Name="food_id" />
+            </Principal>
+            <Dependent Role="tbl_order_breakup">
+              <PropertyRef Name="food_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_breakup_tbl_order_breakup">
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="0..1" />
+          <End Role="tbl_order_breakup" Type="Self.tbl_order_breakup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_order_info">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="tbl_order_breakup">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_breakup_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_order_breakup" Type="Self.tbl_order_breakup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_order_breakup">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_info_tbl_agent_info">
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="0..1" />
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="tbl_order_info">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_info_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_order_info">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_info_tbl_transaction_info">
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="0..1" />
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_transaction_info">
+              <PropertyRef Name="trans_id" />
+            </Principal>
+            <Dependent Role="tbl_order_info">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_supplier_info_tbl_supplier_type">
+          <End Role="tbl_supplier_type" Type="Self.tbl_supplier_type" Multiplicity="0..1" />
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_type">
+              <PropertyRef Name="supplier_type" />
+            </Principal>
+            <Dependent Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_supplier_menu_tbl_food_info">
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="0..1" />
+          <End Role="tbl_supplier_menu" Type="Self.tbl_supplier_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_info">
+              <PropertyRef Name="food_id" />
+            </Principal>
+            <Dependent Role="tbl_supplier_menu">
+              <PropertyRef Name="food_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_supplier_menu_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_supplier_menu" Type="Self.tbl_supplier_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_supplier_menu">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_transaction_info_tbl_agent_info">
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="0..1" />
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="tbl_transaction_info">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_transaction_info_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_transaction_info">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_transaction_info_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_transaction_info">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Food_Delivery_DbModelStoreContainer">
+          <EntitySet Name="tbl_admin_info" EntityType="Self.tbl_admin_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_agent_category" EntityType="Self.tbl_agent_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_agent_info" EntityType="Self.tbl_agent_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cart_info" EntityType="Self.tbl_cart_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cust_addr" EntityType="Self.tbl_cust_addr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cust_info" EntityType="Self.tbl_cust_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cust_payment_mode" EntityType="Self.tbl_cust_payment_mode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cust_type" EntityType="Self.tbl_cust_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_cust_wallet" EntityType="Self.tbl_cust_wallet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_delivery_info" EntityType="Self.tbl_delivery_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_food_info" EntityType="Self.tbl_food_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_food_type" EntityType="Self.tbl_food_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_issue_info" EntityType="Self.tbl_issue_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_order_breakup" EntityType="Self.tbl_order_breakup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_order_info" EntityType="Self.tbl_order_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_supplier_info" EntityType="Self.tbl_supplier_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_supplier_menu" EntityType="Self.tbl_supplier_menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_supplier_type" EntityType="Self.tbl_supplier_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_transaction_info" EntityType="Self.tbl_transaction_info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_agent_info_tbl_agent_category" Association="Self.FK_tbl_agent_info_tbl_agent_category">
+            <End Role="tbl_agent_category" EntitySet="tbl_agent_category" />
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_cust_addr" Association="Self.FK_tbl_cart_info_tbl_cust_addr">
+            <End Role="tbl_cust_addr" EntitySet="tbl_cust_addr" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_cust_info" Association="Self.FK_tbl_cart_info_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_food_info" Association="Self.FK_tbl_cart_info_tbl_food_info">
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_supplier_info" Association="Self.FK_tbl_cart_info_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_addr_tbl_cust_info" Association="Self.FK_tbl_cust_addr_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cust_addr" EntitySet="tbl_cust_addr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_info_tbl_cust_type" Association="Self.FK_tbl_cust_info_tbl_cust_type">
+            <End Role="tbl_cust_type" EntitySet="tbl_cust_type" />
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_payment_mode_tbl_cust_info" Association="Self.FK_tbl_cust_payment_mode_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cust_payment_mode" EntitySet="tbl_cust_payment_mode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_wallet_tbl_cust_info" Association="Self.FK_tbl_cust_wallet_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cust_wallet" EntitySet="tbl_cust_wallet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_delivery_info_tbl_agent_info" Association="Self.FK_tbl_delivery_info_tbl_agent_info">
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+            <End Role="tbl_delivery_info" EntitySet="tbl_delivery_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_food_info_tbl_food_type" Association="Self.FK_tbl_food_info_tbl_food_type">
+            <End Role="tbl_food_type" EntitySet="tbl_food_type" />
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_issue_info_tbl_order_info" Association="Self.FK_tbl_issue_info_tbl_order_info">
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+            <End Role="tbl_issue_info" EntitySet="tbl_issue_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_issue_info_tbl_transaction_info" Association="Self.FK_tbl_issue_info_tbl_transaction_info">
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+            <End Role="tbl_issue_info" EntitySet="tbl_issue_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_breakup_tbl_food_info" Association="Self.FK_tbl_order_breakup_tbl_food_info">
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+            <End Role="tbl_order_breakup" EntitySet="tbl_order_breakup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_breakup_tbl_order_breakup" Association="Self.FK_tbl_order_breakup_tbl_order_breakup">
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+            <End Role="tbl_order_breakup" EntitySet="tbl_order_breakup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_breakup_tbl_supplier_info" Association="Self.FK_tbl_order_breakup_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_order_breakup" EntitySet="tbl_order_breakup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_info_tbl_agent_info" Association="Self.FK_tbl_order_info_tbl_agent_info">
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_info_tbl_cust_info" Association="Self.FK_tbl_order_info_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_info_tbl_transaction_info" Association="Self.FK_tbl_order_info_tbl_transaction_info">
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_supplier_info_tbl_supplier_type" Association="Self.FK_tbl_supplier_info_tbl_supplier_type">
+            <End Role="tbl_supplier_type" EntitySet="tbl_supplier_type" />
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_supplier_menu_tbl_food_info" Association="Self.FK_tbl_supplier_menu_tbl_food_info">
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+            <End Role="tbl_supplier_menu" EntitySet="tbl_supplier_menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_supplier_menu_tbl_supplier_info" Association="Self.FK_tbl_supplier_menu_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_supplier_menu" EntitySet="tbl_supplier_menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_transaction_info_tbl_agent_info" Association="Self.FK_tbl_transaction_info_tbl_agent_info">
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_transaction_info_tbl_cust_info" Association="Self.FK_tbl_transaction_info_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_transaction_info_tbl_supplier_info" Association="Self.FK_tbl_transaction_info_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Food_Delivery_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_admin_info">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reg_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="photo_id_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_agent_category">
+          <Key>
+            <PropertyRef Name="agent_type_cd" />
+          </Key>
+          <Property Name="agent_type_cd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="comm_pct" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="tbl_agent_info" Relationship="Self.FK_tbl_agent_info_tbl_agent_category" FromRole="tbl_agent_category" ToRole="tbl_agent_info" />
+        </EntityType>
+        <EntityType Name="tbl_agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="agent_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reg_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="photo_id_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="agent_type_cd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="agent_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_agent_category" Relationship="Self.FK_tbl_agent_info_tbl_agent_category" FromRole="tbl_agent_info" ToRole="tbl_agent_category" />
+          <NavigationProperty Name="tbl_delivery_info" Relationship="Self.FK_tbl_delivery_info_tbl_agent_info" FromRole="tbl_agent_info" ToRole="tbl_delivery_info" />
+          <NavigationProperty Name="tbl_order_info" Relationship="Self.FK_tbl_order_info_tbl_agent_info" FromRole="tbl_agent_info" ToRole="tbl_order_info" />
+          <NavigationProperty Name="tbl_transaction_info" Relationship="Self.FK_tbl_transaction_info_tbl_agent_info" FromRole="tbl_agent_info" ToRole="tbl_transaction_info" />
+        </EntityType>
+        <EntityType Name="tbl_cart_info">
+          <Key>
+            <PropertyRef Name="slno" />
+          </Key>
+          <Property Name="slno" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="food_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="food_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cust_address_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cart_regist_date" Type="DateTime" Precision="3" />
+          <Property Name="process_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_cust_addr" Relationship="Self.FK_tbl_cart_info_tbl_cust_addr" FromRole="tbl_cart_info" ToRole="tbl_cust_addr" />
+          <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_cart_info_tbl_cust_info" FromRole="tbl_cart_info" ToRole="tbl_cust_info" />
+          <NavigationProperty Name="tbl_food_info" Relationship="Self.FK_tbl_cart_info_tbl_food_info" FromRole="tbl_cart_info" ToRole="tbl_food_info" />
+          <NavigationProperty Name="tbl_supplier_info" Relationship="Self.FK_tbl_cart_info_tbl_supplier_info" FromRole="tbl_cart_info" ToRole="tbl_supplier_info" />
+        </EntityType>
+        <EntityType Name="tbl_cust_addr">
+          <Key>
+            <PropertyRef Name="cust_address_id" />
+          </Key>
+          <Property Name="cust_address_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cust_pin" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="cust_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_cart_info" Relationship="Self.FK_tbl_cart_info_tbl_cust_addr" FromRole="tbl_cust_addr" ToRole="tbl_cart_info" />
+          <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_cust_addr_tbl_cust_info" FromRole="tbl_cust_addr" ToRole="tbl_cust_info" />
+        </EntityType>
+        <EntityType Name="tbl_cust_info">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cust_type_cd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cust_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cust_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cust_phno" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="cust_pin" Type="Decimal" Precision="6" Scale="0" />
+          <NavigationProperty Name="tbl_cart_info" Relationship="Self.FK_tbl_cart_info_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_cart_info" />
+          <NavigationProperty Name="tbl_cust_addr" Relationship="Self.FK_tbl_cust_addr_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_cust_addr" />
+          <NavigationProperty Name="tbl_cust_type" Relationship="Self.FK_tbl_cust_info_tbl_cust_type" FromRole="tbl_cust_info" ToRole="tbl_cust_type" />
+          <NavigationProperty Name="tbl_cust_payment_mode" Relationship="Self.FK_tbl_cust_payment_mode_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_cust_payment_mode" />
+          <NavigationProperty Name="tbl_cust_wallet" Relationship="Self.FK_tbl_cust_wallet_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_cust_wallet" />
+          <NavigationProperty Name="tbl_order_info" Relationship="Self.FK_tbl_order_info_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_order_info" />
+          <NavigationProperty Name="tbl_transaction_info" Relationship="Self.FK_tbl_transaction_info_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_transaction_info" />
+        </EntityType>
+        <EntityType Name="tbl_cust_payment_mode">
+          <Key>
+            <PropertyRef Name="payment_mode_id" />
+          </Key>
+          <Property Name="payment_mode_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="payment_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_cust_payment_mode_tbl_cust_info" FromRole="tbl_cust_payment_mode" ToRole="tbl_cust_info" />
+        </EntityType>
+        <EntityType Name="tbl_cust_type">
+          <Key>
+            <PropertyRef Name="cust_type_cd" />
+          </Key>
+          <Property Name="cust_type_cd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="order_limit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total_turnover" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_cust_info_tbl_cust_type" FromRole="tbl_cust_type" ToRole="tbl_cust_info" />
+        </EntityType>
+        <EntityType Name="tbl_cust_wallet">
+          <Key>
+            <PropertyRef Name="cust_wallet_id" />
+          </Key>
+          <Property Name="cust_wallet_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="wallet_balance" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="last_updated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_cust_wallet_tbl_cust_info" FromRole="tbl_cust_wallet" ToRole="tbl_cust_info" />
+        </EntityType>
+        <EntityType Name="tbl_delivery_info">
+          <Key>
+            <PropertyRef Name="sl_no" />
+          </Key>
+          <Property Name="sl_no" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transaction_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="agent_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="delivery_initiate_datetime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="delivered_datetime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="delivery_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comm_amt" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="tbl_agent_info" Relationship="Self.FK_tbl_delivery_info_tbl_agent_info" FromRole="tbl_delivery_info" ToRole="tbl_agent_info" />
+        </EntityType>
+        <EntityType Name="tbl_food_info">
+          <Key>
+            <PropertyRef Name="food_id" />
+          </Key>
+          <Property Name="food_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="food_type_cd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="food_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="food_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="food_qty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="food_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_cart_info" Relationship="Self.FK_tbl_cart_info_tbl_food_info" FromRole="tbl_food_info" ToRole="tbl_cart_info" />
+          <NavigationProperty Name="tbl_food_type" Relationship="Self.FK_tbl_food_info_tbl_food_type" FromRole="tbl_food_info" ToRole="tbl_food_type" />
+          <NavigationProperty Name="tbl_order_breakup" Relationship="Self.FK_tbl_order_breakup_tbl_food_info" FromRole="tbl_food_info" ToRole="tbl_order_breakup" />
+          <NavigationProperty Name="tbl_supplier_menu" Relationship="Self.FK_tbl_supplier_menu_tbl_food_info" FromRole="tbl_food_info" ToRole="tbl_supplier_menu" />
+        </EntityType>
+        <EntityType Name="tbl_food_type">
+          <Key>
+            <PropertyRef Name="food_type_cd" />
+          </Key>
+          <Property Name="food_type_cd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="food_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="food_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_food_info" Relationship="Self.FK_tbl_food_info_tbl_food_type" FromRole="tbl_food_type" ToRole="tbl_food_info" />
+        </EntityType>
+        <EntityType Name="tbl_issue_info">
+          <Key>
+            <PropertyRef Name="dispute_no" />
+          </Key>
+          <Property Name="dispute_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="raised_on" Type="DateTime" Precision="3" />
+          <Property Name="issue_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ticket_stat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="resolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="resolved_on" Type="DateTime" Precision="3" />
+          <Property Name="trans_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="order_id" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tbl_order_info" Relationship="Self.FK_tbl_issue_info_tbl_order_info" FromRole="tbl_issue_info" ToRole="tbl_order_info" />
+          <NavigationProperty Name="tbl_transaction_info" Relationship="Self.FK_tbl_issue_info_tbl_transaction_info" FromRole="tbl_issue_info" ToRole="tbl_transaction_info" />
+        </EntityType>
+        <EntityType Name="tbl_order_breakup">
+          <Key>
+            <PropertyRef Name="slno" />
+          </Key>
+          <Property Name="slno" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="order_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="food_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="food_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="price_per_item" Type="Int32" />
+          <NavigationProperty Name="tbl_food_info" Relationship="Self.FK_tbl_order_breakup_tbl_food_info" FromRole="tbl_order_breakup" ToRole="tbl_food_info" />
+          <NavigationProperty Name="tbl_order_info" Relationship="Self.FK_tbl_order_breakup_tbl_order_breakup" FromRole="tbl_order_breakup" ToRole="tbl_order_info" />
+          <NavigationProperty Name="tbl_supplier_info" Relationship="Self.FK_tbl_order_breakup_tbl_supplier_info" FromRole="tbl_order_breakup" ToRole="tbl_supplier_info" />
+        </EntityType>
+        <EntityType Name="tbl_order_info">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="agent_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="trans_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="order_date" Type="DateTime" Precision="3" />
+          <Property Name="delivery_addr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="order_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cust_otp" Type="Int32" />
+          <Property Name="ship_to_pin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_agent_info" Relationship="Self.FK_tbl_order_info_tbl_agent_info" FromRole="tbl_order_info" ToRole="tbl_agent_info" />
+          <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_order_info_tbl_cust_info" FromRole="tbl_order_info" ToRole="tbl_cust_info" />
+          <NavigationProperty Name="tbl_issue_info" Relationship="Self.FK_tbl_issue_info_tbl_order_info" FromRole="tbl_order_info" ToRole="tbl_issue_info" />
+          <NavigationProperty Name="tbl_order_breakup" Relationship="Self.FK_tbl_order_breakup_tbl_order_breakup" FromRole="tbl_order_info" ToRole="tbl_order_breakup" />
+          <NavigationProperty Name="tbl_transaction_info" Relationship="Self.FK_tbl_order_info_tbl_transaction_info" FromRole="tbl_order_info" ToRole="tbl_transaction_info" />
+        </EntityType>
+        <EntityType Name="tbl_supplier_info">
+          <Key>
+            <PropertyRef Name="supplier_id" />
+          </Key>
+          <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplier_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_gst_num" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="reg_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pincode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="supplier_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_menu_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="longtitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serv_pin_list" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_cart_info" Relationship="Self.FK_tbl_cart_info_tbl_supplier_info" FromRole="tbl_supplier_info" ToRole="tbl_cart_info" />
+          <NavigationProperty Name="tbl_order_breakup" Relationship="Self.FK_tbl_order_breakup_tbl_supplier_info" FromRole="tbl_supplier_info" ToRole="tbl_order_breakup" />
+          <NavigationProperty Name="tbl_supplier_type" Relationship="Self.FK_tbl_supplier_info_tbl_supplier_type" FromRole="tbl_supplier_info" ToRole="tbl_supplier_type" />
+          <NavigationProperty Name="tbl_supplier_menu" Relationship="Self.FK_tbl_supplier_menu_tbl_supplier_info" FromRole="tbl_supplier_info" ToRole="tbl_supplier_menu" />
+          <NavigationProperty Name="tbl_transaction_info" Relationship="Self.FK_tbl_transaction_info_tbl_supplier_info" FromRole="tbl_supplier_info" ToRole="tbl_transaction_info" />
+        </EntityType>
+        <EntityType Name="tbl_supplier_menu">
+          <Key>
+            <PropertyRef Name="supplier_menu_id" />
+          </Key>
+          <Property Name="item_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="item_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_menu_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="food_type_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="food_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="available_qty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="serv_cl_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serv_op_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_food_info" Relationship="Self.FK_tbl_supplier_menu_tbl_food_info" FromRole="tbl_supplier_menu" ToRole="tbl_food_info" />
+          <NavigationProperty Name="tbl_supplier_info" Relationship="Self.FK_tbl_supplier_menu_tbl_supplier_info" FromRole="tbl_supplier_menu" ToRole="tbl_supplier_info" />
+        </EntityType>
+        <EntityType Name="tbl_supplier_type">
+          <Key>
+            <PropertyRef Name="supplier_type" />
+          </Key>
+          <Property Name="supplier_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="yearly_turnover" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tbl_supplier_info" Relationship="Self.FK_tbl_supplier_info_tbl_supplier_type" FromRole="tbl_supplier_type" ToRole="tbl_supplier_info" />
+        </EntityType>
+        <EntityType Name="tbl_transaction_info">
+          <Key>
+            <PropertyRef Name="trans_id" />
+          </Key>
+          <Property Name="trans_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="order_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="agent_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="trans_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trans_datetime" Type="DateTime" Precision="3" />
+          <Property Name="trans_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trans_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_agent_info" Relationship="Self.FK_tbl_transaction_info_tbl_agent_info" FromRole="tbl_transaction_info" ToRole="tbl_agent_info" />
+          <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_transaction_info_tbl_cust_info" FromRole="tbl_transaction_info" ToRole="tbl_cust_info" />
+          <NavigationProperty Name="tbl_issue_info" Relationship="Self.FK_tbl_issue_info_tbl_transaction_info" FromRole="tbl_transaction_info" ToRole="tbl_issue_info" />
+          <NavigationProperty Name="tbl_order_info" Relationship="Self.FK_tbl_order_info_tbl_transaction_info" FromRole="tbl_transaction_info" ToRole="tbl_order_info" />
+          <NavigationProperty Name="tbl_supplier_info" Relationship="Self.FK_tbl_transaction_info_tbl_supplier_info" FromRole="tbl_transaction_info" ToRole="tbl_supplier_info" />
+        </EntityType>
+        <Association Name="FK_tbl_agent_info_tbl_agent_category">
+          <End Role="tbl_agent_category" Type="Self.tbl_agent_category" Multiplicity="0..1" />
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_category">
+              <PropertyRef Name="agent_type_cd" />
+            </Principal>
+            <Dependent Role="tbl_agent_info">
+              <PropertyRef Name="agent_type_cd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_delivery_info_tbl_agent_info">
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="0..1" />
+          <End Role="tbl_delivery_info" Type="Self.tbl_delivery_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="tbl_delivery_info">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_info_tbl_agent_info">
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="0..1" />
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="tbl_order_info">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_transaction_info_tbl_agent_info">
+          <End Role="tbl_agent_info" Type="Self.tbl_agent_info" Multiplicity="0..1" />
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="tbl_transaction_info">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_cust_addr">
+          <End Role="tbl_cust_addr" Type="Self.tbl_cust_addr" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_addr">
+              <PropertyRef Name="cust_address_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="cust_address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_food_info">
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_info">
+              <PropertyRef Name="food_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="food_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cart_info_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_cart_info" Type="Self.tbl_cart_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_cart_info">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_addr_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cust_addr" Type="Self.tbl_cust_addr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cust_addr">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_info_tbl_cust_type">
+          <End Role="tbl_cust_type" Type="Self.tbl_cust_type" Multiplicity="0..1" />
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_type">
+              <PropertyRef Name="cust_type_cd" />
+            </Principal>
+            <Dependent Role="tbl_cust_info">
+              <PropertyRef Name="cust_type_cd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_payment_mode_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cust_payment_mode" Type="Self.tbl_cust_payment_mode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cust_payment_mode">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_cust_wallet_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_cust_wallet" Type="Self.tbl_cust_wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_cust_wallet">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_info_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_order_info">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_transaction_info_tbl_cust_info">
+          <End Role="tbl_cust_info" Type="Self.tbl_cust_info" Multiplicity="0..1" />
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_cust_info">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="tbl_transaction_info">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_food_info_tbl_food_type">
+          <End Role="tbl_food_type" Type="Self.tbl_food_type" Multiplicity="0..1" />
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_type">
+              <PropertyRef Name="food_type_cd" />
+            </Principal>
+            <Dependent Role="tbl_food_info">
+              <PropertyRef Name="food_type_cd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_breakup_tbl_food_info">
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="0..1" />
+          <End Role="tbl_order_breakup" Type="Self.tbl_order_breakup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_info">
+              <PropertyRef Name="food_id" />
+            </Principal>
+            <Dependent Role="tbl_order_breakup">
+              <PropertyRef Name="food_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_supplier_menu_tbl_food_info">
+          <End Role="tbl_food_info" Type="Self.tbl_food_info" Multiplicity="0..1" />
+          <End Role="tbl_supplier_menu" Type="Self.tbl_supplier_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_food_info">
+              <PropertyRef Name="food_id" />
+            </Principal>
+            <Dependent Role="tbl_supplier_menu">
+              <PropertyRef Name="food_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_issue_info_tbl_order_info">
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="0..1" />
+          <End Role="tbl_issue_info" Type="Self.tbl_issue_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_order_info">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="tbl_issue_info">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_issue_info_tbl_transaction_info">
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="0..1" />
+          <End Role="tbl_issue_info" Type="Self.tbl_issue_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_transaction_info">
+              <PropertyRef Name="trans_id" />
+            </Principal>
+            <Dependent Role="tbl_issue_info">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_breakup_tbl_order_breakup">
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="0..1" />
+          <End Role="tbl_order_breakup" Type="Self.tbl_order_breakup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_order_info">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="tbl_order_breakup">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_breakup_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_order_breakup" Type="Self.tbl_order_breakup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_order_breakup">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_order_info_tbl_transaction_info">
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="0..1" />
+          <End Role="tbl_order_info" Type="Self.tbl_order_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_transaction_info">
+              <PropertyRef Name="trans_id" />
+            </Principal>
+            <Dependent Role="tbl_order_info">
+              <PropertyRef Name="trans_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_supplier_info_tbl_supplier_type">
+          <End Role="tbl_supplier_type" Type="Self.tbl_supplier_type" Multiplicity="0..1" />
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_type">
+              <PropertyRef Name="supplier_type" />
+            </Principal>
+            <Dependent Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_supplier_menu_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_supplier_menu" Type="Self.tbl_supplier_menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_supplier_menu">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_transaction_info_tbl_supplier_info">
+          <End Role="tbl_supplier_info" Type="Self.tbl_supplier_info" Multiplicity="0..1" />
+          <End Role="tbl_transaction_info" Type="Self.tbl_transaction_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier_info">
+              <PropertyRef Name="supplier_id" />
+            </Principal>
+            <Dependent Role="tbl_transaction_info">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Food_Delivery_DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_admin_info" EntityType="Self.tbl_admin_info" />
+          <EntitySet Name="tbl_agent_category" EntityType="Self.tbl_agent_category" />
+          <EntitySet Name="tbl_agent_info" EntityType="Self.tbl_agent_info" />
+          <EntitySet Name="tbl_cart_info" EntityType="Self.tbl_cart_info" />
+          <EntitySet Name="tbl_cust_addr" EntityType="Self.tbl_cust_addr" />
+          <EntitySet Name="tbl_cust_info" EntityType="Self.tbl_cust_info" />
+          <EntitySet Name="tbl_cust_payment_mode" EntityType="Self.tbl_cust_payment_mode" />
+          <EntitySet Name="tbl_cust_type" EntityType="Self.tbl_cust_type" />
+          <EntitySet Name="tbl_cust_wallet" EntityType="Self.tbl_cust_wallet" />
+          <EntitySet Name="tbl_delivery_info" EntityType="Self.tbl_delivery_info" />
+          <EntitySet Name="tbl_food_info" EntityType="Self.tbl_food_info" />
+          <EntitySet Name="tbl_food_type" EntityType="Self.tbl_food_type" />
+          <EntitySet Name="tbl_issue_info" EntityType="Self.tbl_issue_info" />
+          <EntitySet Name="tbl_order_breakup" EntityType="Self.tbl_order_breakup" />
+          <EntitySet Name="tbl_order_info" EntityType="Self.tbl_order_info" />
+          <EntitySet Name="tbl_supplier_info" EntityType="Self.tbl_supplier_info" />
+          <EntitySet Name="tbl_supplier_menu" EntityType="Self.tbl_supplier_menu" />
+          <EntitySet Name="tbl_supplier_type" EntityType="Self.tbl_supplier_type" />
+          <EntitySet Name="tbl_transaction_info" EntityType="Self.tbl_transaction_info" />
+          <AssociationSet Name="FK_tbl_agent_info_tbl_agent_category" Association="Self.FK_tbl_agent_info_tbl_agent_category">
+            <End Role="tbl_agent_category" EntitySet="tbl_agent_category" />
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_delivery_info_tbl_agent_info" Association="Self.FK_tbl_delivery_info_tbl_agent_info">
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+            <End Role="tbl_delivery_info" EntitySet="tbl_delivery_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_info_tbl_agent_info" Association="Self.FK_tbl_order_info_tbl_agent_info">
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_transaction_info_tbl_agent_info" Association="Self.FK_tbl_transaction_info_tbl_agent_info">
+            <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_cust_addr" Association="Self.FK_tbl_cart_info_tbl_cust_addr">
+            <End Role="tbl_cust_addr" EntitySet="tbl_cust_addr" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_cust_info" Association="Self.FK_tbl_cart_info_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_food_info" Association="Self.FK_tbl_cart_info_tbl_food_info">
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cart_info_tbl_supplier_info" Association="Self.FK_tbl_cart_info_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_cart_info" EntitySet="tbl_cart_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_addr_tbl_cust_info" Association="Self.FK_tbl_cust_addr_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cust_addr" EntitySet="tbl_cust_addr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_info_tbl_cust_type" Association="Self.FK_tbl_cust_info_tbl_cust_type">
+            <End Role="tbl_cust_type" EntitySet="tbl_cust_type" />
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_payment_mode_tbl_cust_info" Association="Self.FK_tbl_cust_payment_mode_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cust_payment_mode" EntitySet="tbl_cust_payment_mode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_cust_wallet_tbl_cust_info" Association="Self.FK_tbl_cust_wallet_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_cust_wallet" EntitySet="tbl_cust_wallet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_info_tbl_cust_info" Association="Self.FK_tbl_order_info_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_transaction_info_tbl_cust_info" Association="Self.FK_tbl_transaction_info_tbl_cust_info">
+            <End Role="tbl_cust_info" EntitySet="tbl_cust_info" />
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_food_info_tbl_food_type" Association="Self.FK_tbl_food_info_tbl_food_type">
+            <End Role="tbl_food_type" EntitySet="tbl_food_type" />
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_breakup_tbl_food_info" Association="Self.FK_tbl_order_breakup_tbl_food_info">
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+            <End Role="tbl_order_breakup" EntitySet="tbl_order_breakup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_supplier_menu_tbl_food_info" Association="Self.FK_tbl_supplier_menu_tbl_food_info">
+            <End Role="tbl_food_info" EntitySet="tbl_food_info" />
+            <End Role="tbl_supplier_menu" EntitySet="tbl_supplier_menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_issue_info_tbl_order_info" Association="Self.FK_tbl_issue_info_tbl_order_info">
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+            <End Role="tbl_issue_info" EntitySet="tbl_issue_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_issue_info_tbl_transaction_info" Association="Self.FK_tbl_issue_info_tbl_transaction_info">
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+            <End Role="tbl_issue_info" EntitySet="tbl_issue_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_breakup_tbl_order_breakup" Association="Self.FK_tbl_order_breakup_tbl_order_breakup">
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+            <End Role="tbl_order_breakup" EntitySet="tbl_order_breakup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_breakup_tbl_supplier_info" Association="Self.FK_tbl_order_breakup_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_order_breakup" EntitySet="tbl_order_breakup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_order_info_tbl_transaction_info" Association="Self.FK_tbl_order_info_tbl_transaction_info">
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+            <End Role="tbl_order_info" EntitySet="tbl_order_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_supplier_info_tbl_supplier_type" Association="Self.FK_tbl_supplier_info_tbl_supplier_type">
+            <End Role="tbl_supplier_type" EntitySet="tbl_supplier_type" />
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_supplier_menu_tbl_supplier_info" Association="Self.FK_tbl_supplier_menu_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_supplier_menu" EntitySet="tbl_supplier_menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_transaction_info_tbl_supplier_info" Association="Self.FK_tbl_transaction_info_tbl_supplier_info">
+            <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
+            <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Food_Delivery_DbModelStoreContainer" CdmEntityContainer="Food_Delivery_DbEntities">
+          <EntitySetMapping Name="tbl_admin_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_admin_info">
+              <MappingFragment StoreEntitySet="tbl_admin_info">
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="photo_id_no" ColumnName="photo_id_no" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_agent_category">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_agent_category">
+              <MappingFragment StoreEntitySet="tbl_agent_category">
+                <ScalarProperty Name="agent_type_cd" ColumnName="agent_type_cd" />
+                <ScalarProperty Name="type_description" ColumnName="type_description" />
+                <ScalarProperty Name="comm_pct" ColumnName="comm_pct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_agent_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_agent_info">
+              <MappingFragment StoreEntitySet="tbl_agent_info">
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="photo_id_no" ColumnName="photo_id_no" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="agent_type_cd" ColumnName="agent_type_cd" />
+                <ScalarProperty Name="agent_img" ColumnName="agent_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cart_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_cart_info">
+              <MappingFragment StoreEntitySet="tbl_cart_info">
+                <ScalarProperty Name="slno" ColumnName="slno" />
+                <ScalarProperty Name="food_id" ColumnName="food_id" />
+                <ScalarProperty Name="food_name" ColumnName="food_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="cust_address_id" ColumnName="cust_address_id" />
+                <ScalarProperty Name="cart_regist_date" ColumnName="cart_regist_date" />
+                <ScalarProperty Name="process_date" ColumnName="process_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cust_addr">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_cust_addr">
+              <MappingFragment StoreEntitySet="tbl_cust_addr">
+                <ScalarProperty Name="cust_address_id" ColumnName="cust_address_id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="cust_pin" ColumnName="cust_pin" />
+                <ScalarProperty Name="cust_address" ColumnName="cust_address" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cust_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_cust_info">
+              <MappingFragment StoreEntitySet="tbl_cust_info">
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="cust_type_cd" ColumnName="cust_type_cd" />
+                <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+                <ScalarProperty Name="cust_email" ColumnName="cust_email" />
+                <ScalarProperty Name="cust_phno" ColumnName="cust_phno" />
+                <ScalarProperty Name="cust_pin" ColumnName="cust_pin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cust_payment_mode">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_cust_payment_mode">
+              <MappingFragment StoreEntitySet="tbl_cust_payment_mode">
+                <ScalarProperty Name="payment_mode_id" ColumnName="payment_mode_id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cust_type">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_cust_type">
+              <MappingFragment StoreEntitySet="tbl_cust_type">
+                <ScalarProperty Name="cust_type_cd" ColumnName="cust_type_cd" />
+                <ScalarProperty Name="type_desc" ColumnName="type_desc" />
+                <ScalarProperty Name="order_limit" ColumnName="order_limit" />
+                <ScalarProperty Name="total_turnover" ColumnName="total_turnover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_cust_wallet">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_cust_wallet">
+              <MappingFragment StoreEntitySet="tbl_cust_wallet">
+                <ScalarProperty Name="cust_wallet_id" ColumnName="cust_wallet_id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="wallet_balance" ColumnName="wallet_balance" />
+                <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_delivery_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_delivery_info">
+              <MappingFragment StoreEntitySet="tbl_delivery_info">
+                <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+                <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+                <ScalarProperty Name="delivery_initiate_datetime" ColumnName="delivery_initiate_datetime" />
+                <ScalarProperty Name="delivered_datetime" ColumnName="delivered_datetime" />
+                <ScalarProperty Name="delivery_status" ColumnName="delivery_status" />
+                <ScalarProperty Name="comm_amt" ColumnName="comm_amt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_food_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_food_info">
+              <MappingFragment StoreEntitySet="tbl_food_info">
+                <ScalarProperty Name="food_id" ColumnName="food_id" />
+                <ScalarProperty Name="food_type_cd" ColumnName="food_type_cd" />
+                <ScalarProperty Name="food_name" ColumnName="food_name" />
+                <ScalarProperty Name="food_description" ColumnName="food_description" />
+                <ScalarProperty Name="food_qty" ColumnName="food_qty" />
+                <ScalarProperty Name="food_img" ColumnName="food_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_food_type">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_food_type">
+              <MappingFragment StoreEntitySet="tbl_food_type">
+                <ScalarProperty Name="food_type_cd" ColumnName="food_type_cd" />
+                <ScalarProperty Name="food_type" ColumnName="food_type" />
+                <ScalarProperty Name="type_desc" ColumnName="type_desc" />
+                <ScalarProperty Name="food_category" ColumnName="food_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_issue_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_issue_info">
+              <MappingFragment StoreEntitySet="tbl_issue_info">
+                <ScalarProperty Name="dispute_no" ColumnName="dispute_no" />
+                <ScalarProperty Name="raised_on" ColumnName="raised_on" />
+                <ScalarProperty Name="issue_desc" ColumnName="issue_desc" />
+                <ScalarProperty Name="ticket_stat" ColumnName="ticket_stat" />
+                <ScalarProperty Name="resolution" ColumnName="resolution" />
+                <ScalarProperty Name="resolved_on" ColumnName="resolved_on" />
+                <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_order_breakup">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_order_breakup">
+              <MappingFragment StoreEntitySet="tbl_order_breakup">
+                <ScalarProperty Name="slno" ColumnName="slno" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="food_id" ColumnName="food_id" />
+                <ScalarProperty Name="food_name" ColumnName="food_name" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="price_per_item" ColumnName="price_per_item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_order_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_order_info">
+              <MappingFragment StoreEntitySet="tbl_order_info">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="delivery_addr" ColumnName="delivery_addr" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="cust_otp" ColumnName="cust_otp" />
+                <ScalarProperty Name="ship_to_pin" ColumnName="ship_to_pin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_supplier_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_supplier_info">
+              <MappingFragment StoreEntitySet="tbl_supplier_info">
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
+                <ScalarProperty Name="supplier_address" ColumnName="supplier_address" />
+                <ScalarProperty Name="supplier_gst_num" ColumnName="supplier_gst_num" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="supplier_type" ColumnName="supplier_type" />
+                <ScalarProperty Name="supplier_status" ColumnName="supplier_status" />
+                <ScalarProperty Name="supplier_menu_id" ColumnName="supplier_menu_id" />
+                <ScalarProperty Name="longtitude" ColumnName="longtitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="serv_pin_list" ColumnName="serv_pin_list" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_supplier_menu">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_supplier_menu">
+              <MappingFragment StoreEntitySet="tbl_supplier_menu">
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="item_rate" ColumnName="item_rate" />
+                <ScalarProperty Name="item_type" ColumnName="item_type" />
+                <ScalarProperty Name="supplier_menu_id" ColumnName="supplier_menu_id" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="food_type_code" ColumnName="food_type_code" />
+                <ScalarProperty Name="food_id" ColumnName="food_id" />
+                <ScalarProperty Name="available_qty" ColumnName="available_qty" />
+                <ScalarProperty Name="serv_cl_time" ColumnName="serv_cl_time" />
+                <ScalarProperty Name="serv_op_time" ColumnName="serv_op_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_supplier_type">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_supplier_type">
+              <MappingFragment StoreEntitySet="tbl_supplier_type">
+                <ScalarProperty Name="supplier_type" ColumnName="supplier_type" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="yearly_turnover" ColumnName="yearly_turnover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_transaction_info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_transaction_info">
+              <MappingFragment StoreEntitySet="tbl_transaction_info">
+                <ScalarProperty Name="trans_id" ColumnName="trans_id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="trans_mode" ColumnName="trans_mode" />
+                <ScalarProperty Name="trans_datetime" ColumnName="trans_datetime" />
+                <ScalarProperty Name="trans_status" ColumnName="trans_status" />
+                <ScalarProperty Name="trans_remarks" ColumnName="trans_remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

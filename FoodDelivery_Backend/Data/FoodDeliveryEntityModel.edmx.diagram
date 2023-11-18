@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8e33fb4d5b114a64a88b745b78e6c95d" Name="Diagram1">
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_admin_info" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_agent_category" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_agent_info" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_cart_info" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_cust_addr" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_cust_info" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_cust_payment_mode" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_cust_type" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_cust_wallet" Width="1.5" PointX="5.25" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_delivery_info" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_food_info" Width="1.5" PointX="8.25" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_food_type" Width="1.5" PointX="6" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_issue_info" Width="1.5" PointX="10.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_order_breakup" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_order_info" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_supplier_info" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_supplier_menu" Width="1.5" PointX="13.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_supplier_type" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.tbl_transaction_info" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_agent_info_tbl_agent_category" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_delivery_info_tbl_agent_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_order_info_tbl_agent_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_transaction_info_tbl_agent_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cart_info_tbl_cust_addr" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cart_info_tbl_cust_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cart_info_tbl_food_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cart_info_tbl_supplier_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cust_addr_tbl_cust_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cust_info_tbl_cust_type" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cust_payment_mode_tbl_cust_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_cust_wallet_tbl_cust_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_order_info_tbl_cust_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_transaction_info_tbl_cust_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_food_info_tbl_food_type" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_order_breakup_tbl_food_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_supplier_menu_tbl_food_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_issue_info_tbl_order_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_issue_info_tbl_transaction_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_order_breakup_tbl_order_breakup" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_order_breakup_tbl_supplier_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_order_info_tbl_transaction_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_supplier_info_tbl_supplier_type" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_supplier_menu_tbl_supplier_info" ManuallyRouted="false" />
+        <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_transaction_info_tbl_supplier_info" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
