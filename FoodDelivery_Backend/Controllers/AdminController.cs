@@ -1,0 +1,89 @@
+﻿using FoodDelivery_Backend.Data;
+using FoodDelivery_Backend.Models;
+using FoodDelivery_Backend.Models.ResponseModel;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+
+namespace FoodDelivery_Backend.Controllers
+{
+    public class AdminController : ApiController
+    {
+        Food_Delivery_DbEntities db_obj = new Food_Delivery_DbEntities();
+
+        [HttpGet]
+        [ActionName("LoginVerify")]
+        public async Task<LoginResponse> VerifyEmpLogin([FromBody] adminInfoModelClass val)
+        {
+           
+            try
+            {
+                var model = new List<adminInfoModelClass>();
+                var query = await db_obj.tbl_admin_info.Where(a => a.email == val.email && a.password == val.password).FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    return new LoginResponse() { 
+                        id=query.emp_id,
+                        message="Login successful",
+                        name=query.name,
+                        profileImageURL=null,
+                        role="ADMIN",
+                        status="OK"       
+                    };
+                }
+
+                else
+                {
+                    return new LoginResponse()
+                    {
+                        id = 0,
+                        message = "User not found",
+                        name = null,
+                        profileImageURL = null,
+                        role = null,
+                        status = null
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                
+                return new LoginResponse()
+                {
+                    id = 0,
+                    message = e.Message + " / " + e.StackTrace,
+                    name = null,
+                    profileImageURL = null,
+                    role = null,
+                    status = null
+                };
+            }
+        }
+
+        [HttpPost]
+        [ActionName("insertAdmin")]
+        public String insertAdmin([FromBody] adminInfoModelClass val)
+        {
+            var model = new tbl_admin_info
+            {
+                name = val.name,
+                email = val.email,
+                status = val.status,
+                reg_date = val.reg_date,
+                phone = val.phone,
+                photo_id_no = val.photo_id_no,
+                password = val.password
+            };
+
+            db_obj.tbl_admin_info.Add(model);
+            db_obj.SaveChanges();
+
+            return "Admin Successfully Registered!!";
+        }
+    }
+}
