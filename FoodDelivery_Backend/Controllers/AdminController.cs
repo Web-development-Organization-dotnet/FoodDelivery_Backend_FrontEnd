@@ -85,5 +85,38 @@ namespace FoodDelivery_Backend.Controllers
 
             return "Admin Successfully Registered!!";
         }
+
+        [HttpPut]
+        [ActionName("updateAdmin")]
+        public async Task<string> updateAdmin([FromBody] adminInfoModelClass2 val)
+        {
+            var query = await db_obj.tbl_admin_info.Where(a => a.emp_id == val.emp_id).FirstOrDefaultAsync();
+            if (query != null)
+            
+
+                {
+                    query.name = val.name;
+                    query.email = val.email;
+                    query.status = val.status;
+                    query.reg_date = val.reg_date;
+                    query.phone = val.phone;
+                    query.photo_id_no = val.photo_id_no;
+                    query.password = val.password;
+
+                    db_obj.SaveChanges();
+
+                    return "Updated Successfully!!!!";
+
+                }
+            
+            else
+            {
+                return "Employee ID not found";
+            }
+
+
+                
+        }
+
     }
 }
