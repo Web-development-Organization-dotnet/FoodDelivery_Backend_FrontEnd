@@ -24,7 +24,7 @@ namespace FoodDelivery_Backend.Controllers
             try
             {
                 var model = new List<adminInfoModelClass>();
-                var query = await db_obj.tbl_admin_info.Where(a => a.email == val.email && a.password == val.password).FirstOrDefaultAsync();
+                var query = await db_obj.tbl_admin_info.Where(a => a.email == val.email && a.password == val.password && a.status=="active").FirstOrDefaultAsync();
                 if (query != null)
                 {
                     return new LoginResponse() { 
@@ -117,6 +117,45 @@ namespace FoodDelivery_Backend.Controllers
 
                 
         }
+
+        [HttpPut]
+        [ActionName("adminStatusToggle")]
+        public async Task<string> adminStatusToggle([FromBody] adminInfoModelClass2 val)
+        {
+            var query = await db_obj.tbl_admin_info.Where(a => a.emp_id == val.emp_id).FirstOrDefaultAsync();
+            if (query != null && query.status == "active")
+
+
+            {
+                //query.name = val.name;
+                //query.email = val.email;
+                query.status = "inactive";
+                //query.reg_date = val.reg_date;
+                //query.phone = val.phone;
+                //query.photo_id_no = val.photo_id_no;
+                //query.password = val.password;
+
+                db_obj.SaveChanges();
+
+                return "Admin Disabled Successfully!!!!";
+
+            }
+            else if(query != null && query.status=="inactive")
+                {
+                    query.status = "Active";
+                    db_obj.SaveChanges();
+
+                return "Admin Enabled Successfully!!!!";
+                }
+            else
+                {
+                    return "Employee ID not found";
+                }
+
+
+
+        }
+
 
     }
 }
