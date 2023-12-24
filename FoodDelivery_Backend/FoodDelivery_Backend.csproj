@@ -162,6 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\FoodTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -242,6 +243,7 @@
     </Compile>
     <Compile Include="Models\adminInfoModelClass.cs" />
     <Compile Include="Models\adminInfoModelClass2.cs" />
+    <Compile Include="Models\FoodTypeModel.cs" />
     <Compile Include="Models\ResponseModel\LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -315,6 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\FoodType\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -388,7 +391,7 @@
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
