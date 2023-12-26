@@ -17,14 +17,14 @@ namespace FoodDelivery_Backend.Controllers
         Food_Delivery_DbEntities db_obj = new Food_Delivery_DbEntities();
 
         [HttpGet]
-        [ActionName("LoginVerify")]
-        public async Task<LoginResponse> VerifyEmpLogin([FromBody] adminInfoModelClass val)
+        [ActionName("LoginDetails")]
+        public async Task<LoginResponse> AdminDetails(int empId)
         {
            
             try
             {
                 var model = new List<adminInfoModelClass>();
-                var query = await db_obj.tbl_admin_info.Where(a => a.email == val.email && a.password == val.password && a.status=="active").FirstOrDefaultAsync();
+                var query = await db_obj.tbl_admin_info.Where(a => a.emp_id== empId).FirstOrDefaultAsync();
                 if (query != null)
                 {
                     return new LoginResponse() { 
@@ -36,7 +36,6 @@ namespace FoodDelivery_Backend.Controllers
                         status="OK"       
                     };
                 }
-
                 else
                 {
                     return new LoginResponse()
@@ -66,8 +65,58 @@ namespace FoodDelivery_Backend.Controllers
         }
 
         [HttpPost]
-        [ActionName("insertAdmin")]
-        public String insertAdmin([FromBody] adminInfoModelClass val)
+        [ActionName("Login")]
+        public async Task<LoginResponse> AdminLogin([FromBody] adminInfoModelClass val)
+        {
+
+            try
+            {
+                var model = new List<adminInfoModelClass>();
+                var query = await db_obj.tbl_admin_info.Where(a => a.email == val.email && a.password == val.password && a.status == "active").FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    return new LoginResponse()
+                    {
+                        id = query.emp_id,
+                        message = "Login successful",
+                        name = query.name,
+                        profileImageURL = null,
+                        role = "ADMIN",
+                        status = "OK"
+                    };
+                }
+
+                else
+                {
+                    return new LoginResponse()
+                    {
+                        id = 0,
+                        message = "User not found",
+                        name = null,
+                        profileImageURL = null,
+                        role = null,
+                        status = null
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new LoginResponse()
+                {
+                    id = 0,
+                    message = e.Message + " / " + e.StackTrace,
+                    name = null,
+                    profileImageURL = null,
+                    role = null,
+                    status = null
+                };
+            }
+        }
+
+        [HttpPost]
+        [ActionName("Register")]
+        public String InsertAdmin([FromBody] adminInfoModelClass val)
         {
             var model = new tbl_admin_info
             {
@@ -87,8 +136,8 @@ namespace FoodDelivery_Backend.Controllers
         }
 
         [HttpPut]
-        [ActionName("updateAdmin")]
-        public async Task<string> updateAdmin([FromBody] adminInfoModelClass2 val)
+        [ActionName("Update")]
+        public async Task<string> UpdateAdmin([FromBody] adminInfoModelClass2 val)
         {
             var query = await db_obj.tbl_admin_info.Where(a => a.emp_id == val.emp_id).FirstOrDefaultAsync();
             if (query != null)
@@ -119,24 +168,14 @@ namespace FoodDelivery_Backend.Controllers
         }
 
         [HttpPut]
-        [ActionName("adminStatusToggle")]
-        public async Task<string> adminStatusToggle([FromBody] adminInfoModelClass2 val)
+        [ActionName("StatusToggle")]
+        public async Task<string> AdminStatusToggle([FromBody] adminInfoModelClass2 val)
         {
             var query = await db_obj.tbl_admin_info.Where(a => a.emp_id == val.emp_id).FirstOrDefaultAsync();
             if (query != null && query.status == "active")
-
-
-            {
-                //query.name = val.name;
-                //query.email = val.email;
-                query.status = "inactive";
-                //query.reg_date = val.reg_date;
-                //query.phone = val.phone;
-                //query.photo_id_no = val.photo_id_no;
-                //query.password = val.password;
-
+            {                
+                query.status = "inactive";                
                 db_obj.SaveChanges();
-
                 return "Admin Disabled Successfully!!!!";
 
             }
@@ -144,8 +183,7 @@ namespace FoodDelivery_Backend.Controllers
                 {
                     query.status = "Active";
                     db_obj.SaveChanges();
-
-                return "Admin Enabled Successfully!!!!";
+                    return "Admin Enabled Successfully!!!!";
                 }
             else
                 {
