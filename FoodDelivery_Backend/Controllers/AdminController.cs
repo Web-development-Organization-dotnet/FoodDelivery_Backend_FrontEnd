@@ -17,6 +17,7 @@ namespace FoodDelivery_Backend.Controllers
         Food_Delivery_DbEntities db_obj = new Food_Delivery_DbEntities();
 
         [HttpGet]
+        [Route("LoginDetails/{empId}")]
         [ActionName("LoginDetails")]
         public async Task<LoginResponse> AdminDetails(int empId)
         {

@@ -5,27 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
-using ActionNameAttribute = System.Web.Http.ActionNameAttribute;
-using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 
 namespace FoodDelivery_Backend.Controllers
 {
-    public class FoodTypeController : Controller
+    public class FoodTypeController : ApiController
     {
         Food_Delivery_DbEntities db_obj = new Food_Delivery_DbEntities();
-
-
-
-        // GET: FoodType
-        public ActionResult Index()
+        
+        [HttpGet]
+        [ActionName("FoodTypeDetails")]
+        [Route("FoodTypeDetails/{Id}")]
+        public string GetFoodTypeDetails(int id)
         {
-            return View();
+            return "Ok";
         }
 
 
+
         [HttpPost]
-        [ActionName("insertFoodType")]
+        [ActionName("RegisterFoodType")]
         public String insertFoodType([FromBody] FoodTypeModel val)
         {
             var model = new tbl_food_type
