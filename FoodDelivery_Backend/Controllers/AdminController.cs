@@ -66,6 +66,7 @@ namespace FoodDelivery_Backend.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [ActionName("Login")]
         public async Task<LoginResponse> AdminLogin([FromBody] adminInfoModelClass val)
         {
