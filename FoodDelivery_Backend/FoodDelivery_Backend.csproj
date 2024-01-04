@@ -252,6 +252,7 @@
     </Compile>
     <Compile Include="Models\adminInfoModelClass.cs" />
     <Compile Include="Models\adminInfoModelClass2.cs" />
+    <Compile Include="Models\Common\ErrorResponse.cs" />
     <Compile Include="Models\FoodTypeModel.cs" />
     <Compile Include="Models\ResponseModel\LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
