@@ -19,13 +19,42 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpGet]
         [ActionName("FoodTypeDetails")]
-        [Route("FoodTypeDetails/{Id}")]
-        public string GetFoodTypeDetails(int id)
+        [Route("FoodTypeDetails/{foodTypeCD}")]
+        public async Task<IHttpActionResult> GetFoodTypeDetails(string foodTypeCD)
         {
-            return "Ok";
+            try
+            {
+                var query = await db_obj.tbl_food_type.Where(a => a.food_type_cd == foodTypeCD.ToUpper()).FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    var outputModel = new tbl_food_type()
+                    {
+                        food_category = query.food_category,
+                        food_type = query.food_type,
+                        food_type_cd = query.food_type_cd,
+                        type_desc = query.type_desc
+
+                    };
+                    return Content(HttpStatusCode.OK, outputModel);
+                }
+                else
+                {
+                    return BadRequest("No Record Found with "+ foodTypeCD);
+                }
+               
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
         }
-
-
 
         [HttpPost]
         [ActionName("RegisterFoodType")]
