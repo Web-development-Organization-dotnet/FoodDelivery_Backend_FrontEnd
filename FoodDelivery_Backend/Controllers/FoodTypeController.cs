@@ -109,5 +109,44 @@ namespace FoodDelivery_Backend.Controllers
 
 
         }
+
+        [HttpPut]
+        [ActionName("UpdateFoodType")]
+
+        public async Task<IHttpActionResult> updateFoodType([FromBody] FoodTypeModel val)
+        {
+            try
+            {
+                var query = await db_obj.tbl_food_type.Where(a => a.food_type_cd == val.food_type_cd.ToUpper()).FirstOrDefaultAsync();
+                    if (query != null)
+                    {
+                         //only desc will be updated!!!
+                         query.type_desc = val.type_desc;
+                  
+                        db_obj.SaveChanges();
+
+                        return Ok("Food Type Updated Successfully!!");
+                    }
+                    else
+                    {
+                        return BadRequest("Food Type Not Updated!!");
+                    }
+                
+        
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
     }
+
 }
