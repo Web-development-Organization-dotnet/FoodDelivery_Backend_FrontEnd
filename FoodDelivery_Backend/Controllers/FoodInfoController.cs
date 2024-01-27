@@ -113,5 +113,46 @@ namespace FoodDelivery_Backend.Controllers
             }
         }
 
+
+
+        [HttpPut]
+        [ActionName("UpdateFoodInfo")]
+
+        public async Task<IHttpActionResult> updateFoodInfo([FromBody] FoodInfoModel val)
+        {
+            try
+            {
+                var query = await db_obj.tbl_food_info.Where(a => a.food_id == val.food_id).FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    query.food_description = val.food_description;
+                    query.food_name = val.food_name;
+                    query.food_img = val.food_img;
+
+                    db_obj.SaveChanges();
+
+                    return Ok("Food Info Updated Successfully!!");
+                }
+                else
+                {
+                    return BadRequest("Food Info Not Updated!!");
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
     }
 }
