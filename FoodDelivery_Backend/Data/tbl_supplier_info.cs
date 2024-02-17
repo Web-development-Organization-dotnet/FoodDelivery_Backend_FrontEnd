@@ -31,7 +31,6 @@ namespace FoodDelivery_Backend.Data
         public Nullable<decimal> pincode { get; set; }
         public string supplier_type { get; set; }
         public string supplier_status { get; set; }
-        public Nullable<decimal> supplier_menu_id { get; set; }
         public string longtitude { get; set; }
         public string latitude { get; set; }
         public string serv_pin_list { get; set; }

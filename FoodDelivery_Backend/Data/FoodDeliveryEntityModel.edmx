@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Food_Delivery_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Food_Delivery_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_admin_info">
           <Key>
             <PropertyRef Name="emp_id" />
@@ -187,7 +187,6 @@
           <Property Name="pincode" Type="numeric" Precision="18" Scale="0" />
           <Property Name="supplier_type" Type="varchar" MaxLength="50" />
           <Property Name="supplier_status" Type="varchar" MaxLength="50" />
-          <Property Name="supplier_menu_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="longtitude" Type="varchar(max)" />
           <Property Name="latitude" Type="varchar(max)" />
           <Property Name="serv_pin_list" Type="varchar(max)" />
@@ -651,8 +650,7 @@
             <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Food_Delivery_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -875,7 +873,6 @@
           <Property Name="pincode" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="supplier_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="supplier_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="supplier_menu_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="longtitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="latitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="serv_pin_list" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1554,7 +1551,6 @@
                 <ScalarProperty Name="pincode" ColumnName="pincode" />
                 <ScalarProperty Name="supplier_type" ColumnName="supplier_type" />
                 <ScalarProperty Name="supplier_status" ColumnName="supplier_status" />
-                <ScalarProperty Name="supplier_menu_id" ColumnName="supplier_menu_id" />
                 <ScalarProperty Name="longtitude" ColumnName="longtitude" />
                 <ScalarProperty Name="latitude" ColumnName="latitude" />
                 <ScalarProperty Name="serv_pin_list" ColumnName="serv_pin_list" />

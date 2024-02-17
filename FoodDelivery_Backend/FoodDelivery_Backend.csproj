@@ -176,6 +176,7 @@
     <Compile Include="Controllers\FoodTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\SupplierInfoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\FoodDeliveryEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -258,6 +259,7 @@
     <Compile Include="Models\FoodInfoModel.cs" />
     <Compile Include="Models\FoodTypeModel.cs" />
     <Compile Include="Models\ResponseModel\LoginResponse.cs" />
+    <Compile Include="Models\SupplierInfo.cs" />
     <Compile Include="Models\SupplierType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
