@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\SupplierInfoController.cs" />
+    <Compile Include="Controllers\SupplierMenuController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\FoodDeliveryEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
