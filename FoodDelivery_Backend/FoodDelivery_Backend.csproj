@@ -261,6 +261,7 @@
     <Compile Include="Models\FoodTypeModel.cs" />
     <Compile Include="Models\ResponseModel\LoginResponse.cs" />
     <Compile Include="Models\SupplierInfo.cs" />
+    <Compile Include="Models\SupplierMenu.cs" />
     <Compile Include="Models\SupplierType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
