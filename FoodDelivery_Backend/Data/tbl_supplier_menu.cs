@@ -19,7 +19,6 @@ namespace FoodDelivery_Backend.Data
         public string item_type { get; set; }
         public decimal supplier_menu_id { get; set; }
         public Nullable<decimal> supplier_id { get; set; }
-        public string food_type_code { get; set; }
         public Nullable<decimal> food_id { get; set; }
         public Nullable<decimal> available_qty { get; set; }
         public string serv_cl_time { get; set; }

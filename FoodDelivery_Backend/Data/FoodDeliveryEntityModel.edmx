@@ -200,7 +200,6 @@
           <Property Name="item_type" Type="varchar" MaxLength="50" />
           <Property Name="supplier_menu_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="food_type_code" Type="varchar" MaxLength="50" />
           <Property Name="food_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="available_qty" Type="numeric" Precision="18" Scale="0" />
           <Property Name="serv_cl_time" Type="varchar(max)" />
@@ -891,7 +890,6 @@
           <Property Name="item_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="supplier_menu_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="food_type_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="food_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="available_qty" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="serv_cl_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1565,7 +1563,6 @@
                 <ScalarProperty Name="item_type" ColumnName="item_type" />
                 <ScalarProperty Name="supplier_menu_id" ColumnName="supplier_menu_id" />
                 <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
-                <ScalarProperty Name="food_type_code" ColumnName="food_type_code" />
                 <ScalarProperty Name="food_id" ColumnName="food_id" />
                 <ScalarProperty Name="available_qty" ColumnName="available_qty" />
                 <ScalarProperty Name="serv_cl_time" ColumnName="serv_cl_time" />
