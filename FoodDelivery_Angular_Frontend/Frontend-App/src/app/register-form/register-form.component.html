@@ -1,10 +1,17 @@
 <p>register-form works!</p>
-<form action="action_page.php">
+<form name="RegistrationForm" #RegistrationForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="container">
       <h1>Register</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
   
+      <label for="uname"><b>Name</b></label>
+      <input type="text" 
+              #uname="ngModel" 
+              [(ngModel)]="_userregistration.uname"
+              placeholder="Enter Name" name="uname" required="true">
+<!-- line 10 for put data, line 11 for get data, lines 10 and 11 for binding typrscript class user_registration-->
+
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" id="email" required>
   
