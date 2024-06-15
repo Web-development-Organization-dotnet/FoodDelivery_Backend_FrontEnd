@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Frontend-App": {
+    "TEST-CRUD": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/frontend-app",
+            "outputPath": "dist/test-crud",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Frontend-App:build:production"
+              "buildTarget": "TEST-CRUD:build:production"
             },
             "development": {
-              "buildTarget": "Frontend-App:build:development"
+              "buildTarget": "TEST-CRUD:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Frontend-App:build"
+            "buildTarget": "TEST-CRUD:build"
           }
         },
         "test": {
