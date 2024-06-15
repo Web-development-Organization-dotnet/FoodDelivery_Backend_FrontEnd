@@ -8,22 +8,22 @@
             </div>
             <h4>Hello! let's get started</h4>
             <h6 class="fw-light">Sign in to continue.</h6>
-            <form class="pt-3" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+            <form class="pt-3" #uForm="ngForm" (ngSubmit)="onSubmit(uForm)">
               <div class="form-group">
                 <input type="text" class="form-control form-control-lg"
-                  placeholder="Username"
+                  placeholder="Enter User Name"
                   name="username"
                   #username="ngModel" 
-                  [(ngModel)]="loginModel.username" 
+                  [(ngModel)]="loginModelObj.username" 
                   required="true"
                    >
               </div>
               <div class="form-group">
                 <input type="password" class="form-control form-control-lg" 
-                  placeholder="Password"
+                  placeholder="Enter Password"
                   name="password"
                   #password="ngModel" 
-                  [(ngModel)]="loginModel.password" 
+                  [(ngModel)]="loginModelObj.password" 
                   required="true"
                   >
               </div>

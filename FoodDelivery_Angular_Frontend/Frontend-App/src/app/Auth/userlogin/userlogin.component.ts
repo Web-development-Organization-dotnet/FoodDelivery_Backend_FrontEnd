@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { Login } from '../../Models/login';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { loginModel } from '../../Models/login';
 
 @Component({
   selector: 'app-userlogin',
@@ -17,8 +17,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './userlogin.component.css'
 })
 export class UserloginComponent {
-  loginModel:any= new Login();
-
+  loginModelObj:any=new loginModel(); //creating obj for loginModel class. Use 'any' for datatype independence
 
    constructor(private router: Router){
     
@@ -27,9 +26,9 @@ export class UserloginComponent {
 
   }
   onSubmit(form:NgForm){
-    console.log(this.loginModel);
-    if(this.loginModel.username=="a@b.com" && this,this.loginModel.password=="123"){
-      this,this.router.navigate(['/dashboard']);
+    console.log(this.loginModelObj);
+    if(this.loginModelObj.username=="a@b.com" && this.loginModelObj.password=="123"){
+      this.router.navigate(['/dashboard']);
     }
     else{
       return
