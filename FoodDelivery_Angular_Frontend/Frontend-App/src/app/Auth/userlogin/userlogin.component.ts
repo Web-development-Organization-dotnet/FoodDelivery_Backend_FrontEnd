@@ -26,6 +26,7 @@ export class UserloginComponent {
 
   }
   onSubmit(form:NgForm){
+    console.log(form.invalid);
     console.log(this.loginModelObj);
     if(this.loginModelObj.username=="a@b.com" && this.loginModelObj.password=="123"){
       this.router.navigate(['/dashboard']);
