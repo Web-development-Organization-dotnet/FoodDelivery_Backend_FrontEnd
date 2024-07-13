@@ -13,13 +13,14 @@ export class LoginService {
   }
   login(){
     const httpHeader = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
     });
     const data = {
-      name:'abcd',
-      password:'1234'
+      email:'ab@cd.com',
+      password:'admin@admin'
     };
-    return this.http.post<any>('endpoint',data,{headers:httpHeader}).pipe(
+    return this.http.post<any>('https://localhost:44369/api/Admin/Login',data,{headers:httpHeader}).pipe(
       map((d)=>{
         return d;
       }),
