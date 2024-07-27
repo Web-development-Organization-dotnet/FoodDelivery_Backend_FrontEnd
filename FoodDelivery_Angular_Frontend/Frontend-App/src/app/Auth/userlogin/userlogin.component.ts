@@ -18,21 +18,42 @@ import { LoginService } from '../../Service/Auth/login.service';
   styleUrl: './userlogin.component.css'
 })
 export class UserloginComponent {
-  loginModelObj:any=new loginModel(); //creating obj for loginModel class. Use 'any' for datatype independence
 
-   constructor(private router: Router,private loginServ:LoginService){
-    
-  }
-  ngOnInit(){
+  loginModelObj: any = new loginModel(); //creating obj for loginModel class. Use 'any' for datatype independence
+
+  constructor(private router: Router, private loginServ: LoginService) {
 
   }
-  onSubmit(form:NgForm){
+
+  ngOnInit() {
+
+  }
+
+  onSubmit(form: NgForm) {
+
     console.log(form.invalid);
     console.log(this.loginModelObj);
 
-    this.loginServ.login().subscribe(q=>{
-      console.log('Login response',q);
-    })
+    if (!form.invalid) {
+      // API Call
+      this.loginServ.login(this.loginModelObj).subscribe(q => {
+        console.log('Login response', q);
+
+        if (q && q.message === 'Login successful') {
+          this.router.navigate(['/dashboard']);
+        }
+        else {
+          alert('Invalid credentials!');
+        }
+      })
+    }
+    else {
+      // Navigate
+      console.log('Error');
+      this.router.navigate(['/login']);
+    }
+
+
 
     // if(this.loginModelObj.username=="a@b.com" && this.loginModelObj.password=="123"){
     //   this.router.navigate(['/dashboard']);
