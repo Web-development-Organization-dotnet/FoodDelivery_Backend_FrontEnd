@@ -3,7 +3,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { loginModel } from '../../Models/login';
-import { LoginService } from '../../Service/Auth/login.service';
+import { AuthService } from '../../Service/Auth/auth.service';
 
 @Component({
   selector: 'app-userlogin',
@@ -21,7 +21,7 @@ export class UserloginComponent {
 
   loginModelObj: any = new loginModel(); //creating obj for loginModel class. Use 'any' for datatype independence
 
-  constructor(private router: Router, private loginServ: LoginService) {
+  constructor(private router: Router, private loginServ: AuthService) {
 
   }
 

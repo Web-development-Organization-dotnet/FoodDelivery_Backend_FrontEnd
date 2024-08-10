@@ -117,14 +117,14 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("Register")]
-        public String InsertAdmin([FromBody] adminInfoModelClass val)
+        public LoginResponse InsertAdmin([FromBody] adminInfoModelClass val)
         {
             var model = new tbl_admin_info
             {
                 name = val.name,
                 email = val.email,
-                status = val.status,
-                reg_date = val.reg_date,
+                status = "active",
+                reg_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 phone = val.phone,
                 photo_id_no = val.photo_id_no,
                 password = val.password
@@ -133,7 +133,10 @@ namespace FoodDelivery_Backend.Controllers
             db_obj.tbl_admin_info.Add(model);
             db_obj.SaveChanges();
 
-            return "Admin Successfully Registered!!";
+            return new LoginResponse()
+            {
+                message = "Registration Successful"
+            };
         }
 
         [HttpPut]
