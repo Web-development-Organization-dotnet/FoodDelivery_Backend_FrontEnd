@@ -18,7 +18,6 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpGet]
         [Route("LoginDetails/{empId}")]
-        [ActionName("LoginDetails")]
         public async Task<LoginResponse> AdminDetails(int empId)
         {
            
