@@ -28,6 +28,7 @@ export class MyAccountComponent {
       if (q && q.message === 'Login successful') {
         // this.router.navigate(['/dashboard']);
         console.log(q);
+        alert(q.name);
       }
       else {
         alert('Invalid credentials!');
