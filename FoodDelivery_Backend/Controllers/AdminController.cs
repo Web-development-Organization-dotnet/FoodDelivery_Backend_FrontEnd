@@ -18,7 +18,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpGet]
         [ActionName("LoginDetails")]
-        public async Task<LoginResponse> AdminDetails(int empId)
+        public async Task<AdminInfoResponse> AdminDetails(int empId)
         {
             
             try
@@ -27,39 +27,45 @@ namespace FoodDelivery_Backend.Controllers
                 var query = await db_obj.tbl_admin_info.Where(a => a.emp_id== empId).FirstOrDefaultAsync();
                 if (query != null)
                 {
-                    return new LoginResponse() { 
+                    return new AdminInfoResponse() { 
                         id=query.emp_id,
-                        message="Login successful",
-                        name=query.name,
-                        profileImageURL=null,
-                        role="ADMIN",
-                        status="OK"       
+                        email = query.email,
+                        fullname=query.name,
+                        phone=query.phone,
+                        reg_date=query.reg_date,
+                        status=query.status,
+                        photo_id_no=query.photo_id_no,
+                        message="RECORD FOUND"
                     };
                 }
                 else
                 {
-                    return new LoginResponse()
+                    return new AdminInfoResponse()
                     {
                         id = 0,
-                        message = "User not found",
-                        name = null,
-                        profileImageURL = null,
-                        role = null,
-                        status = null
+                        email = null,
+                        fullname = null,
+                        phone = null,
+                        reg_date = null,
+                        status = null,
+                        photo_id_no = null,
+                        message = "RECORD NOT FOUND"
                     };
                 }
             }
             catch (Exception e)
             {
-                
-                return new LoginResponse()
+
+                return new AdminInfoResponse()
                 {
                     id = 0,
-                    message = e.Message + " / " + e.StackTrace,
-                    name = null,
-                    profileImageURL = null,
-                    role = null,
-                    status = null
+                    email = null,
+                    fullname = null,
+                    phone = null,
+                    reg_date = null,
+                    status = null,
+                    photo_id_no = null,
+                    message = e.Message + '|' + e.StackTrace
                 };
             }
         }

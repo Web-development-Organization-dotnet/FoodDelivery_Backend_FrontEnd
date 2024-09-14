@@ -12,27 +12,62 @@
             <div class="card-body">
               <h4 class="card-title">Admin Account</h4>
               <p class="card-description">Account Details </p>
-              <form class="forms-sample">
+              <form class="forms-sample" #AdminForm="ngForm" (ngSubmit)="onSubmit(AdminForm)">
                 <div class="form-group">
                   <label for="exampleInputName1">Name</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="fullname"
+                  #fullname="ngModel" [(ngModel)]="adminModelObj.fullname" required minlength="3">
+                <div class="text-danger" *ngIf="fullname.invalid && (fullname.touched || fullname.dirty)">
+                  <span *ngIf="fullname.errors?.['required']">Required Property</span>
+                  <span *ngIf="fullname.errors?.['minlength']">Minimum 3 characters</span>
+                </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail3">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" name="email"
+                  #email="ngModel" [(ngModel)]="adminModelObj.email" required minlength="3">
+                <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty)">
+                  <span *ngIf="email.errors?.['required']">Required Property</span>
+                  <span *ngIf="email.errors?.['minlength']">Minimum 3 characters</span>
+                </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword4">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                  <label for="exampleInputPhone">Phone</label>
+                  <input type="text" class="form-control" id="exampleInputPhone" placeholder="Phone" name="phone"
+                  #phone="ngModel" [(ngModel)]="adminModelObj.phone" required minlength="3">
+                <div class="text-danger" *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+                  <span *ngIf="phone.errors?.['required']">Required Property</span>
+                  <span *ngIf="phone.errors?.['minlength']">Minimum 3 characters</span>
+                </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleSelectGender">Gender</label>
-                  <select class="form-select" id="exampleSelectGender">
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
+                  <label for="exampleInputreg_date">Registration Date</label>
+                  <input type="datetime-local" class="form-control" id="exampleInputreg_date" placeholder="reg_date" name="reg_date"
+                  #reg_date="ngModel" [(ngModel)]="adminModelObj.reg_date" required minlength="3">
+                <div class="text-danger" *ngIf="reg_date.invalid && (reg_date.touched || reg_date.dirty)">
+                  <span *ngIf="reg_date.errors?.['required']">Required Property</span>
+                  <span *ngIf="reg_date.errors?.['minlength']">Minimum 3 characters</span>
+                </div>
                 </div>
                 <div class="form-group">
+                  <label for="exampleInputstatus">Status</label>
+                  <input type="text" class="form-control" id="exampleInputstatus" placeholder="status" name="status"
+                  #status="ngModel" [(ngModel)]="adminModelObj.status" required minlength="3">
+                <div class="text-danger" *ngIf="status.invalid && (status.touched || status.dirty)">
+                  <span *ngIf="status.errors?.['required']">Required Property</span>
+                  <span *ngIf="status.errors?.['minlength']">Minimum 3 characters</span>
+                </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputphoto_id_no">Photo ID NO</label>
+                  <input type="text" class="form-control" id="exampleInputphoto_id_no" placeholder="photo_id_no" name="photo_id_no"
+                  #photo_id_no="ngModel" [(ngModel)]="adminModelObj.photo_id_no" required minlength="3">
+                <div class="text-danger" *ngIf="photo_id_no.invalid && (photo_id_no.touched || photo_id_no.dirty)">
+                  <span *ngIf="photo_id_no.errors?.['required']">Required Property</span>
+                  <span *ngIf="photo_id_no.errors?.['minlength']">Minimum 3 characters</span>
+                </div>
+                </div>
+                <!-- <div class="form-group">
                   <label>File upload</label>
                   <input type="file" name="img[]" class="file-upload-default">
                   <div class="input-group col-xs-12">
@@ -41,7 +76,7 @@
                       <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                     </span>
                   </div>
-                </div>
+                </div> 
                 <div class="form-group">
                   <label for="exampleInputCity1">City</label>
                   <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
@@ -49,7 +84,7 @@
                 <div class="form-group">
                   <label for="exampleTextarea1">Textarea</label>
                   <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                </div>
+                </div>-->
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>
               </form>
