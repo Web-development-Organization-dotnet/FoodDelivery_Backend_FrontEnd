@@ -27,9 +27,7 @@ export class MyAccountComponent {
   constructor(private adminServ: AdminService) {
 
   }
-  onSubmit(form: NgForm){
-    
-  }
+  
   ngOnInit() {
     // API Call
     this.adminServ.getAccountDetails(101).subscribe(q => {
@@ -45,5 +43,31 @@ export class MyAccountComponent {
       }
     })
   }
+
+  onSubmit(form: NgForm) {
+    console.log(this.adminModelObj);
+
+    if (!form.invalid) {
+      // API Call
+      this.adminServ.updateAccountDetails(this.adminModelObj).subscribe(q => {
+        console.log('Updateed response', q);
+
+        // if (q && q.message === 'Update successful') {
+        //   this.router.navigate(['/dashboard']);
+        // }
+        // else {
+        //   alert('Invalid credentials!');
+        // }
+      })
+    }
+    else {
+      // Navigate
+      console.log('Error');
+      //this.router.navigate(['/login']);
+    }
+
+  }
+
+  
 
 }

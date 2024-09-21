@@ -28,9 +28,9 @@ namespace FoodDelivery_Backend.Controllers
                 if (query != null)
                 {
                     return new AdminInfoResponse() { 
-                        id=query.emp_id,
+                        emp_id=query.emp_id,
                         email = query.email,
-                        fullname=query.name,
+                        name=query.name,
                         phone=query.phone,
                         reg_date=query.reg_date,
                         status=query.status,
@@ -42,9 +42,9 @@ namespace FoodDelivery_Backend.Controllers
                 {
                     return new AdminInfoResponse()
                     {
-                        id = 0,
+                        emp_id = 0,
                         email = null,
-                        fullname = null,
+                        name = null,
                         phone = null,
                         reg_date = null,
                         status = null,
@@ -58,9 +58,9 @@ namespace FoodDelivery_Backend.Controllers
 
                 return new AdminInfoResponse()
                 {
-                    id = 0,
+                    emp_id = 0,
                     email = null,
-                    fullname = null,
+                    name = null,
                     phone = null,
                     reg_date = null,
                     status = null,
@@ -154,12 +154,12 @@ namespace FoodDelivery_Backend.Controllers
 
                 {
                     query.name = val.name;
-                    query.email = val.email;
-                    query.status = val.status;
+                    //query.email = val.email; should not be updated by user as it is unique
+                    //query.status = val.status; should not be updated by user
                     query.reg_date = val.reg_date;
                     query.phone = val.phone;
                     query.photo_id_no = val.photo_id_no;
-                    query.password = val.password;
+                    //query.password = val.password; should not be updated by user from here
 
                     db_obj.SaveChanges();
 

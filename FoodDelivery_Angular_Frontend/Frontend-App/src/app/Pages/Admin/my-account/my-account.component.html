@@ -15,17 +15,17 @@
               <form class="forms-sample" #AdminForm="ngForm" (ngSubmit)="onSubmit(AdminForm)">
                 <div class="form-group">
                   <label for="exampleInputName1">Name</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="fullname"
-                  #fullname="ngModel" [(ngModel)]="adminModelObj.fullname" required minlength="3">
-                <div class="text-danger" *ngIf="fullname.invalid && (fullname.touched || fullname.dirty)">
-                  <span *ngIf="fullname.errors?.['required']">Required Property</span>
-                  <span *ngIf="fullname.errors?.['minlength']">Minimum 3 characters</span>
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="name"
+                  #name="ngModel" [(ngModel)]="adminModelObj.name" required minlength="3">
+                <div class="text-danger" *ngIf="name.invalid && (name.touched || name.dirty)">
+                  <span *ngIf="name.errors?.['required']">Required Property</span>
+                  <span *ngIf="name.errors?.['minlength']">Minimum 3 characters</span>
                 </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail3">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" name="email"
-                  #email="ngModel" [(ngModel)]="adminModelObj.email" required minlength="3">
+                  #email="ngModel" [(ngModel)]="adminModelObj.email" required minlength="3" [disabled]=true>
                 <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty)">
                   <span *ngIf="email.errors?.['required']">Required Property</span>
                   <span *ngIf="email.errors?.['minlength']">Minimum 3 characters</span>
@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <label for="exampleInputstatus">Status</label>
                   <input type="text" class="form-control" id="exampleInputstatus" placeholder="status" name="status"
-                  #status="ngModel" [(ngModel)]="adminModelObj.status" required minlength="3">
+                  #status="ngModel" [(ngModel)]="adminModelObj.status" required minlength="3" [disabled]=true >
                 <div class="text-danger" *ngIf="status.invalid && (status.touched || status.dirty)">
                   <span *ngIf="status.errors?.['required']">Required Property</span>
                   <span *ngIf="status.errors?.['minlength']">Minimum 3 characters</span>
@@ -85,7 +85,7 @@
                   <label for="exampleTextarea1">Textarea</label>
                   <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                 </div>-->
-                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                <button type="submit" class="btn btn-primary me-2">Update</button>
                 <button class="btn btn-light">Cancel</button>
               </form>
             </div>
