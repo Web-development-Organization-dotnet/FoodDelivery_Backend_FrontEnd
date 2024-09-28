@@ -29,19 +29,29 @@ export class MyAccountComponent {
   }
   
   ngOnInit() {
-    // API Call
-    this.adminServ.getAccountDetails(101).subscribe(q => {
-      console.log('Login response', q);
+    //get value from local storage i.e empid
 
-      if (q && q.message === 'RECORD FOUND') {
-        // this.router.navigate(['/dashboard']);
-        console.log(q);
-        this.adminModelObj=q;
-      }
-      else {
-        alert('Invalid credentials!');
-      }
-    })
+    const userDetailStr=localStorage.getItem('userDetails');
+    var userDetailObj=userDetailStr!==null ? JSON.parse(userDetailStr) : "not found"; 
+     if(userDetailObj!=="not found"){
+      var id=userDetailObj.id;
+      // API Call
+      this.adminServ.getAccountDetails(id).subscribe(q => {
+        console.log('Login response', q);
+
+        if (q && q.message === 'RECORD FOUND') {
+          // this.router.navigate(['/dashboard']);
+          console.log(q);
+          this.adminModelObj=q;
+        }
+        else {
+          alert('Invalid credentials!');
+        }
+      })
+    }
+    else{
+      alert("User history not found!!!Please Login again");
+    }
   }
 
   onSubmit(form: NgForm) {

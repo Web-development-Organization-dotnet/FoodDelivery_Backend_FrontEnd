@@ -40,6 +40,9 @@ export class UserloginComponent {
         console.log('Login response', q);
 
         if (q && q.message === 'Login successful') {
+          //set value in local storage
+          
+          localStorage.setItem('userDetails',JSON.stringify(q));
           this.router.navigate(['/dashboard']);
         }
         else {
