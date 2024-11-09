@@ -40,6 +40,7 @@ onSubmit(form: NgForm) {
       console.log('Registered response', q);
 
       if (q && q.message === 'Supplier Type Successfully Registered!!') {
+        alert("Supplier Type Successfully Registered!!!!!");
         this.router.navigate(['/dashboard']);
       }
       else {
