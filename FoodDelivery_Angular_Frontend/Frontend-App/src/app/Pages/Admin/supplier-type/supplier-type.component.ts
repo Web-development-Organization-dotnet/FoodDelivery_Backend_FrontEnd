@@ -6,6 +6,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { supplierTypeModel } from '../../../Models/supplierType';
 import { AdminService } from '../../../Service/Admin/admin.service';
+import { SupplierService } from '../../../Service/Supplier/supplier.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-supplier-type',
@@ -23,33 +25,33 @@ import { AdminService } from '../../../Service/Admin/admin.service';
 export class SupplierTypeComponent {
   supplierTypeModel: any = new supplierTypeModel();
 
-  constructor(private adminServ: AdminService) {
+  constructor(private router: Router, private supplierServ: SupplierService) {
 
   }
   
 
 
 onSubmit(form: NgForm) {
-  // console.log(this.adminModelObj);
+   console.log(this.supplierTypeModel);
 
-  // if (!form.invalid) {
-  //   // API Call
-  //   this.adminServ.updateAccountDetails(this.adminModelObj).subscribe(q => {
-  //     console.log('Updateed response', q);
+  if (!form.invalid) {
+    // API Call
+    this.supplierServ.registerSupplierType(this.supplierTypeModel).subscribe(q => {
+      console.log('Registered response', q);
 
-  //     // if (q && q.message === 'Update successful') {
-  //     //   this.router.navigate(['/dashboard']);
-  //     // }
-  //     // else {
-  //     //   alert('Invalid credentials!');
-  //     // }
-  //   })
-  // }
-  // else {
-  //   // Navigate
-  //   console.log('Error');
-  //   //this.router.navigate(['/login']);
-  // }
+      if (q && q.message === 'Supplier Type Successfully Registered!!') {
+        this.router.navigate(['/dashboard']);
+      }
+      else {
+        alert('Unable to Register!');
+      }
+    })
+  }
+  else {
+    // Navigate
+    console.log('Error');
+    //this.router.navigate(['/login']);
+  }
 
 }
 }
