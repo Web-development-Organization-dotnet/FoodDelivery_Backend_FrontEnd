@@ -8,6 +8,8 @@ import { supplierTypeModel } from '../../../Models/supplierType';
 import { AdminService } from '../../../Service/Admin/admin.service';
 import { SupplierService } from '../../../Service/Supplier/supplier.service';
 import { Router } from '@angular/router';
+import { DataTablesModule } from 'angular-datatables';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-supplier-type',
@@ -17,16 +19,21 @@ import { Router } from '@angular/router';
     HeaderComponent, 
     SidebarComponent, 
     FormsModule, 
-    CommonModule
+    CommonModule,
+    DataTablesModule
   ],
   templateUrl: './supplier-type.component.html',
   styleUrl: './supplier-type.component.css'
 })
 export class SupplierTypeComponent {
   supplierTypeModel: any = new supplierTypeModel();
+  datatablesource: any;
+  title = 'angulardatatables';
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
   constructor(private router: Router, private supplierServ: SupplierService) {
-
+  this.datatablesource = []
   }
   
 
@@ -54,5 +61,10 @@ onSubmit(form: NgForm) {
     //this.router.navigate(['/login']);
   }
 
+}
+ngOnInit():void{
+  this.supplierServ.getSupplierTypes().subscribe(q=>{
+    this.datatablesource=q;
+  })
 }
 }

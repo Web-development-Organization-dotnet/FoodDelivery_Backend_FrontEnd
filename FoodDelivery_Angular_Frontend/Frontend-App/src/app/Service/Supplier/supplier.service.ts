@@ -4,6 +4,7 @@ import { catchError, map, Observable } from 'rxjs';
 import { loginModel } from '../../Models/login';
 import { registerModel } from '../../Models/register';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,13 +12,13 @@ export class SupplierService {
 
   constructor(private http: HttpClient) { }
 
-  getSupplierTypes(id: any) {
+  getSupplierTypes() {
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
 
-    return this.http.get<any>('https://localhost:44369/api/Admin/LoginDetails?empId=' + id, { headers: httpHeader }).pipe(
+    return this.http.get<any>('https://localhost:44369/api/FoodSupplier/GetAllSupplierType', { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),
