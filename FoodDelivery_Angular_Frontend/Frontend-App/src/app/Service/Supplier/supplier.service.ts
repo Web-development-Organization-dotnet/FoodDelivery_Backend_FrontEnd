@@ -18,7 +18,7 @@ export class SupplierService {
       'Access-Control-Allow-Origin': 'true'
     });
 
-    return this.http.get<any>('https://localhost:44369/api/FoodSupplier/GetAllSupplierType', { headers: httpHeader }).pipe(
+    return this.http.get<any>('http://localhost:3000/posts', { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),

@@ -10,6 +10,7 @@ import { SupplierService } from '../../../Service/Supplier/supplier.service';
 import { Router } from '@angular/router';
 import { DataTablesModule } from 'angular-datatables';
 import {Subject} from 'rxjs';
+import { Config } from 'datatables.net';
 
 @Component({
   selector: 'app-supplier-type',
@@ -29,7 +30,7 @@ export class SupplierTypeComponent {
   supplierTypeModel: any = new supplierTypeModel();
   datatablesource: any;
   title = 'angulardatatables';
-  dtOptions: DataTables.Settings = {};
+  dtOptions: Config= {};
   dtTrigger: Subject<any> = new Subject();
 
   constructor(private router: Router, private supplierServ: SupplierService) {
@@ -65,6 +66,10 @@ onSubmit(form: NgForm) {
 ngOnInit():void{
   this.supplierServ.getSupplierTypes().subscribe(q=>{
     this.datatablesource=q;
-  })
+    this.dtTrigger.next(null);
+  });
+  this.dtOptions={
+    pagingType: 'full_numbers'
+  }
 }
 }
