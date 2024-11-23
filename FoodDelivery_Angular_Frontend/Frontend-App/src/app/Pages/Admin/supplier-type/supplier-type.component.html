@@ -66,20 +66,21 @@
                               <tr>
                                 <th> # </th>
                                 <th> Supplier Type </th>
+                                <th> Description </th>
+                                <th> Yearly Turnover </th>
                                 <th> Progress </th>
-                                <!-- <th> Yearly Turnover </th>
-                                <th> Description </th> -->
                                 <th> Action </th>
                               </tr>
                             </thead>
                             <tbody>
                               @for (item of datatablesource; track $index) {
                                 <tr>
-                                    <td>{{item.id}}</td>  
-                                    <td>{{item.title}}</td>  
-                                    <td>{{item.views}}</td>  
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.supplier_type}}</td>  
+                                    <td>{{item.description}}</td>  
+                                    <td>{{item.yearly_turnover}}</td>  
+                                    <td>Progress</td>  
                                     <td>Actions</td>  
-
                                 </tr>
                               }
                              </tbody>
