@@ -65,7 +65,16 @@ onSubmit(form: NgForm) {
 }
 ngOnInit():void{
   this.supplierServ.getSupplierTypes().subscribe(q=>{
+    var maxTunOver:number;
+    maxTunOver=Math.max(...q.map((item: any) => item.yearly_turnover))
+    var eachPercent:number;
+    eachPercent=maxTunOver/100;
+    q.forEach((element:any) => {
+      var progPercent:number=element.yearly_turnover/eachPercent;
+      element.individualPercent=progPercent;
+    });
     this.datatablesource=q;
+    console.log(q);
     this.dtTrigger.next(null);
   });
   this.dtOptions={

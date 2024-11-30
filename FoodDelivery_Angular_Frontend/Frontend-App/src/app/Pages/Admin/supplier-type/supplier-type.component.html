@@ -79,7 +79,11 @@
                                     <td>{{item.supplier_type}}</td>  
                                     <td>{{item.description}}</td>  
                                     <td>{{item.yearly_turnover}}</td>  
-                                    <td>Progress</td>  
+                                    <td> 
+                                      <div class="progress">
+                                      <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="item.individualPercent" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                  </td>  
                                     <td>Actions</td>  
                                 </tr>
                               }
