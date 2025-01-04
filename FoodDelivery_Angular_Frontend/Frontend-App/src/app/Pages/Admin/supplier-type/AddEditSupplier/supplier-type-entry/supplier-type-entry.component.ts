@@ -5,7 +5,7 @@ import { SidebarComponent } from '../../../../../_layout/sidebar/sidebar.compone
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { supplierTypeModel } from '../../../../../Models/supplierType';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SupplierService } from '../../../../../Service/Supplier/supplier.service';
 
 @Component({
@@ -24,8 +24,14 @@ import { SupplierService } from '../../../../../Service/Supplier/supplier.servic
 export class SupplierTypeEntryComponent {
   supplierTypeModel: any = new supplierTypeModel();
 
-  constructor(private router: Router, private supplierServ: SupplierService) {}
+  constructor(private router: Router, private supplierServ: SupplierService, private route:ActivatedRoute) {}
   
+    ngOnInit():void{
+      const id=Number(this.route.snapshot.paramMap.get('id'));
+      console.log(id);
+
+    }
+
     onSubmit(form: NgForm) {
       console.log(this.supplierTypeModel);
    

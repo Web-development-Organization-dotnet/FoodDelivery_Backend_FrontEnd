@@ -16,4 +16,5 @@ export const routes: Routes = [
   { path: 'adminMyAccount', component: MyAccountComponent },
   { path: 'supplierType', component: SupplierTypeComponent },
   { path: 'supplierTypeEntry', component: SupplierTypeEntryComponent},
+  {path: 'supplierTypeEntry/:id', component: SupplierTypeEntryComponent}
 ];
