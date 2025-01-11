@@ -155,8 +155,7 @@ namespace FoodDelivery_Backend.Controllers
                 var query = await db_obj.tbl_supplier_type.Where(a => a.supplier_type == id).FirstOrDefaultAsync();
                 if (query != null)
                 {
-                    var resultModel = new SupplierType();
-                   
+
                         var subModel = new SupplierType()
                         {
                             supplier_type = query.supplier_type,
@@ -165,7 +164,7 @@ namespace FoodDelivery_Backend.Controllers
                         };
                        
                     
-                    return Ok(resultModel);
+                    return Ok(subModel);
                 }
                 else
                 {

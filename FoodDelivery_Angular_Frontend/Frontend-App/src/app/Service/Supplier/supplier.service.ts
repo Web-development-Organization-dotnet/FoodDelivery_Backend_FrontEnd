@@ -29,6 +29,23 @@ export class SupplierService {
     );
 
   }
+  getSupplierTypebyId(id:string) {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+
+    return this.http.get<any>('https://localhost:44369/api/FoodSupplier/GetAllSupplierTypeByID?id='+ id, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+
+  }
   registerSupplierType(obj: any){
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -44,5 +61,19 @@ export class SupplierService {
       })
     );
   }
-
+  updateSupplierType(obj: any){
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+  return this.http.post<any>('https://localhost:44369/api/FoodSupplier/UpdateSupplierType',  obj, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+  }
 }
