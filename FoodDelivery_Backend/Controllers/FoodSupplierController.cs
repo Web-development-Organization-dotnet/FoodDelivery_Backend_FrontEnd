@@ -1,6 +1,7 @@
 ﻿using FoodDelivery_Backend.Data;
 using FoodDelivery_Backend.Models;
 using FoodDelivery_Backend.Models.Common;
+using FoodDelivery_Backend.Models.ResponseModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +19,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("RegisterSupplierType")]
-        public async Task<IHttpActionResult> InsertSupplierType([FromBody] SupplierType val)
+        public async Task<SupplierResponse> InsertSupplierType([FromBody] SupplierType val)
         {
             try
             {
@@ -34,25 +35,31 @@ namespace FoodDelivery_Backend.Controllers
                     };
                     db_obj.tbl_supplier_type.Add(model);
                     db_obj.SaveChanges();
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Type Successfully Registered!!",
+                        Status="Success"
+                    };
 
-                    return Ok("Supplier Type Successfully Registered!!");
                 }
                 else
                 {
-                    return BadRequest("Supplier Type Not Registered!!");
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Type Registered Failed!!",
+                        Status = "Failed"
+                    };
                 }
 
 
             }
             catch (Exception e)
             {
-                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                return new SupplierResponse()
                 {
-                    stackTrace = e.StackTrace,
-                    originalExceptionMessage = e.Message,
-                    message = "Exception Occured",
-                    innerException = e.InnerException.ToString()
-                });
+                    message=e.Message + e.StackTrace,
+                    Status="Failed"
+                };
 
             }
 
@@ -136,5 +143,49 @@ namespace FoodDelivery_Backend.Controllers
             }
 
         }
+
+        [HttpGet]
+        [ActionName("GetAllSupplierTypeByID")]
+       // [Route("GetAllSupplierTypeByID/{id}")]
+
+        public async Task<IHttpActionResult> GetAllSupplierTypebyID(String id)
+        {
+            try
+            {
+                var query = await db_obj.tbl_supplier_type.Where(a => a.supplier_type == id).FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    var resultModel = new SupplierType();
+                   
+                        var subModel = new SupplierType()
+                        {
+                            supplier_type = query.supplier_type,
+                            description = query.description,
+                            yearly_turnover = query.yearly_turnover ?? 0
+                        };
+                       
+                    
+                    return Ok(resultModel);
+                }
+                else
+                {
+                    return BadRequest("Supplier Type not Found!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+
     }
 }

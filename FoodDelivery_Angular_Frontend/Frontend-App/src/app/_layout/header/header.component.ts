@@ -8,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  userName:any;
+  constructor() {
+    const userDetailStr=localStorage.getItem('userDetails');
+    var userDetailObj=userDetailStr!==null ? JSON.parse(userDetailStr) : "not found"; 
+    if(userDetailObj!=="not found"){
+      this.userName=userDetailObj.name;
+    }
+     else{
+       this.userName=null; 
+     }
+  }
+   
 }

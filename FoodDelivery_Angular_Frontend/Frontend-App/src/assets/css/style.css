@@ -10262,9 +10262,11 @@ progress {
 
 .table-bordered > :not(caption) > * {
   border-width: var(--bs-border-width) 0;
+  border-left-width: var(--bs-border-width); /* Add this line */
 }
 .table-bordered > :not(caption) > * > * {
   border-width: 0 var(--bs-border-width);
+  border-left-width: var(--bs-border-width); /* Add this line */
 }
 
 .table-borderless > :not(caption) > * > * {
@@ -27085,6 +27087,7 @@ dl li {
 }
 .table.table-bordered {
   border-top: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
 }
 .table.select-table tr td:first-child {
   padding-right: 10px;

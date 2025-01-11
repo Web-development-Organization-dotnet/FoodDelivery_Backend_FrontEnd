@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { loginModel } from '../../Models/login';
+import { AuthService } from '../../Service/Auth/auth.service';
 
 @Component({
   selector: 'app-userlogin',
@@ -17,22 +18,52 @@ import { loginModel } from '../../Models/login';
   styleUrl: './userlogin.component.css'
 })
 export class UserloginComponent {
-  loginModelObj:any=new loginModel(); //creating obj for loginModel class. Use 'any' for datatype independence
 
-   constructor(private router: Router){
-    
-  }
-  ngOnInit(){
+  loginModelObj: any = new loginModel(); //creating obj for loginModel class. Use 'any' for datatype independence
+
+  constructor(private router: Router, private loginServ: AuthService) {
 
   }
-  onSubmit(form:NgForm){
+
+  ngOnInit() {
+
+  }
+
+  onSubmit(form: NgForm) {
+
+    console.log(form.invalid);
     console.log(this.loginModelObj);
-    if(this.loginModelObj.username=="a@b.com" && this.loginModelObj.password=="123"){
-      this.router.navigate(['/dashboard']);
+
+    if (!form.invalid) {
+      // API Call
+      this.loginServ.login(this.loginModelObj).subscribe(q => {
+        console.log('Login response', q);
+
+        if (q && q.message === 'Login successful') {
+          //set value in local storage
+          
+          localStorage.setItem('userDetails',JSON.stringify(q));
+          this.router.navigate(['/dashboard']);
+        }
+        else {
+          alert('Invalid credentials!');
+        }
+      })
     }
-    else{
-      return
+    else {
+      // Navigate
+      console.log('Error');
+      this.router.navigate(['/login']);
     }
+
+
+
+    // if(this.loginModelObj.username=="a@b.com" && this.loginModelObj.password=="123"){
+    //   this.router.navigate(['/dashboard']);
+    // }
+    // else{
+    //   return
+    // }
   }
 }
 

@@ -17,50 +17,55 @@ namespace FoodDelivery_Backend.Controllers
         Food_Delivery_DbEntities db_obj = new Food_Delivery_DbEntities();
 
         [HttpGet]
-        [Route("LoginDetails/{empId}")]
         [ActionName("LoginDetails")]
-        public async Task<LoginResponse> AdminDetails(int empId)
+        public async Task<AdminInfoResponse> AdminDetails(int empId)
         {
-           
+            
             try
             {
                 var model = new List<adminInfoModelClass>();
                 var query = await db_obj.tbl_admin_info.Where(a => a.emp_id== empId).FirstOrDefaultAsync();
                 if (query != null)
                 {
-                    return new LoginResponse() { 
-                        id=query.emp_id,
-                        message="Login successful",
+                    return new AdminInfoResponse() { 
+                        emp_id=query.emp_id,
+                        email = query.email,
                         name=query.name,
-                        profileImageURL=null,
-                        role="ADMIN",
-                        status="OK"       
+                        phone=query.phone,
+                        reg_date=query.reg_date,
+                        status=query.status,
+                        photo_id_no=query.photo_id_no,
+                        message="RECORD FOUND"
                     };
                 }
                 else
                 {
-                    return new LoginResponse()
+                    return new AdminInfoResponse()
                     {
-                        id = 0,
-                        message = "User not found",
+                        emp_id = 0,
+                        email = null,
                         name = null,
-                        profileImageURL = null,
-                        role = null,
-                        status = null
+                        phone = null,
+                        reg_date = null,
+                        status = null,
+                        photo_id_no = null,
+                        message = "RECORD NOT FOUND"
                     };
                 }
             }
             catch (Exception e)
             {
-                
-                return new LoginResponse()
+
+                return new AdminInfoResponse()
                 {
-                    id = 0,
-                    message = e.Message + " / " + e.StackTrace,
+                    emp_id = 0,
+                    email = null,
                     name = null,
-                    profileImageURL = null,
-                    role = null,
-                    status = null
+                    phone = null,
+                    reg_date = null,
+                    status = null,
+                    photo_id_no = null,
+                    message = e.Message + '|' + e.StackTrace
                 };
             }
         }
@@ -117,14 +122,14 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("Register")]
-        public String InsertAdmin([FromBody] adminInfoModelClass val)
+        public LoginResponse InsertAdmin([FromBody] adminInfoModelClass val)
         {
             var model = new tbl_admin_info
             {
                 name = val.name,
                 email = val.email,
-                status = val.status,
-                reg_date = val.reg_date,
+                status = "active",
+                reg_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 phone = val.phone,
                 photo_id_no = val.photo_id_no,
                 password = val.password
@@ -133,7 +138,10 @@ namespace FoodDelivery_Backend.Controllers
             db_obj.tbl_admin_info.Add(model);
             db_obj.SaveChanges();
 
-            return "Admin Successfully Registered!!";
+            return new LoginResponse()
+            {
+                message = "Registration Successful"
+            };
         }
 
         [HttpPut]
@@ -146,12 +154,12 @@ namespace FoodDelivery_Backend.Controllers
 
                 {
                     query.name = val.name;
-                    query.email = val.email;
-                    query.status = val.status;
+                    //query.email = val.email; should not be updated by user as it is unique
+                    //query.status = val.status; should not be updated by user
                     query.reg_date = val.reg_date;
                     query.phone = val.phone;
                     query.photo_id_no = val.photo_id_no;
-                    query.password = val.password;
+                    //query.password = val.password; should not be updated by user from here
 
                     db_obj.SaveChanges();
 
