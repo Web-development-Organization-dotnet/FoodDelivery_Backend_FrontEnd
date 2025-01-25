@@ -11,13 +11,15 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Manage Supplier</h4>
-                            <p class="card-description">Supplier Type</p>
+                            <p class="card-description">{{supplierTypeModel.isEdit?'Edit':'Insert'}} Supplier Type</p>
                             <form class="forms-sample" #AdminForm="ngForm" (ngSubmit)="onSubmit(AdminForm)">
                                 <div class="form-group">
                                     <label for="exampleInputName1">Type Name</label>
                                     <input type="text" class="form-control" id="exampleInputName1"
                                         placeholder="Type Name" name="supplier_type" #supplier_type="ngModel"
-                                        [(ngModel)]="supplierTypeModel.supplier_type" required minlength="3">
+                                        [(ngModel)]="supplierTypeModel.supplier_type" required minlength="3"  
+                                        [disabled]="supplierTypeModel.isEdit">
+                                       
                                     <div class="text-danger"
                                         *ngIf="supplier_type.invalid && (supplier_type.touched || supplier_type.dirty)">
                                         <span *ngIf="supplier_type.errors?.['required']">Required Property</span>
@@ -48,8 +50,9 @@
                                         <!-- <span *ngIf="yearly_turnover.errors?.['minlength']">Minimum 3 characters</span> -->
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary me-2">Register</button>
-                                <button class="btn btn-light">Cancel</button>
+                                <button type="submit" class="btn btn-primary me-2">{{supplierTypeModel.isEdit?'Update':'Register'}}</button>
+                                <a class="btn btn-light" routerLink="/supplierType" routerLinkActive="active"
+                                    ariaCurrentWhenActive="page">Cancel</a>
                             </form>
                         </div>
                     </div>

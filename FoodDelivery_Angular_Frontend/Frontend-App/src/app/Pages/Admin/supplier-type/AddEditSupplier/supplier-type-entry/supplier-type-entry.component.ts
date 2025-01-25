@@ -5,7 +5,7 @@ import { SidebarComponent } from '../../../../../_layout/sidebar/sidebar.compone
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { supplierTypeModel } from '../../../../../Models/supplierType';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SupplierService } from '../../../../../Service/Supplier/supplier.service';
 
 @Component({
@@ -16,7 +16,9 @@ import { SupplierService } from '../../../../../Service/Supplier/supplier.servic
     HeaderComponent, 
     SidebarComponent, 
     FormsModule, 
-    CommonModule
+    CommonModule,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './supplier-type-entry.component.html',
   styleUrl: './supplier-type-entry.component.css'
@@ -34,6 +36,7 @@ export class SupplierTypeEntryComponent {
       {
         this.supplierServ.getSupplierTypebyId(id).subscribe(q=>{
         this.supplierTypeModel = q;
+        this.supplierTypeModel.isEdit=true;
         });
       }
     }
@@ -42,18 +45,35 @@ export class SupplierTypeEntryComponent {
       console.log(this.supplierTypeModel);
    
      if (!form.invalid) {
+      if(this.supplierTypeModel.isEdit==false)
+      {
        // API Call
        this.supplierServ.registerSupplierType(this.supplierTypeModel).subscribe(q => {
          console.log('Registered response', q);
    
          if (q && q.message === 'Supplier Type Successfully Registered!!') {
            alert("Supplier Type Successfully Registered!!!!!");
-           this.router.navigate(['/dashboard']);
+           this.router.navigate(['/supplierType']);
          }
          else {
            alert('Unable to Register!');
          }
-       })
+       });
+      }
+      else{
+        //updated response from update API call
+       this.supplierServ.updateSupplierType(this.supplierTypeModel).subscribe(q => {
+        console.log('Updated response', q);
+  
+        if (q && q.message === 'Supplier Type Successfully Updated!!') {
+          alert("Supplier Type Successfully Updated!!!!!");
+          this.router.navigate(['/supplierType']);
+        }
+        else {
+          alert('Unable to Update!');
+        }
+      });
+    }
      }
      else {
        // Navigate
