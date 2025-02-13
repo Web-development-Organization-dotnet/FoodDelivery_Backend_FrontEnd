@@ -1,0 +1,79 @@
+
+<app-header></app-header>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Register Supplier</h4>
+                            <p class="card-description">{{supplierInfoModelObj.isEdit?'Edit':'Insert'}} Supplier Info</p>
+                            <form class="forms-sample" #AdminForm="ngForm" (ngSubmit)="onSubmit(AdminForm)">
+                                <div class="form-group">
+                                    <label for="lblsupplierName">Supplier Name</label>
+                                    <input type="text" class="form-control" id="lblsupplierName"
+                                        placeholder="Supplier Name" name="supplier_name" #supplier_name="ngModel"
+                                        [(ngModel)]="supplierInfoModelObj.supplier_name" required minlength="8"  
+                                        [disabled]="supplierInfoModelObj.isEdit">
+                                       
+                                    <div class="text-danger"
+                                        *ngIf="supplier_name.invalid && (supplier_name.touched || supplier_name.dirty)">
+                                        <span *ngIf="supplier_name.errors?.['required']">Required Property</span>
+                                        <span *ngIf="supplier_name.errors?.['minlength']">Minimum 8 characters</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lblSupplierStat">Supplier Status</label>
+                                    <!-- <textarea id="w3review" class="form-control" name="w3review" rows="15" placeholder="Enter Description">
+                    </textarea> -->
+                                    <!-- <input type="select" class="form-control" id="supplierStat"
+                                        placeholder="Enter Supplier Status" name="description" #description="ngModel"
+                                        [(ngModel)]="supplierInfoModelObj.description" required> -->
+                                    
+                                    <div>
+                                    <label for="supplier_stat">Select a Supplier Status:</label>
+                                     <select [(ngModel)]="supplierInfoModelObj.supplier_status" id="supplier_status">
+                                     <option value="" disabled>Select an option</option>
+                                    <option value="ACTIVE">ACTIVE</option> 
+                                    <option value="INACTIVE">INACTIVE</option>
+                                    <option value="ONHOLD">ON-HOLD</option> 
+                                     <!-- <option *ngFor="let s of supplierInfoModelObj.supplier_status_options" [value]="s">{{ s }}</option> -->
+                                    </select>
+                                     <p>You selected: {{ supplierInfoModelObj.supplier_status }}</p>
+                                    </div>    
+                                    
+                                    <div class="text-danger"
+                                        *ngIf="description.invalid && (description.touched || description.dirty)">
+                                        <span *ngIf="description.errors?.['required']">Required Property</span>
+                                        <span *ngIf="description.errors?.['minlength']">Minimum 20 characters</span>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="exampleInputPhone">Yearly Turnover</label>
+                                    <input type="text" class="form-control" id="yearlyturnover"
+                                        placeholder="Yearly Turnover" name="yearly_turnover" #yearly_turnover="ngModel"
+                                        [(ngModel)]="supplierInfoModelObj.yearly_turnover" required>
+                                    <div class="text-danger"
+                                        *ngIf="yearly_turnover.invalid && (yearly_turnover.touched || yearly_turnover.dirty)">
+                                        <span *ngIf="yearly_turnover.errors?.['required']">Required Property</span>
+                                    </div>
+                                </div> -->
+                                <button type="submit" class="btn btn-primary me-2">{{supplierInfoModelObj.isEdit?'Update':'Register'}}</button>
+                                <a class="btn btn-light" routerLink="/supplierType" routerLinkActive="active"
+                                    ariaCurrentWhenActive="page">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <app-footer></app-footer>
+    </div>
+   
+</div>
