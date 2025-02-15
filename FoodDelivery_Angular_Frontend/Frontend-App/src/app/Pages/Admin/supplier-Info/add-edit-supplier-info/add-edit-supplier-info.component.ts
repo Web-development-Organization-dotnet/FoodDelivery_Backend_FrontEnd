@@ -6,6 +6,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { supplierInfoModel } from '../../../../Models/supplierInfo'; 
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { supplierTypeModel } from '../../../../Models/supplierType';
+import { SupplierService } from '../../../../Service/Supplier/supplier.service';
 
 @Component({
   selector: 'app-add-edit-supplier-info',
@@ -26,10 +28,19 @@ import { CommonModule } from '@angular/common';
 export class AddEditSupplierInfoComponent {
 
   supplierInfoModelObj:supplierInfoModel=new supplierInfoModel();
-
-  constructor (private router:Router)
+  supplierTypeList:supplierTypeModel[]=[];
+  constructor (private router:Router, private SupplierServ:SupplierService)
   {
-    this.supplierInfoModelObj.supplier_status_options=['Active','Inactive','On-Hold'];
+    
+  }
+  ngOnInit(){
+    this.SupplierServ.getSupplierTypes().subscribe(q=>{
+      console.log(q);
+      
+      this.supplierTypeList=q;
+
+
+    })
   }
    onSubmit(form: NgForm) {
   //     console.log(this.adminModelObj);

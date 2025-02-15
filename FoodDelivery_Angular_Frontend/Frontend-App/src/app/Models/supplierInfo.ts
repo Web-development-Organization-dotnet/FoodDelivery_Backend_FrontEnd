@@ -1,8 +1,6 @@
 
 export class supplierInfoModel {
     supplier_name: string;
-    supplier_status: string;
-    supplier_status_options: string[];
     latitude: string;
     longtitude: string;
     pincode: number;
@@ -13,13 +11,12 @@ export class supplierInfoModel {
     supplier_type: string;
     supplier_id: number;
     isEdit: boolean;
+    supplier_status:string
 
 
 
     constructor() {
         this.supplier_name = '';
-        this.supplier_status = '';
-        this.supplier_status_options = [];
         this.latitude = '';
         this.longtitude='';
         this.pincode = 0;
