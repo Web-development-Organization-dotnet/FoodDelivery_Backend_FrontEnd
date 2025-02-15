@@ -5,6 +5,7 @@ import { FooterComponent } from '../../../../_layout/footer/footer.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { supplierInfoModel } from '../../../../Models/supplierInfo'; 
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-supplier-info',
@@ -15,7 +16,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
             FooterComponent,
             FormsModule,
             RouterLink,
-            RouterLinkActive
+            RouterLinkActive,
+            CommonModule
 
   ],
   templateUrl: './add-edit-supplier-info.component.html',
