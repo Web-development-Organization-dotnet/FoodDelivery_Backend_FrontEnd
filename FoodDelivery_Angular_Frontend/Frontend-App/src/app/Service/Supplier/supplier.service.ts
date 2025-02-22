@@ -11,7 +11,7 @@ import { registerModel } from '../../Models/register';
 export class SupplierService {
 
   constructor(private http: HttpClient) { }
-
+//Supplier type methods:
   getSupplierTypes() {
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -67,6 +67,23 @@ export class SupplierService {
       'Access-Control-Allow-Origin': 'true'
     });
   return this.http.put<any>('https://localhost:44369/api/FoodSupplier/UpdateSupplierType',  obj, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+  }
+//Supplier info methods:
+
+  registerSupplierInfo(obj: any){
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+  return this.http.post<any>('https://localhost:44369/api/SupplierInfo/InsertSupplierInfo',  obj, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),

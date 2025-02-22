@@ -1,6 +1,7 @@
 ﻿using FoodDelivery_Backend.Data;
 using FoodDelivery_Backend.Models;
 using FoodDelivery_Backend.Models.Common;
+using FoodDelivery_Backend.Models.ResponseModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +19,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("InsertSupplierInfo")]
-        public async Task<IHttpActionResult> InsertSupplierInfo([FromBody] SupplierInfo val)
+        public async Task<SupplierResponse> InsertSupplierInfo([FromBody] SupplierInfo val)
         {
             try
             {
@@ -43,24 +44,33 @@ namespace FoodDelivery_Backend.Controllers
                     db_obj.tbl_supplier_info.Add(model);
                     db_obj.SaveChanges();
 
-                    return Ok("Supplier Type Successfully Registered!!");
+                    //return Ok("Supplier Type Successfully Registered!!");
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Info Successfully Registered!!",
+                        Status = "Success"
+                    };
+
                 }
                 else
                 {
-                    return BadRequest("Supplier Type Not Registered!!");
+                    //return BadRequest("Supplier Type Not Registered!!");
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Info Failed!!",
+                        Status = "Failed"
+                    };
                 }
 
 
             }
             catch (Exception e)
             {
-                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                return new SupplierResponse()
                 {
-                    stackTrace = e.StackTrace,
-                    originalExceptionMessage = e.Message,
-                    message = "Exception Occured",
-                    innerException = e.InnerException.ToString()
-                });
+                    message = "Supplier Info Failed!!"  + e.Message.ToString(),
+                    Status = "Failed"
+                };
 
             }
 
