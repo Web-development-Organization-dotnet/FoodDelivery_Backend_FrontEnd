@@ -93,4 +93,37 @@ export class SupplierService {
       })
     );
   }
+  getAllSupplierInfo(){
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+
+    return this.http.get<any>('https://localhost:44369/api/SupplierInfo/GetAllSupplierInfo', { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+  }
+  getSupplierInfobyId(id:string) {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+
+    return this.http.get<any>('https://localhost:44369/api/SupplierInfo/GetAllSupplierInfoById?id='+ id, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+
+  }
 }
