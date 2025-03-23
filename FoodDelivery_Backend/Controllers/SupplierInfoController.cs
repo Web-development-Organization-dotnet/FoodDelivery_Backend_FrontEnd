@@ -1,6 +1,7 @@
 ﻿using FoodDelivery_Backend.Data;
 using FoodDelivery_Backend.Models;
 using FoodDelivery_Backend.Models.Common;
+using FoodDelivery_Backend.Models.ResponseModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +19,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("InsertSupplierInfo")]
-        public async Task<IHttpActionResult> InsertSupplierInfo([FromBody] SupplierInfo val)
+        public async Task<SupplierResponse> InsertSupplierInfo([FromBody] SupplierInfo val)
         {
             try
             {
@@ -43,24 +44,33 @@ namespace FoodDelivery_Backend.Controllers
                     db_obj.tbl_supplier_info.Add(model);
                     db_obj.SaveChanges();
 
-                    return Ok("Supplier Type Successfully Registered!!");
+                    //return Ok("Supplier Type Successfully Registered!!");
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Info Successfully Registered!!",
+                        Status = "Success"
+                    };
+
                 }
                 else
                 {
-                    return BadRequest("Supplier Type Not Registered!!");
+                    //return BadRequest("Supplier Type Not Registered!!");
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Info Failed!!",
+                        Status = "Failed"
+                    };
                 }
 
 
             }
             catch (Exception e)
             {
-                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                return new SupplierResponse()
                 {
-                    stackTrace = e.StackTrace,
-                    originalExceptionMessage = e.Message,
-                    message = "Exception Occured",
-                    innerException = e.InnerException.ToString()
-                });
+                    message = "Supplier Info Failed!!"  + e.Message.ToString(),
+                    Status = "Failed"
+                };
 
             }
 
@@ -123,5 +133,126 @@ namespace FoodDelivery_Backend.Controllers
             }
 
         }
+
+        [HttpGet]
+        [ActionName("GetAllSupplierInfo")]
+
+        public async Task<IHttpActionResult> GetAllSupplierInfo()
+        {
+            try
+            {
+                var query = await db_obj.tbl_supplier_info.Include(t=>t.tbl_supplier_type).Select(t=>new SupplierInfo { 
+                    ST=new SupplierType() {
+                        supplier_type = t.tbl_supplier_type.supplier_type,
+                        description = t.tbl_supplier_type.description,
+                        yearly_turnover = t.tbl_supplier_type.yearly_turnover??0,
+                    },
+                    latitude = t.latitude,
+                    longtitude = t.longtitude,
+                    pincode = t.pincode??0,
+                    reg_date = t.reg_date,
+                    serv_pin_list = t.serv_pin_list,
+                    supplier_address = t.supplier_address,
+                    supplier_gst_num = t.supplier_gst_num??0,
+                    supplier_id = t.supplier_id,
+                    supplier_name = t.supplier_name,
+                    supplier_status = t.supplier_status,
+                
+                }).ToListAsync();
+                if (query != null)
+                {
+                    //var resultModel = new List<SupplierInfo>();
+                    //foreach (var item in query)
+                    //{
+                    //    var subModel = new SupplierType()
+                    //    {
+                    //        supplier_type = item.supplier_type,
+                    //        description = item.description,
+                    //        yearly_turnover = item.yearly_turnover ?? 0
+                    //    };
+                    //    resultModel.Add(subModel);
+                    //}
+                    return Ok(query);
+                }
+                else
+                {
+                    return BadRequest("Supplier Info not Found!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+        [HttpGet]
+        [ActionName("GetAllSupplierInfoById")]
+
+        public async Task<IHttpActionResult> GetAllSupplierInfoById(Decimal id)
+        {
+            try
+            {
+                var query = await db_obj.tbl_supplier_info.Where(t => t.supplier_id == id).Include(t => t.supplier_type).Select(t => new SupplierInfo
+                {
+                    ST = new SupplierType()
+                    {
+                        supplier_type = t.tbl_supplier_type.supplier_type,
+                        description = t.tbl_supplier_type.description,
+                        yearly_turnover = t.tbl_supplier_type.yearly_turnover ?? 0,
+                    },
+                    latitude = t.latitude,
+                    longtitude = t.longtitude,
+                    pincode = t.pincode ?? 0,
+                    reg_date = t.reg_date,
+                    serv_pin_list = t.serv_pin_list,
+                    supplier_address = t.supplier_address,
+                    supplier_gst_num = t.supplier_gst_num ?? 0,
+                    supplier_id = t.supplier_id,
+                    supplier_name = t.supplier_name,
+                    supplier_status = t.supplier_status,
+
+                }).FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    //var resultModel = new List<SupplierInfo>();
+                    //foreach (var item in query)
+                    //{
+                    //    var subModel = new SupplierType()
+                    //    {
+                    //        supplier_type = item.supplier_type,
+                    //        description = item.description,
+                    //        yearly_turnover = item.yearly_turnover ?? 0
+                    //    };
+                    //    resultModel.Add(subModel);
+                    //}
+                    return Ok(query);
+                }
+                else
+                {
+                    return BadRequest("Supplier Info not Found!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
     }
 }

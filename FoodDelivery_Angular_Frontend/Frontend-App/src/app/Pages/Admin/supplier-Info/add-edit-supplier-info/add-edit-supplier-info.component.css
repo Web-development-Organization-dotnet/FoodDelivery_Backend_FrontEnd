@@ -1,0 +1,13 @@
+/* Add this CSS to your stylesheet */
+.form-group .dropdown-toggle {
+    background-color: #fff; /* White background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 6px 12px; /* Padding inside the dropdown */
+}
+
+.form-group .dropdown-toggle:focus {
+    border-color: #66afe9; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* Blue shadow on focus */
+}

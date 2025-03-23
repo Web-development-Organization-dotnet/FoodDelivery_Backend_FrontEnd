@@ -69,7 +69,7 @@ namespace FoodDelivery_Backend.Controllers
         [HttpPut]
         [ActionName("UpdateSupplierType")]
 
-        public async Task<IHttpActionResult> UpdateSupplierType([FromBody] SupplierType val)
+        public async Task<SupplierResponse> UpdateSupplierType([FromBody] SupplierType val)
         {
             try
             {
@@ -81,23 +81,40 @@ namespace FoodDelivery_Backend.Controllers
 
                     db_obj.SaveChanges();
 
-                    return Ok("Supplier Type Successfully Updated!!");
+                    // return Ok("Supplier Type Successfully Updated!!");
+
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Type Successfully Updated!!",
+                        Status = "Success"
+                    };
+
                 }
                 else
                 {
-                    return BadRequest("Supplier Type Not Updated!!");
+                    //return BadRequest("Supplier Type Not Updated!!");
+
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Type Updation Failed!!",
+                        Status = "Failed"
+                    };
                 }
             }
             catch (Exception e)
             {
-                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //{
+                //    stackTrace = e.StackTrace,
+                //    originalExceptionMessage = e.Message,
+                //    message = "Exception Occured",
+                //    innerException = e.InnerException.ToString()
+                //});
+                return new SupplierResponse()
                 {
-                    stackTrace = e.StackTrace,
-                    originalExceptionMessage = e.Message,
-                    message = "Exception Occured",
-                    innerException = e.InnerException.ToString()
-                });
-
+                    message = "Supplier Type Updation Failed!!" + e.Message.ToString(),
+                    Status = "Success"
+                };
             }
 
         }
@@ -155,8 +172,7 @@ namespace FoodDelivery_Backend.Controllers
                 var query = await db_obj.tbl_supplier_type.Where(a => a.supplier_type == id).FirstOrDefaultAsync();
                 if (query != null)
                 {
-                    var resultModel = new SupplierType();
-                   
+
                         var subModel = new SupplierType()
                         {
                             supplier_type = query.supplier_type,
@@ -165,7 +181,7 @@ namespace FoodDelivery_Backend.Controllers
                         };
                        
                     
-                    return Ok(resultModel);
+                    return Ok(subModel);
                 }
                 else
                 {
