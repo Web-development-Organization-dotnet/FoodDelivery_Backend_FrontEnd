@@ -48,7 +48,7 @@
                                     <td>{{item.serv_pin_list}}</td>  
                                     <td>{{item.reg_date}}</td>
                                     <td>
-                                      <i class="fa" [ngClass]="item.supplier_status=='ACTIVE'?'fa-check-circle text-success':'fa-times-circle text-danger'"></i>
+                                      <i class="fa" [ngClass]="item.supplier_status=='ACTIVE'?'fa-check-circle  text-success':'fa-times-circle text-danger'"></i>
                                     </td>  
                                     <td> 
                                       <a [routerLink]="['/AddEditSupplierInfo',item.supplier_id]" class="btn btn-primary me-2 ">Edit</a>

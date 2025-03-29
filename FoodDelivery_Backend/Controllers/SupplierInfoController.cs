@@ -44,7 +44,7 @@ namespace FoodDelivery_Backend.Controllers
                     db_obj.tbl_supplier_info.Add(model);
                     db_obj.SaveChanges();
 
-                    //return Ok("Supplier Type Successfully Registered!!");
+                    //return Ok("Supplier Info Successfully Registered!!");
                     return new SupplierResponse()
                     {
                         message = "Supplier Info Successfully Registered!!",
@@ -80,7 +80,7 @@ namespace FoodDelivery_Backend.Controllers
         [HttpPut]
         [ActionName("UpdateSupplierInfo")]
 
-        public async Task<IHttpActionResult> UpdateSupplierType([FromBody] SupplierInfo val)
+        public async Task<SupplierResponse> UpdateSupplierType([FromBody] SupplierInfo val)
         {
             try
             {
@@ -105,7 +105,12 @@ namespace FoodDelivery_Backend.Controllers
                         }
                         else
                         {
-                            return Ok("Supplier Info Updated!!Supplier Type not updated");
+                           // return Ok("Supplier Info Updated!!Supplier Type not updated");
+                            return new SupplierResponse()
+                            {
+                                message = "Supplier Type not Found",
+                                Status = "Failed"
+                            };
 
                         }
                     }
@@ -113,22 +118,37 @@ namespace FoodDelivery_Backend.Controllers
 
                     db_obj.SaveChanges();
 
-                    return Ok("Supplier Info Successfully Updated!!");
+                    //return Ok("Supplier Info Successfully Updated!!");
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Info Successfully Updated!!",
+                        Status = "Success"
+                    };
                 }
                 else
                 {
-                    return BadRequest("Supplier Info Not Updated!!");
+                    //return BadRequest("Supplier Info Not Updated!!");
+                    return new SupplierResponse()
+                    {
+                        message = "Supplier Info not Updated!!",
+                        Status = "Failed"
+                    };
                 }
             }
             catch (Exception e)
             {
-                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //{
+                //    stackTrace = e.StackTrace,
+                //    originalExceptionMessage = e.Message,
+                //    message = "Exception Occured",
+                //    innerException = e.InnerException.ToString()
+                //});
+                return new SupplierResponse()
                 {
-                    stackTrace = e.StackTrace,
-                    originalExceptionMessage = e.Message,
-                    message = "Exception Occured",
-                    innerException = e.InnerException.ToString()
-                });
+                    message = "Supplier Info Updation Failed!!" + e.Message.ToString(),
+                    Status = "Failed"
+                };
 
             }
 
