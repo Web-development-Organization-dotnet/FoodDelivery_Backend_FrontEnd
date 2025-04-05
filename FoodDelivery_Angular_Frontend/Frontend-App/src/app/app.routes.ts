@@ -7,6 +7,8 @@ import { SupplierTypeComponent } from './Pages/Admin/supplier-type/SupplierTypeL
 import { SupplierTypeEntryComponent } from './Pages/Admin/supplier-type/AddEditSupplier/supplier-type-entry/supplier-type-entry.component';
 import { AddEditSupplierInfoComponent } from './Pages/Admin/supplier-Info/add-edit-supplier-info/add-edit-supplier-info.component';
 import { SupplierInfoListComponent } from './Pages/Admin/supplier-Info/supplier-info-list/supplier-info-list.component';
+import { FoodTypeListComponent } from './Pages/Admin/food/food-type/food-type-list/food-type-list.component';
+import { AddEditFoodTypeComponent } from './Pages/Admin/food/food-type/add-edit-food-type/add-edit-food-type.component';
 
 
 export const routes: Routes = [
@@ -21,5 +23,7 @@ export const routes: Routes = [
   {path: 'supplierTypeEntry/:id', component: SupplierTypeEntryComponent},
   {path: 'supplierInfoList', component: SupplierInfoListComponent},
   {path: 'AddEditSupplierInfo', component: AddEditSupplierInfoComponent},
-  {path: 'AddEditSupplierInfo/:id', component: AddEditSupplierInfoComponent}
+  {path: 'AddEditSupplierInfo/:id', component: AddEditSupplierInfoComponent},
+  {path: 'foodTypeList', component: FoodTypeListComponent},
+  {path: 'addEditFoodType', component: AddEditFoodTypeComponent}
 ];
