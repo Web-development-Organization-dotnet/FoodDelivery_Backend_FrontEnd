@@ -1,1 +1,67 @@
-<p>add-edit-food-type works!</p>
+<app-header></app-header>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Manage Food Type</h4>
+                            <p class="card-type_desc">{{foodTypeModel.isEdit?'Edit':'Insert'}} Food Type</p>
+                            <form class="forms-sample" #AdminForm="ngForm" (ngSubmit)="onSubmit(AdminForm)">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Type Name</label>
+                                    <input type="text" class="form-control" id="exampleInputName1"
+                                        placeholder="Type Name" name="food_type" #food_type="ngModel"
+                                        [(ngModel)]="foodTypeModel.food_type" required minlength="3"  
+                                        [disabled]="foodTypeModel.isEdit">
+                                       
+                                    <div class="text-danger"
+                                        *ngIf="food_type.invalid && (food_type.touched || food_type.dirty)">
+                                        <span *ngIf="food_type.errors?.['required']">Required Property</span>
+                                        <span *ngIf="food_type.errors?.['minlength']">Minimum 3 characters</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Type Description</label>
+                                    <!-- <textarea id="w3review" class="form-control" name="w3review" rows="15" placeholder="Enter Description">
+                    </textarea> -->
+                                    <input type="text" class="form-control" id="typedesc"
+                                        placeholder="Enter Description" name="type_desc" #type_desc="ngModel"
+                                        [(ngModel)]="foodTypeModel.type_desc" required>
+                                    <div class="text-danger"
+                                        *ngIf="type_desc.invalid && (type_desc.touched || type_desc.dirty)">
+                                        <span *ngIf="type_desc.errors?.['required']">Required Property</span>
+                                        <span *ngIf="type_desc.errors?.['minlength']">Minimum 20 characters</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPhone">Food Category</label>
+                                    <input type="text" class="form-control" id="foodcategory"
+                                        placeholder="Food Category" name="food_category" #food_category="ngModel"
+                                        [(ngModel)]="foodTypeModel.food_category" required>
+                                    <div class="text-danger"
+                                        *ngIf="food_category.invalid && (food_category.touched || food_category.dirty)">
+                                        <span *ngIf="food_category.errors?.['required']">Required Property</span>
+                                        <!-- <span *ngIf="food_category.errors?.['minlength']">Minimum 3 characters</span> -->
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary me-2">{{foodTypeModel.isEdit?'Update':'Register'}}</button>
+                                <a class="btn btn-light" routerLink="/supplierType" routerLinkActive="active"
+                                    ariaCurrentWhenActive="page">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <app-footer></app-footer>
+    </div>
+    <!-- main-panel ends -->
+</div>
