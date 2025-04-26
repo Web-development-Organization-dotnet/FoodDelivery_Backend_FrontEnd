@@ -1,6 +1,7 @@
 ﻿using FoodDelivery_Backend.Data;
 using FoodDelivery_Backend.Models;
 using FoodDelivery_Backend.Models.Common;
+using FoodDelivery_Backend.Models.ResponseModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -58,7 +59,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("RegisterFoodType")]
-        public async Task<IHttpActionResult> InsertFoodType([FromBody] FoodTypeModel val)
+        public async Task<SupplierResponse> InsertFoodType([FromBody] FoodTypeModel val)
         {
             try
             {
@@ -82,31 +83,49 @@ namespace FoodDelivery_Backend.Controllers
                         db_obj.tbl_food_type.Add(model);
                         db_obj.SaveChanges();
 
-                        return Ok("Food Type Successfully Registered!!");
+                        //return Ok("Food Type Successfully Registered!!");
+                        return new SupplierResponse()
+                        {
+                            message = "Food Type Successfully Registered!!",
+                            Status = "Success"
+                        };
                     }
                     else
                     {
-                        return BadRequest("Food Type Not Registered!!");
+                        //return BadRequest("Food Type Not Registered!!");
+                        return new SupplierResponse()
+                        {
+                            message = "Food Type Not Registered!!",
+                            Status = "Failed"
+                        };
                     }
                 }
                 else
                 {
-                    return BadRequest("Condition does not satisfied to create unique Queue for Food Type");
+                    //return BadRequest("Condition does not satisfied to create unique Queue for Food Type");
+                    return new SupplierResponse()
+                    {
+                        message = "Condition does not satisfied to create unique Queue for Food Type",
+                        Status = "Failed"
+                    };
 
                 }
             }
             catch (Exception e)
             {
-                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //{
+                //    stackTrace = e.StackTrace,
+                //    originalExceptionMessage = e.Message,
+                //    message = "Exception Occured",
+                //    innerException = e.InnerException.ToString()
+                //});
+                return new SupplierResponse()
                 {
-                    stackTrace = e.StackTrace,
-                    originalExceptionMessage = e.Message,
-                    message = "Exception Occured",
-                    innerException = e.InnerException.ToString()
-                });
-
+                    message = $"Exception Occurred: {e.Message}. Inner Exception: {e.InnerException.ToString()}",
+                    Status = "Exception"
+                };
             }
-
 
         }
 
@@ -133,6 +152,48 @@ namespace FoodDelivery_Backend.Controllers
                     }
                 
         
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+        [HttpGet]
+        [ActionName("GetAllFoodType")]
+
+        public async Task<IHttpActionResult> GetAllFoodType()
+        {
+            try
+            {
+                var query = await db_obj.tbl_food_type.ToListAsync();
+                if (query != null)
+                {
+                    var resultModel = new List<FoodTypeModel>();
+                    foreach (var item in query)
+                    {
+                        var subModel = new FoodTypeModel()
+                        {
+                            food_type_cd = item.food_type_cd,
+                            food_type = item.food_type,
+                            type_desc = item.type_desc,
+                        };
+                        resultModel.Add(subModel);
+                    }
+                    return Ok(resultModel);
+                }
+                else
+                {
+                    return BadRequest("Supplier Type not Found!!");
+                }
             }
             catch (Exception e)
             {
