@@ -25,5 +25,6 @@ export const routes: Routes = [
   {path: 'AddEditSupplierInfo', component: AddEditSupplierInfoComponent},
   {path: 'AddEditSupplierInfo/:id', component: AddEditSupplierInfoComponent},
   {path: 'foodTypeList', component: FoodTypeListComponent},
-  {path: 'addEditFoodType', component: AddEditFoodTypeComponent}
+  {path: 'addEditFoodType', component: AddEditFoodTypeComponent},
+  {path: 'addEditFoodType/:id', component: AddEditFoodTypeComponent}
 ];

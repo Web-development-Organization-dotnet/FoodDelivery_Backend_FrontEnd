@@ -43,7 +43,8 @@
                                     <label for="exampleInputPhone">Food Category</label>
                                     <input type="text" class="form-control" id="foodcategory"
                                         placeholder="Food Category" name="food_category" #food_category="ngModel"
-                                        [(ngModel)]="foodTypeModel.food_category" required>
+                                        [(ngModel)]="foodTypeModel.food_category" required
+                                        [disabled]="foodTypeModel.isEdit">
                                     <div class="text-danger"
                                         *ngIf="food_category.invalid && (food_category.touched || food_category.dirty)">
                                         <span *ngIf="food_category.errors?.['required']">Required Property</span>
@@ -51,7 +52,7 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">{{foodTypeModel.isEdit?'Update':'Register'}}</button>
-                                <a class="btn btn-light" routerLink="/supplierType" routerLinkActive="active"
+                                <a class="btn btn-light" routerLink="/foodTypeList" routerLinkActive="active"
                                     ariaCurrentWhenActive="page">Cancel</a>
                             </form>
                         </div>

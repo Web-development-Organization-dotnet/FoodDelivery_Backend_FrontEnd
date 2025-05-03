@@ -25,9 +25,23 @@ import { FoodService } from '../../../../../Service/Food/food.service';
 })
 export class AddEditFoodTypeComponent {
   foodTypeModel: any = new foodTypeModel();
-
+  id:any;
 
   constructor(private router: Router, private foodServ: FoodService, private route: ActivatedRoute) { }
+
+  ngOnInit(){
+
+    this.id=this.route.snapshot.paramMap.get('id')?.toString();
+    
+    console.log(this.id);
+    if (this.id) 
+    {
+      this.foodServ.getFoodTypebyId(this.id).subscribe(q=>{
+      this.foodTypeModel = q;
+      this.foodTypeModel.isEdit = true;
+      });
+    }
+  }
 
   onSubmit(form: NgForm) {
     console.log(this.foodTypeModel);
@@ -52,7 +66,7 @@ export class AddEditFoodTypeComponent {
         this.foodServ.updateFoodType(this.foodTypeModel).subscribe(q => {
           console.log('Updated response', q);
 
-          if (q && q.message === 'Supplier Type Successfully Updated!!') {
+          if (q && q.message === 'Food Type Successfully Updated!!') {
             alert("Supplier Type Successfully Updated!!!!!");
             this.router.navigate(['/supplierType']);
           }

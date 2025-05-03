@@ -20,7 +20,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpGet]
         [ActionName("FoodTypeDetails")]
-        [Route("FoodTypeDetails/{foodTypeCD}")]
+
         public async Task<IHttpActionResult> GetFoodTypeDetails(string foodTypeCD)
         {
             try
@@ -185,6 +185,7 @@ namespace FoodDelivery_Backend.Controllers
                             food_type_cd = item.food_type_cd,
                             food_type = item.food_type,
                             type_desc = item.type_desc,
+                            food_category = item.food_category
                         };
                         resultModel.Add(subModel);
                     }
