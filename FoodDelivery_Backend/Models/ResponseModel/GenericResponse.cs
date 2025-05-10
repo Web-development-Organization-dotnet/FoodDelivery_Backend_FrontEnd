@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FoodDelivery_Backend.Models.ResponseModel
 {
-    public class SupplierResponse
+    public class GenericResponse
     {
         public String message { get; set; }
         public String Status { get; set; }

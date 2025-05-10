@@ -59,7 +59,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("RegisterFoodType")]
-        public async Task<SupplierResponse> InsertFoodType([FromBody] FoodTypeModel val)
+        public async Task<GenericResponse> InsertFoodType([FromBody] FoodTypeModel val)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace FoodDelivery_Backend.Controllers
                         db_obj.SaveChanges();
 
                         //return Ok("Food Type Successfully Registered!!");
-                        return new SupplierResponse()
+                        return new GenericResponse()
                         {
                             message = "Food Type Successfully Registered!!",
                             Status = "Success"
@@ -93,7 +93,7 @@ namespace FoodDelivery_Backend.Controllers
                     else
                     {
                         //return BadRequest("Food Type Not Registered!!");
-                        return new SupplierResponse()
+                        return new GenericResponse()
                         {
                             message = "Food Type Not Registered!!",
                             Status = "Failed"
@@ -103,7 +103,7 @@ namespace FoodDelivery_Backend.Controllers
                 else
                 {
                     //return BadRequest("Condition does not satisfied to create unique Queue for Food Type");
-                    return new SupplierResponse()
+                    return new GenericResponse()
                     {
                         message = "Condition does not satisfied to create unique Queue for Food Type",
                         Status = "Failed"
@@ -120,7 +120,7 @@ namespace FoodDelivery_Backend.Controllers
                 //    message = "Exception Occured",
                 //    innerException = e.InnerException.ToString()
                 //});
-                return new SupplierResponse()
+                return new GenericResponse()
                 {
                     message = $"Exception Occurred: {e.Message}. Inner Exception: {e.InnerException.ToString()}",
                     Status = "Exception"
@@ -132,36 +132,43 @@ namespace FoodDelivery_Backend.Controllers
         [HttpPut]
         [ActionName("UpdateFoodType")]
 
-        public async Task<IHttpActionResult> updateFoodType([FromBody] FoodTypeModel val)
+        public async Task<GenericResponse> updateFoodType([FromBody] FoodTypeModel val)
         {
             try
             {
                 var query = await db_obj.tbl_food_type.Where(a => a.food_type_cd == val.food_type_cd.ToUpper()).FirstOrDefaultAsync();
-                    if (query != null)
-                    {
-                         //only desc will be updated!!!
-                         query.type_desc = val.type_desc;
-                  
-                        db_obj.SaveChanges();
+                if (query != null)
+                {
+                    //only desc will be updated!!!
+                    query.type_desc = val.type_desc;
 
-                        return Ok("Food Type Updated Successfully!!");
-                    }
-                    else
+                    db_obj.SaveChanges();
+
+                    //return Ok("Food Type Updated Successfully!!");
+                    return new GenericResponse()
                     {
-                        return BadRequest("Food Type Not Updated!!");
-                    }
-                
-        
+                        message = "Food Type Successfully Updated!!",
+                        Status = "Success"
+                    };
+                }
+                else
+                { 
+                    return new GenericResponse()
+                    {
+                        message = "Condition does not satisfy to update Food Type",
+                        Status = "Failed"
+                    };
+                }
+
+
             }
             catch (Exception e)
             {
-                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                return new GenericResponse()
                 {
-                    stackTrace = e.StackTrace,
-                    originalExceptionMessage = e.Message,
-                    message = "Exception Occured",
-                    innerException = e.InnerException.ToString()
-                });
+                    message = $"Exception Occurred: {e.Message}. Inner Exception: {e.InnerException.ToString()}",
+                    Status = "Exception"
+                };
 
             }
 

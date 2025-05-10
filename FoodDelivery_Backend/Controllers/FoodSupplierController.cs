@@ -19,7 +19,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("RegisterSupplierType")]
-        public async Task<SupplierResponse> InsertSupplierType([FromBody] SupplierType val)
+        public async Task<GenericResponse> InsertSupplierType([FromBody] SupplierType val)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace FoodDelivery_Backend.Controllers
                     };
                     db_obj.tbl_supplier_type.Add(model);
                     db_obj.SaveChanges();
-                    return new SupplierResponse()
+                    return new GenericResponse()
                     {
                         message = "Supplier Type Successfully Registered!!",
                         Status="Success"
@@ -44,7 +44,7 @@ namespace FoodDelivery_Backend.Controllers
                 }
                 else
                 {
-                    return new SupplierResponse()
+                    return new GenericResponse()
                     {
                         message = "Supplier Type Registered Failed!!",
                         Status = "Failed"
@@ -55,7 +55,7 @@ namespace FoodDelivery_Backend.Controllers
             }
             catch (Exception e)
             {
-                return new SupplierResponse()
+                return new GenericResponse()
                 {
                     message=e.Message + e.StackTrace,
                     Status="Failed"
@@ -69,7 +69,7 @@ namespace FoodDelivery_Backend.Controllers
         [HttpPut]
         [ActionName("UpdateSupplierType")]
 
-        public async Task<SupplierResponse> UpdateSupplierType([FromBody] SupplierType val)
+        public async Task<GenericResponse> UpdateSupplierType([FromBody] SupplierType val)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace FoodDelivery_Backend.Controllers
 
                     // return Ok("Supplier Type Successfully Updated!!");
 
-                    return new SupplierResponse()
+                    return new GenericResponse()
                     {
                         message = "Supplier Type Successfully Updated!!",
                         Status = "Success"
@@ -94,7 +94,7 @@ namespace FoodDelivery_Backend.Controllers
                 {
                     //return BadRequest("Supplier Type Not Updated!!");
 
-                    return new SupplierResponse()
+                    return new GenericResponse()
                     {
                         message = "Supplier Type Updation Failed!!",
                         Status = "Failed"
@@ -110,7 +110,7 @@ namespace FoodDelivery_Backend.Controllers
                 //    message = "Exception Occured",
                 //    innerException = e.InnerException.ToString()
                 //});
-                return new SupplierResponse()
+                return new GenericResponse()
                 {
                     message = "Supplier Type Updation Failed!!" + e.Message.ToString(),
                     Status = "Success"

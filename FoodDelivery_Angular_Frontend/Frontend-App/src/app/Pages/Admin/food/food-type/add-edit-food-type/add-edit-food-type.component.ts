@@ -67,8 +67,8 @@ export class AddEditFoodTypeComponent {
           console.log('Updated response', q);
 
           if (q && q.message === 'Food Type Successfully Updated!!') {
-            alert("Supplier Type Successfully Updated!!!!!");
-            this.router.navigate(['/supplierType']);
+            alert("Food Type Successfully Updated!!!!!");
+            this.router.navigate(['/foodTypeList']);
           }
           else {
             alert('Unable to Update!');

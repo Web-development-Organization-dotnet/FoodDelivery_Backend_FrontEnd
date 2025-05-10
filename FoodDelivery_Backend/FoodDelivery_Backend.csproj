@@ -316,7 +316,7 @@
     <Compile Include="Models\FoodTypeModel.cs" />
     <Compile Include="Models\ResponseModel\AdminInfoResponse.cs" />
     <Compile Include="Models\ResponseModel\LoginResponse.cs" />
-    <Compile Include="Models\ResponseModel\SupplierResponse.cs" />
+    <Compile Include="Models\ResponseModel\GenericResponse.cs" />
     <Compile Include="Models\SupplierInfo.cs" />
     <Compile Include="Models\SupplierMenu.cs" />
     <Compile Include="Models\SupplierType.cs" />

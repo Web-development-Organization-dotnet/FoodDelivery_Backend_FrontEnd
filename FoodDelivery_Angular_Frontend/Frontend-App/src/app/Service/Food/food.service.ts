@@ -66,7 +66,7 @@ export class FoodService {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
-  return this.http.put<any>('https://localhost:44369/api/FoodSupplier/UpdateSupplierType',  obj, { headers: httpHeader }).pipe(
+  return this.http.put<any>('https://localhost:44369/api/FoodType/UpdateFoodType',  obj, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),
