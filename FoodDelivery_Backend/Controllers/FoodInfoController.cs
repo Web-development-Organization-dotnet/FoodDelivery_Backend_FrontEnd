@@ -114,6 +114,62 @@ namespace FoodDelivery_Backend.Controllers
         }
 
 
+        [HttpGet]
+        [ActionName("GetAllFoodInfo")]
+
+        public async Task<IHttpActionResult> GetAllFoodInfo()
+        {
+            try
+            {
+                var query = await db_obj.tbl_food_info.ToListAsync();
+                if (query != null)
+                {
+                    var resultModel = new List<FoodInfoModel>();
+                    foreach (var item in query)
+                    {
+                        var query1 = await db_obj.tbl_food_type.Where(a => a.food_type_cd == item.food_type_cd).FirstOrDefaultAsync();
+                        var type_obj = new FoodTypeModel()
+                        {
+                            food_category = query1.food_category,
+                            food_type = query1.food_type,
+                            food_type_cd = query1.food_type_cd,
+                            type_desc = query1.type_desc
+                        };
+
+                        var model = new FoodInfoModel()
+                        {
+                            food_id = item.food_id,
+                            food_name = item.food_name,
+                            food_img = item.food_img,
+                            foodType = type_obj,
+                            food_qty = item.food_qty ?? 0, // conversion of nullable decimal to decimal
+                            food_description = item.food_description
+
+                        };
+                        resultModel.Add(model);
+                    }
+                    return Ok(resultModel);
+                }
+                else
+                {
+                    return BadRequest("Food Info not Found!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+
 
         [HttpPut]
         [ActionName("UpdateFoodInfo")]

@@ -9,6 +9,7 @@ import { AddEditSupplierInfoComponent } from './Pages/Admin/supplier-Info/add-ed
 import { SupplierInfoListComponent } from './Pages/Admin/supplier-Info/supplier-info-list/supplier-info-list.component';
 import { FoodTypeListComponent } from './Pages/Admin/food/food-type/food-type-list/food-type-list.component';
 import { AddEditFoodTypeComponent } from './Pages/Admin/food/food-type/add-edit-food-type/add-edit-food-type.component';
+import { FoodInfoListComponent } from './Pages/Admin/food/food-info/food-info-list/food-info-list.component';
 
 
 export const routes: Routes = [
@@ -19,12 +20,13 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'adminMyAccount', component: MyAccountComponent },
   { path: 'supplierType', component: SupplierTypeComponent },
-  { path: 'supplierTypeEntry', component: SupplierTypeEntryComponent},
-  {path: 'supplierTypeEntry/:id', component: SupplierTypeEntryComponent},
-  {path: 'supplierInfoList', component: SupplierInfoListComponent},
-  {path: 'AddEditSupplierInfo', component: AddEditSupplierInfoComponent},
-  {path: 'AddEditSupplierInfo/:id', component: AddEditSupplierInfoComponent},
-  {path: 'foodTypeList', component: FoodTypeListComponent},
-  {path: 'addEditFoodType', component: AddEditFoodTypeComponent},
-  {path: 'addEditFoodType/:id', component: AddEditFoodTypeComponent}
+  { path: 'supplierTypeEntry', component: SupplierTypeEntryComponent },
+  { path: 'supplierTypeEntry/:id', component: SupplierTypeEntryComponent },
+  { path: 'supplierInfoList', component: SupplierInfoListComponent },
+  { path: 'AddEditSupplierInfo', component: AddEditSupplierInfoComponent },
+  { path: 'AddEditSupplierInfo/:id', component: AddEditSupplierInfoComponent },
+  { path: 'foodTypeList', component: FoodTypeListComponent },
+  { path: 'addEditFoodType', component: AddEditFoodTypeComponent },
+  { path: 'addEditFoodType/:id', component: AddEditFoodTypeComponent },
+  { path: 'foodInfoList', component: FoodInfoListComponent },
 ];

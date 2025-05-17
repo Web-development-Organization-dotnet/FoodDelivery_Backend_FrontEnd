@@ -93,13 +93,13 @@ export class FoodService {
       })
     );
   }
-  getAllSupplierInfo(){
+  getAllFoodInfo(){
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
 
-    return this.http.get<any>('https://localhost:44369/api/SupplierInfo/GetAllSupplierInfo', { headers: httpHeader }).pipe(
+    return this.http.get<any>('https://localhost:44369/api/FoodInfo/GetAllFoodInfo', { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),
