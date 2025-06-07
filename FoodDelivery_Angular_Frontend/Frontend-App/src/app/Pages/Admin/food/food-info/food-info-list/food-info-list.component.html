@@ -14,7 +14,7 @@
             <div class="card-body">
               <h4 class="card-title">Food Information</h4>
               <div class="d-flex justify-content-end">
-                <a [routerLink]="['/addEditFoodType']" class="btn btn-primary me-2 ">Add Food Info</a>
+                <a [routerLink]="['/addEditFoodInfo']" class="btn btn-primary me-2 ">Add Food Info</a>
               </div>
               <div class="table-responsive pt-3">
                 <table class="table table-bordered" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
@@ -38,7 +38,7 @@
                       <td>{{item.foodType.food_type_cd}}</td>
                       <td>{{item.food_description}}</td>
                       <td>{{item.food_qty}}</td>
-                      <td><a [routerLink]="['/addEditFoodType',item.food_type_cd]"
+                      <td><a [routerLink]="['/addEditFoodInfo',item.food_id]"
                           class="btn btn-primary me-2 ">Edit</a>
                       </td>
                     </tr>

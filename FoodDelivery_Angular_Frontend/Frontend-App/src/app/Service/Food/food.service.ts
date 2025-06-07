@@ -76,14 +76,14 @@ export class FoodService {
       })
     );
   }
-//Supplier info methods:
+//Food info methods:
 
-  registerSupplierInfo(obj: any){
+  registerFoodInfo(obj: any){
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
-  return this.http.post<any>('https://localhost:44369/api/SupplierInfo/InsertSupplierInfo',  obj, { headers: httpHeader }).pipe(
+  return this.http.post<any>('https://localhost:44369/api/FoodInfo/RegisterFoodInfo',  obj, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),
@@ -109,13 +109,13 @@ export class FoodService {
       })
     );
   }
-  getSupplierInfobyId(id:string) {
+  getFoodInfobyId(id:string) {
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
 
-    return this.http.get<any>('https://localhost:44369/api/SupplierInfo/GetAllSupplierInfoById?id='+ id, { headers: httpHeader }).pipe(
+    return this.http.get<any>('https://localhost:44369/api/FoodInfo/GetFoodInfo?food_id='+ id, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),
@@ -126,12 +126,12 @@ export class FoodService {
     );
 
   }
-  updateSupplierInfo(obj: any){
+  updateFoodInfo(obj: any){
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
-  return this.http.put<any>('https://localhost:44369/api/SupplierInfo/UpdateSupplierInfo',  obj, { headers: httpHeader }).pipe(
+  return this.http.put<any>('https://localhost:44369/api/FoodInfo/updateFoodInfo',  obj, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),
