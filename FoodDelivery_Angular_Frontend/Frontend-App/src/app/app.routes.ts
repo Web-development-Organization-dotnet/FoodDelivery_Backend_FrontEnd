@@ -10,6 +10,7 @@ import { SupplierInfoListComponent } from './Pages/Admin/supplier-Info/supplier-
 import { FoodTypeListComponent } from './Pages/Admin/food/food-type/food-type-list/food-type-list.component';
 import { AddEditFoodTypeComponent } from './Pages/Admin/food/food-type/add-edit-food-type/add-edit-food-type.component';
 import { FoodInfoListComponent } from './Pages/Admin/food/food-info/food-info-list/food-info-list.component';
+import { AddEditFoodInfoComponent } from './Pages/Admin/food/food-info/add-edit-food-info/add-edit-food-info.component';
 
 
 export const routes: Routes = [
@@ -29,4 +30,5 @@ export const routes: Routes = [
   { path: 'addEditFoodType', component: AddEditFoodTypeComponent },
   { path: 'addEditFoodType/:id', component: AddEditFoodTypeComponent },
   { path: 'foodInfoList', component: FoodInfoListComponent },
+  { path: 'addEditFoodInfo', component: AddEditFoodInfoComponent },
 ];
