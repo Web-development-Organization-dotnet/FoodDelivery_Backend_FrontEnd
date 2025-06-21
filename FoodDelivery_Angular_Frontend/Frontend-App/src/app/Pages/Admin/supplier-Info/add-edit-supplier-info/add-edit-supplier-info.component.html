@@ -1,136 +1,132 @@
-
 <app-header></app-header>
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
-    <app-sidebar></app-sidebar>
-    <div class="main-panel">
-        <div class="content-wrapper">
-            <div class="row">
+  <app-sidebar></app-sidebar>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
 
-                <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Register Supplier</h4>
-                            <p class="card-description">{{supplierInfoModelObj.isEdit?'Edit':'Insert'}} Supplier Info</p>
-                                <form class="forms-sample" #SupplierInfoForm="ngForm" (ngSubmit)="onSubmit(SupplierInfoForm)">
-                                    <div class="form-group">
-                                        <label for="lblsupplierName">Supplier Name</label>
-                                        <input type="text" class="form-control" id="lblsupplierName"
-                                               placeholder="Supplier Name" name="supplier_name" #supplier_name="ngModel"
-                                               [(ngModel)]="supplierInfoModelObj.supplier_name" required minlength="8">
-                                        <div class="text-danger"
-                                             *ngIf="supplier_name.invalid && (supplier_name.touched || supplier_name.dirty)">
-                                            <span *ngIf="supplier_name.errors?.['required']">Required Property</span>
-                                            <span *ngIf="supplier_name.errors?.['minlength']">Minimum 8 characters</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="lblLatitude">Latitude</label>
-                                            <input type="text" class="form-control" id="lblLatitude"
-                                                   placeholder="Latitude" name="latitude" #latitude="ngModel"
-                                                   [(ngModel)]="supplierInfoModelObj.latitude">
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="lblLongitude">Longitude</label>
-                                            <input type="text" class="form-control" id="lblLongitude"
-                                                   placeholder="Longitude" name="longtitude" #longtitude="ngModel"
-                                                   [(ngModel)]="supplierInfoModelObj.longtitude">
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="lblPincode">Pincode</label>
-                                                <input type="number" class="form-control" id="lblPincode"
-                                                       placeholder="Pincode" name="pincode" #pincode="ngModel"
-                                                       [(ngModel)]="supplierInfoModelObj.pincode" required>
-                                            </div>
-                                            </div>
-                                    </div>
-                                    <div class="row">
-                                        
-                                        <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="lblRegDate">Registration Date</label>
-                                            <input type="date" class="form-control" id="lblRegDate"
-                                                   placeholder="Registration Date" name="reg_date" #reg_date="ngModel"
-                                                   [(ngModel)]="supplierInfoModelObj.reg_date">
-                                        </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="lblServPinList">Service Pincode List</label>
-                                            <select class="form-control" id="lblServPinList" name="serv_pin_list" #serv_pin_list="ngModel"
-                                                    [(ngModel)]="supplierInfoModelObj.serv_pin_list" required>
-                                                <option value="" disabled>Select Pincodes</option>
-                                                <option value="123456">123456</option>
-                                                <option value="654321">654321</option>
-                                                <option value="112233">112233</option>
-                                                <!-- Add more pincodes as needed -->
-                                            </select>
-                                            <div class="text-danger"
-                                                 *ngIf="serv_pin_list.invalid && (serv_pin_list.touched || serv_pin_list.dirty)">
-                                                <span *ngIf="serv_pin_list.errors?.['required']">Required Property</span>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    
-                                   
-                                    <div class="form-group">
-                                        <label for="lblSupplierAddress">Supplier Address</label>
-                                        <input type="text" class="form-control" id="lblSupplierAddress"
-                                               placeholder="Supplier Address" name="supplier_address" #supplier_address="ngModel"
-                                               [(ngModel)]="supplierInfoModelObj.supplier_address" required>
-                                    </div>
-                                    
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="lblSupplierType">Supplier Type</label>
-                                            <select class="form-control dropdown-toggle" id="lblSupplierType" name="supplier_type" #supplier_type="ngModel"
-                                                    [(ngModel)]="supplierInfoModelObj.supplier_type" required>
-                                                <option value="" disabled selected>Select Supplier Type</option>
-                                              <option [ngValue]="item.supplier_type" *ngFor="let item of supplierTypeList">{{item.supplier_type}}</option>
-                                                 <!--  <option value="Type2">Type 2</option>
-                                                <option value="Type3">Type 3</option>
-                                                Add more supplier types as needed -->
-                                            </select>
-                                            <div class="text-danger"
-                                                 *ngIf="supplier_type.invalid && (supplier_type.touched || supplier_type.dirty)">
-                                                <span *ngIf="supplier_type.errors?.['required']">Required Property</span>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="lblSupplierGSTNum">Supplier GST Number</label>
-                                            <input type="number" class="form-control" id="lblSupplierGSTNum"
-                                                   placeholder="Supplier GST Number" name="supplier_gst_num" #supplier_gst_num="ngModel"
-                                                   [(ngModel)]="supplierInfoModelObj.supplier_gst_num">
-                                        </div>
-                                        </div>
-
-                                        </div>
-
-                                    
-                                    <div class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                                
-                        </div>
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Register Supplier</h4>
+              <p class="card-description">{{supplierInfoModelObj.isEdit?'Edit':'Insert'}} Supplier Info</p>
+              <form class="forms-sample" #SupplierInfoForm="ngForm" (ngSubmit)="onSubmit(SupplierInfoForm)">
+                <div class="form-group">
+                  <label for="lblsupplierName">Supplier Name</label>
+                  <input type="text" class="form-control" id="lblsupplierName" placeholder="Supplier Name"
+                    name="supplier_name" #supplier_name="ngModel" [(ngModel)]="supplierInfoModelObj.supplier_name"
+                    required minlength="8">
+                  <div class="text-danger"
+                    *ngIf="supplier_name.invalid && (supplier_name.touched || supplier_name.dirty)">
+                    <span *ngIf="supplier_name.errors?.['required']">Required Property</span>
+                    <span *ngIf="supplier_name.errors?.['minlength']">Minimum 8 characters</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="lblLatitude">Latitude</label>
+                      <input type="text" class="form-control" id="lblLatitude" placeholder="Latitude" name="latitude"
+                        #latitude="ngModel" [(ngModel)]="supplierInfoModelObj.latitude">
                     </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="lblLongitude">Longitude</label>
+                      <input type="text" class="form-control" id="lblLongitude" placeholder="Longitude"
+                        name="longtitude" #longtitude="ngModel" [(ngModel)]="supplierInfoModelObj.longtitude">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="lblPincode">Pincode</label>
+                      <input type="number" class="form-control" id="lblPincode" placeholder="Pincode" name="pincode"
+                        #pincode="ngModel" [(ngModel)]="supplierInfoModelObj.pincode" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lblRegDate">Registration Date</label>
+                      <input type="date" class="form-control" id="lblRegDate" placeholder="Registration Date"
+                        name="reg_date" #reg_date="ngModel" [(ngModel)]="supplierInfoModelObj.reg_date">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lblServPinList">Service Pincode List</label>
+                      <select class="form-control" id="lblServPinList" name="serv_pin_list" #serv_pin_list="ngModel"
+                        [(ngModel)]="supplierInfoModelObj.serv_pin_list" required>
+                        <option value="" disabled>Select Pincodes</option>
+                        <option value="123456">123456</option>
+                        <option value="654321">654321</option>
+                        <option value="112233">112233</option>
+                        <!-- Add more pincodes as needed -->
+                      </select>
+                      <div class="text-danger"
+                        *ngIf="serv_pin_list.invalid && (serv_pin_list.touched || serv_pin_list.dirty)">
+                        <span *ngIf="serv_pin_list.errors?.['required']">Required Property</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
+
+                <div class="form-group">
+                  <label for="lblSupplierAddress">Supplier Address</label>
+                  <input type="text" class="form-control" id="lblSupplierAddress" placeholder="Supplier Address"
+                    name="supplier_address" #supplier_address="ngModel"
+                    [(ngModel)]="supplierInfoModelObj.supplier_address" required>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lblSupplierType">Supplier Type</label>
+                      <select class="form-control dropdown-toggle" id="lblSupplierType" name="supplier_type"
+                        #supplier_type="ngModel" [(ngModel)]="supplierInfoModelObj.supplier_type" required>
+                        <option value="" disabled selected>Select Supplier Type</option>
+                        <option [ngValue]="item.supplier_type" *ngFor="let item of supplierTypeList">
+                          {{item.supplier_type}}</option>
+                        <!--  <option value="Type2">Type 2</option>
+                                                <option value="Type3">Type 3</option>
+                                                Add more supplier types as needed -->
+                      </select>
+                      <div class="text-danger"
+                        *ngIf="supplier_type.invalid && (supplier_type.touched || supplier_type.dirty)">
+                        <span *ngIf="supplier_type.errors?.['required']">Required Property</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lblSupplierGSTNum">Supplier GST Number</label>
+                      <input type="number" class="form-control" id="lblSupplierGSTNum" placeholder="Supplier GST Number"
+                        name="supplier_gst_num" #supplier_gst_num="ngModel"
+                        [(ngModel)]="supplierInfoModelObj.supplier_gst_num">
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+
             </div>
+          </div>
         </div>
-        <!-- content-wrapper ends -->
-        <app-footer></app-footer>
+
+      </div>
     </div>
-   
+    <!-- content-wrapper ends -->
+    <app-footer></app-footer>
+  </div>
+
 </div>
