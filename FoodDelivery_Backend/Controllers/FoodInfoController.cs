@@ -1,13 +1,16 @@
 ﻿using FoodDelivery_Backend.Data;
 using FoodDelivery_Backend.Models;
 using FoodDelivery_Backend.Models.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace FoodDelivery_Backend.Controllers
@@ -208,6 +211,46 @@ namespace FoodDelivery_Backend.Controllers
 
             }
 
+        }
+
+
+
+        [HttpPost]
+        [ActionName("UploadFoodInfoImage")]
+        public async Task<IHttpActionResult> UploadFoodInfoImage()
+        {
+            try
+            {
+                var root = HttpContext.Current.Server.MapPath("~/Images/FoodInfo");
+                Directory.CreateDirectory(root);
+
+                var provider = new MultipartFormDataStreamProvider(root);
+                await Request.Content.ReadAsMultipartAsync(provider);
+                var metaDataJson = provider.FormData["metadata"];
+                var metaData = JsonConvert.DeserializeObject<FileMetaDataModel>(metaDataJson);
+
+                var saveFiles = new List<string>();
+                foreach (var item in provider.FileData) {
+                    var originalFileName = item.Headers.ContentDisposition.FileName.Trim('"');
+                    var extension = Path.GetExtension(originalFileName);
+                    var newFileName = $"{metaData.PrimaryKey}_{Guid.NewGuid().ToString()}{extension}";
+                    var newFilePath = Path.Combine(root,newFileName);
+                    File.Move(item.LocalFileName, newFilePath);
+                    saveFiles.Add(newFilePath);
+                }
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occurred",
+                    innerException = e.InnerException.ToString()
+                });
+            }
         }
 
     }
