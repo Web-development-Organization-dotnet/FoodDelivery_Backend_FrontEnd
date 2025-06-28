@@ -344,6 +344,8 @@
     <Content Include="Global.asax" />
     <Content Include="Images\FoodInfo\1_2fe628e9-9bbf-47b0-90fa-ca8a6beb7257.jpg" />
     <Content Include="Images\FoodInfo\1_b9cf51cd-783e-48e2-ad5d-c9c293fb1edd.jpg" />
+    <Content Include="Images\FoodInfo\2_8764b1e9-1485-421e-8c6b-bd8a6be15026.jpg" />
+    <Content Include="Images\FoodInfo\2_e16296f8-1d3e-4c80-ad4d-1c2fe3d9b8e4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Data\FoodDeliveryEntityModel.edmx">
