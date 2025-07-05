@@ -228,6 +228,13 @@ namespace FoodDelivery_Backend.Controllers
                 await Request.Content.ReadAsMultipartAsync(provider);
                 var metaDataJson = provider.FormData["metadata"];
                 var metaData = JsonConvert.DeserializeObject<FileMetaDataModel>(metaDataJson);
+                int id = Convert.ToInt32(metaData.PrimaryKey);
+
+                var query = await db_obj.tbl_food_info.Where(a => a.food_id == id).FirstOrDefaultAsync();
+                if (query == null) 
+                {
+                    throw new Exception("Primary Key not found");
+                }
 
                 var saveFiles = new List<string>();
                 foreach (var item in provider.FileData) {
@@ -236,9 +243,11 @@ namespace FoodDelivery_Backend.Controllers
                     var newFileName = $"{metaData.PrimaryKey}_{Guid.NewGuid().ToString()}{extension}";
                     var newFilePath = Path.Combine(root,newFileName);
                     File.Move(item.LocalFileName, newFilePath);
-                    saveFiles.Add(newFilePath);
+                    saveFiles.Add(newFileName);
                 }
 
+                query.food_img = query.food_img != null && query.food_img != "" ? string.Concat(query.food_img, ",", string.Join(",", saveFiles)) : string.Join(",", saveFiles);
+                db_obj.SaveChanges();
                 return Ok();
             }
             catch (Exception e)
