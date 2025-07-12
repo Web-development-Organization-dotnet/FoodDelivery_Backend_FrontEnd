@@ -237,18 +237,32 @@ namespace FoodDelivery_Backend.Controllers
                 }
 
                 var saveFiles = new List<string>();
-                foreach (var item in provider.FileData) {
+                foreach (var item in provider.FileData) 
+                {
                     var originalFileName = item.Headers.ContentDisposition.FileName.Trim('"');
                     var extension = Path.GetExtension(originalFileName);
-                    var newFileName = $"{metaData.PrimaryKey}_{Guid.NewGuid().ToString()}{extension}";
-                    var newFilePath = Path.Combine(root,newFileName);
-                    File.Move(item.LocalFileName, newFilePath);
-                    saveFiles.Add(newFileName);
+                    //check if the files are img file
+                    if (extension == ".jpeg" || extension == ".jpg" || extension == ".png")
+                    {
+                        var newFileName = $"{metaData.PrimaryKey}_{Guid.NewGuid().ToString()}{extension}";
+                        var newFilePath = Path.Combine(root, newFileName);
+                        File.Move(item.LocalFileName, newFilePath);
+                        saveFiles.Add(newFileName);
+                    }
+
+                    else 
+                    {
+                        if (File.Exists(item.LocalFileName))
+                            File.Delete(item.LocalFileName);
+
+                        //return BadRequest("Only .jpg, .jpeg, and .png files are allowed.");
+                    }
+                    
                 }
 
                 query.food_img = query.food_img != null && query.food_img != "" ? string.Concat(query.food_img, ",", string.Join(",", saveFiles)) : string.Join(",", saveFiles);
                 db_obj.SaveChanges();
-                return Ok();
+                return Ok("Only .jpg, .jpeg, and .png files are allowed.");
             }
             catch (Exception e)
             {
