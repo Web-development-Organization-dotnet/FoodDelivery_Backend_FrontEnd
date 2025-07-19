@@ -15,6 +15,8 @@ namespace FoodDelivery_Backend.Models
         public decimal food_qty { get; set; }
         public string food_img { get; set; }
 
+        public List<string> food_img_paths { get; set; }
+
         public FoodTypeModel foodType { get; set; }
     }
 }

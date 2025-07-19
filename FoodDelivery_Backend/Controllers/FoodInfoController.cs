@@ -146,7 +146,9 @@ namespace FoodDelivery_Backend.Controllers
                             food_img = item.food_img,
                             foodType = type_obj,
                             food_qty = item.food_qty ?? 0, // conversion of nullable decimal to decimal
-                            food_description = item.food_description
+                            food_description = item.food_description,
+                            food_img_paths = GetImagePathFromDB(item.food_img)
+
 
                         };
                         resultModel.Add(model);
@@ -172,7 +174,16 @@ namespace FoodDelivery_Backend.Controllers
 
         }
 
+        private List<string> GetImagePathFromDB(string db_img_path) 
+        {
+            //var folderpath = Path.Combine(Directory.GetCurrentDirectory(), "Images/FoodInfo");
+            var filenames = db_img_path.Split(',');
+            var baseUrl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Authority}";
+            var imageFolderUrl = baseUrl + "/Images/FoodInfo/";
+            var resultUrl = filenames.Select(f => imageFolderUrl + f).ToList();
 
+            return resultUrl;
+        }
 
         [HttpPut]
         [ActionName("UpdateFoodInfo")]
