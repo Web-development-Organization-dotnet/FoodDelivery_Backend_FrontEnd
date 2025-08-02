@@ -92,7 +92,8 @@ namespace FoodDelivery_Backend.Controllers
                         food_img = query.food_img,
                         foodType = type_obj,
                         food_qty = query.food_qty ?? 0, // conversion of nullable decimal to decimal
-                        food_description = query.food_description
+                        food_description = query.food_description,
+                        food_img_paths = GetImagePathFromDB(query.food_img)
 
                     };
 
