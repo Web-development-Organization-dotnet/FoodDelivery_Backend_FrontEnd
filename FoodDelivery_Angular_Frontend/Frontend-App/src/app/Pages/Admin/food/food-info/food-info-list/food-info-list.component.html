@@ -26,6 +26,7 @@
                       <th> Food Type Code </th>
                       <th> Food Description </th>
                       <th> Quantity </th>
+                      <th> Image </th>
                       <th> Action </th>
                     </tr>
                   </thead>
@@ -38,6 +39,9 @@
                       <td>{{item.foodType.food_type_cd}}</td>
                       <td>{{item.food_description}}</td>
                       <td>{{item.food_qty}}</td>
+                      <td>
+                       <ng-image-slider [images]="item.imageCaraousal" #nav></ng-image-slider>
+                      </td>
                       <td><a [routerLink]="['/addEditFoodInfo',item.food_id]" class="btn btn-primary me-2 ">Edit</a>
                       </td>
                     </tr>

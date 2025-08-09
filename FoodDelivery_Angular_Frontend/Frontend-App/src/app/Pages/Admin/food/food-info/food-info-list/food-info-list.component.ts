@@ -10,6 +10,7 @@ import { FoodService } from '../../../../../Service/Food/food.service';
 import { foodInfoModel } from '../../../../../Models/foodInfo';
 import { Config } from 'datatables.net';
 import { Subject } from 'rxjs';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @Component({
   selector: 'app-food-info-list',
@@ -23,6 +24,7 @@ import { Subject } from 'rxjs';
       DataTablesModule,
       RouterLink,
       RouterLinkActive,
+      NgImageSliderModule
     ],
   templateUrl: './food-info-list.component.html',
   styleUrl: './food-info-list.component.css'
@@ -33,6 +35,7 @@ export class FoodInfoListComponent {
     title = 'angulardatatables';
     dtOptions: Config = {};
     dtTrigger: Subject<any> = new Subject();
+    imgobject: Array <object> = [];
 
   constructor(private router: Router, private foodService: FoodService) {
       this.datatablesource = []
@@ -40,6 +43,7 @@ export class FoodInfoListComponent {
 
 ngOnInit(): void {
     this.foodService.getAllFoodInfo().subscribe(q => {
+      q = this.setImages(q);
       this.datatablesource = q;
       console.log(q);
       this.dtTrigger.next(null);
@@ -48,5 +52,16 @@ ngOnInit(): void {
       pagingType: 'full_numbers'
     }
   }
-
+ setImages(datasource: any): any {
+  datasource.forEach((element: any) => {
+    const images = element.food_img_paths.map((img: any) => ({
+      image: img,
+      thumbImage: img,
+      alt: 'alt of image',
+      title: 'title'
+    }));
+    element.imageCaraousal = images;
+  });
+  return datasource;
+}
 }
