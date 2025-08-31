@@ -56,7 +56,10 @@
                     </textarea> -->
                   <!-- <input type="text" class="form-control" id="typedesc" placeholder="Enter Description" name="food_img"
                     #food_img="ngModel" [(ngModel)]="foodInfoModelObj.food_img" required> -->
-
+                  <div [ngStyle]="{'display': foodInfoModelObj.food_id > 0 ? 'block' : 'none'}">
+                    
+                    <ng-image-slider [images]="foodInfoModelObj.imageCaraousal" #nav></ng-image-slider>
+                  </div>  
                   <input aria-label="Upload Image" type="file" (change)="onFileChange($event)" required /><button
                     type="submit">Upload</button>
 

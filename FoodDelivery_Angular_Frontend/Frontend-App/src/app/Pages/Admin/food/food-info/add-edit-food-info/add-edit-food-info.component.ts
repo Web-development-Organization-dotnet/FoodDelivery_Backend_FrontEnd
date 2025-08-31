@@ -8,6 +8,7 @@ import { HeaderComponent } from '../../../../../_layout/header/header.component'
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { SidebarComponent } from '../../../../../_layout/sidebar/sidebar.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @Component({
   selector: 'app-add-edit-food-info',
@@ -19,7 +20,8 @@ import { SidebarComponent } from '../../../../../_layout/sidebar/sidebar.compone
     FormsModule,
     CommonModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    NgImageSliderModule
   ],
   templateUrl: './add-edit-food-info.component.html',
   styleUrls: ['./add-edit-food-info.component.css']
@@ -46,6 +48,8 @@ export class AddEditFoodInfoComponent implements OnInit {
     console.log(this.id);
     if (this.id) {
       this.FoodServ.getFoodInfobyId(this.id).subscribe(q => {
+        console.log(q);
+        q = this.setImages(q);
         this.foodInfoModelObj = q;
         this.foodInfoModelObj.foodType = this.foodInfoModelObj.foodType;
       });
@@ -91,6 +95,18 @@ export class AddEditFoodInfoComponent implements OnInit {
       //this.router.navigate(['/login']);
     }
   }
+
+   setImages(datasource: any): any {
+    const images = datasource.food_img_paths.map((img: any) => ({
+      image: img,
+      thumbImage: img,
+      alt: 'alt of image',
+      title: 'title'
+    }));
+    datasource.imageCaraousal = images;
+  
+  return datasource;
+}
 
   onFileChange(event: any) {
     alert(event.target.files[0].name);
