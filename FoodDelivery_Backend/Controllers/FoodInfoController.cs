@@ -177,12 +177,20 @@ namespace FoodDelivery_Backend.Controllers
 
         private List<string> GetImagePathFromDB(string db_img_path) 
         {
-            //var folderpath = Path.Combine(Directory.GetCurrentDirectory(), "Images/FoodInfo");
-            var filenames = db_img_path.Split(',');
             var baseUrl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Authority}";
             var imageFolderUrl = baseUrl + "/Images/FoodInfo/";
-            var resultUrl = filenames.Select(f => imageFolderUrl + f).ToList();
+            var resultUrl = new List<string>();
 
+            if (string.IsNullOrEmpty(db_img_path))
+            {
+                resultUrl = new List<string>() { imageFolderUrl + "NoImageFound.jpg" };
+            }
+            else
+            {
+                //var folderpath = Path.Combine(Directory.GetCurrentDirectory(), "Images/FoodInfo");
+                var filenames = db_img_path.Split(',');
+                resultUrl = filenames.Select(f => imageFolderUrl + f).ToList();
+            }
             return resultUrl;
         }
 
@@ -274,7 +282,7 @@ namespace FoodDelivery_Backend.Controllers
 
                 query.food_img = query.food_img != null && query.food_img != "" ? string.Concat(query.food_img, ",", string.Join(",", saveFiles)) : string.Join(",", saveFiles);
                 db_obj.SaveChanges();
-                return Ok("Only .jpg, .jpeg, and .png files are allowed.");
+                return Ok("Successfully uploaded");
             }
             catch (Exception e)
             {
