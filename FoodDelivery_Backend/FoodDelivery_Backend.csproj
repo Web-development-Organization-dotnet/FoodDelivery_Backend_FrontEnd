@@ -226,6 +226,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CustomerContoller.cs" />
     <Compile Include="Controllers\FoodInfoController.cs" />
     <Compile Include="Controllers\FoodSupplierController.cs" />
     <Compile Include="Controllers\FoodTypeController.cs" />
@@ -313,6 +314,7 @@
     <Compile Include="Models\adminInfoModelClass2.cs" />
     <Compile Include="Models\Common\ErrorResponse.cs" />
     <Compile Include="Models\Common\FileMetaDataModel.cs" />
+    <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\FoodInfoModel.cs" />
     <Compile Include="Models\FoodTypeModel.cs" />
     <Compile Include="Models\ResponseModel\AdminInfoResponse.cs" />

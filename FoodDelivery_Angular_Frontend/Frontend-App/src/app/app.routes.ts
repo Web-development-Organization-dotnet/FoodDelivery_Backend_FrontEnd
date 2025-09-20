@@ -11,6 +11,7 @@ import { FoodTypeListComponent } from './Pages/Admin/food/food-type/food-type-li
 import { AddEditFoodTypeComponent } from './Pages/Admin/food/food-type/add-edit-food-type/add-edit-food-type.component';
 import { FoodInfoListComponent } from './Pages/Admin/food/food-info/food-info-list/food-info-list.component';
 import { AddEditFoodInfoComponent } from './Pages/Admin/food/food-info/add-edit-food-info/add-edit-food-info.component';
+import { AddEditCustomerTypeComponent } from './Pages/Admin/customer/customer-type/add-edit-customer-type/add-edit-customer-type.component';
 
 
 export const routes: Routes = [
@@ -32,4 +33,6 @@ export const routes: Routes = [
   { path: 'foodInfoList', component: FoodInfoListComponent },
   { path: 'addEditFoodInfo', component: AddEditFoodInfoComponent },
   { path: 'addEditFoodInfo/:id', component: AddEditFoodInfoComponent },
+  { path: 'addEditCustomerType', component: AddEditCustomerTypeComponent },
+  
 ];
