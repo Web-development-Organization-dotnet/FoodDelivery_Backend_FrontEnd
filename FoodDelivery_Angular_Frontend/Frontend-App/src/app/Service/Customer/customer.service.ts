@@ -51,7 +51,7 @@ export class CustomerService {
      'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
-  return this.http.post<any>('https://localhost:44369/api/CustomerSupplier/RegisterCustomerType',  obj, { headers: httpHeader }).pipe(
+  return this.http.post<any>('https://localhost:44369/api/Customer/RegisterCustomerType',  obj, { headers: httpHeader }).pipe(
      map((d) => {
        return d;
       }),

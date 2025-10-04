@@ -6,8 +6,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CustomerService } from '../../../../../Service/Customer/customer.service';
-import { foodTypeModel } from '../../../../../Models/foodType';
-import { FoodService } from '../../../../../Service/Food/food.service';
+import { custTypeModel } from '../../../../../Models/custType';
 
 @Component({
   selector: 'app-add-edit-customer-type',
@@ -25,57 +24,57 @@ import { FoodService } from '../../../../../Service/Food/food.service';
   styleUrl: './add-edit-customer-type.component.css'
 })
 export class AddEditCustomerTypeComponent {
-  foodTypeModel: any = new foodTypeModel();
+  custTypeModel: any = new custTypeModel();
   id:any;
 
-  constructor(private router: Router, private foodServ: FoodService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private custServ: CustomerService, private route: ActivatedRoute) { }
 
   ngOnInit(){
 
     this.id=this.route.snapshot.paramMap.get('id')?.toString();
     
     console.log(this.id);
-    if (this.id) 
-    {
-      this.foodServ.getFoodTypebyId(this.id).subscribe(q=>{
-      this.foodTypeModel = q;
-      this.foodTypeModel.isEdit = true;
-      });
-    }
+    // if (this.id) 
+    // {
+    //   this.custServ.getFoodTypebyId(this.id).subscribe(q=>{
+    //   this.custTypeModel = q;
+    //   this.custTypeModel.isEdit = true;
+    //   });
+    // }
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.foodTypeModel);
+    console.log(this.custTypeModel);
 
     if (!form.invalid) {
-      if (this.foodTypeModel.isEdit == false) {
+      if (this.custTypeModel.isEdit == false) {
         // API Call
-        this.foodServ.registerFoodType(this.foodTypeModel).subscribe(q => {
+        this.custServ.registerCustomerType(this.custTypeModel).subscribe(q => {
           console.log('Registered response', q);
 
-          if (q && q.message === 'Food Type Successfully Registered!!') {
-            alert("Food Type Successfully Registered!!!!!");
-            this.router.navigate(['/foodTypeList']);
+          if (q && q.message === 'Customer Type Successfully Registered!!') {
+            alert("Customer Type Successfully Registered!!!!!");
+            //this.router.navigate(['/custTypeList']);
           }
           else {
             alert('Unable to Register!');
           }
         });
       }
-      else {
-        //updated response from update API call
-        this.foodServ.updateFoodType(this.foodTypeModel).subscribe(q => {
-          console.log('Updated response', q);
+      // else {
+      //   //updated response from update API call
+      //   this.custServ.updateFoodType(this.custTypeModel).subscribe(q => {
+      //     console.log('Updated response', q);
 
-          if (q && q.message === 'Food Type Successfully Updated!!') {
-            alert("Food Type Successfully Updated!!!!!");
-            this.router.navigate(['/foodTypeList']);
-          }
-          else {
-            alert('Unable to Update!');
-          }
-        });
-      }
+      //     if (q && q.message === 'Food Type Successfully Updated!!') {
+      //       alert("Food Type Successfully Updated!!!!!");
+      //       this.router.navigate(['/foodTypeList']);
+      //     }
+      //     else {
+      //       alert('Unable to Update!');
+      //     }
+      //   });
+      // }
     }
     else {
       // Navigate

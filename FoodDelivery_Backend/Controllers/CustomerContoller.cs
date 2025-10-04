@@ -25,12 +25,13 @@ namespace FoodDelivery_Backend.Controllers
 
             try
             {
-                var query = await db_obj.tbl_cust_type.Where(a => a.cust_type_cd == val.cust_type_cd).FirstOrDefaultAsync();
+                string cd = (val.type_desc.Substring(0, 2) + "-" + val.type_desc.Substring(val.type_desc.Length - 2)).ToUpper();
+                var query = await db_obj.tbl_cust_type.Where(a => a.cust_type_cd == cd).FirstOrDefaultAsync();
                 if (query != null)
                 {
                     var model = new tbl_cust_type()
                     {
-                        cust_type_cd = val.cust_type_cd,
+                        cust_type_cd = cd,
                         type_desc = val.type_desc,
                         order_limit = val.order_limit,
                         total_turnover = val.total_turnover
