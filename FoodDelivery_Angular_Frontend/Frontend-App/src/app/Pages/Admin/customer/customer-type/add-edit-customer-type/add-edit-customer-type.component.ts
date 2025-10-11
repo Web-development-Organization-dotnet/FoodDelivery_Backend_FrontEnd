@@ -53,8 +53,8 @@ export class AddEditCustomerTypeComponent {
           console.log('Registered response', q);
 
           if (q && q.message === 'Customer Type Successfully Registered!!') {
-            alert("Customer Type Successfully Registered!!!!!");
-            //this.router.navigate(['/custTypeList']);
+            alert("Customer Type Successfully Registered!!");
+            this.router.navigate(['/custTypeList']);
           }
           else {
             alert('Unable to Register!');

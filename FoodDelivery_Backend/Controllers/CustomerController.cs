@@ -14,7 +14,7 @@ using System.Data.Entity;
 
 namespace FoodDelivery_Backend.Controllers
 {
-    public class CustomerContoller : ApiController
+    public class CustomerController : ApiController
     {
         Food_Delivery_DbEntities db_obj = new Food_Delivery_DbEntities();
 
@@ -25,9 +25,10 @@ namespace FoodDelivery_Backend.Controllers
 
             try
             {
+                
                 string cd = (val.type_desc.Substring(0, 2) + "-" + val.type_desc.Substring(val.type_desc.Length - 2)).ToUpper();
                 var query = await db_obj.tbl_cust_type.Where(a => a.cust_type_cd == cd).FirstOrDefaultAsync();
-                if (query != null)
+                if (query == null)
                 {
                     var model = new tbl_cust_type()
                     {
@@ -53,7 +54,7 @@ namespace FoodDelivery_Backend.Controllers
                     //return BadRequest("Supplier Type Not Registered!!");
                     return new GenericResponse()
                     {
-                        message = "Customer Type Failed!!",
+                        message = "Customer Type already exists!!",
                         Status = "Failed"
                     };
                 }

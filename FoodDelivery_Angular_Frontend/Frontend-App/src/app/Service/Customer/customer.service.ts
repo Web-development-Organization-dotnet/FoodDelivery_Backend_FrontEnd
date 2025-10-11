@@ -12,23 +12,23 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 //Supplier type methods:
-  // getSupplierTypes() {
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
+  getCustomerTypes() {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
 
-  //   return this.http.get<any>('https://localhost:44369/api/FoodSupplier/GetAllSupplierType', { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
+    return this.http.get<any>('https://localhost:44369/api/Customer/GetAllCustomerType', { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
 
-  // }
+  }
   // getSupplierTypebyId(id:string) {
   //   const httpHeader = new HttpHeaders({
   //     'Content-Type': 'application/json',
