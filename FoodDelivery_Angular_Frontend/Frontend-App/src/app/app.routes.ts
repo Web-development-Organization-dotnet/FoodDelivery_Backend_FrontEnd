@@ -35,6 +35,7 @@ export const routes: Routes = [
   { path: 'addEditFoodInfo', component: AddEditFoodInfoComponent },
   { path: 'addEditFoodInfo/:id', component: AddEditFoodInfoComponent },
   { path: 'addEditCustomerType', component: AddEditCustomerTypeComponent },
+  { path: 'addEditCustomerType/:id', component: AddEditCustomerTypeComponent },
   { path: 'custTypeList', component: CustomerTypeListComponent },
   
 ];

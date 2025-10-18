@@ -34,13 +34,13 @@ export class AddEditCustomerTypeComponent {
     this.id=this.route.snapshot.paramMap.get('id')?.toString();
     
     console.log(this.id);
-    // if (this.id) 
-    // {
-    //   this.custServ.getFoodTypebyId(this.id).subscribe(q=>{
-    //   this.custTypeModel = q;
-    //   this.custTypeModel.isEdit = true;
-    //   });
-    // }
+    if (this.id) 
+    {
+      this.custServ.getCustomerTypebyId(this.id).subscribe(q=>{
+      this.custTypeModel = q;
+      this.custTypeModel.isEdit = true;
+      });
+    }
   }
 
   onSubmit(form: NgForm) {
@@ -61,20 +61,20 @@ export class AddEditCustomerTypeComponent {
           }
         });
       }
-      // else {
-      //   //updated response from update API call
-      //   this.custServ.updateFoodType(this.custTypeModel).subscribe(q => {
-      //     console.log('Updated response', q);
+      else {
+        //updated response from update API call
+        this.custServ.updateCustomerType(this.custTypeModel).subscribe(q => {
+          console.log('Updated response', q);
 
-      //     if (q && q.message === 'Food Type Successfully Updated!!') {
-      //       alert("Food Type Successfully Updated!!!!!");
-      //       this.router.navigate(['/foodTypeList']);
-      //     }
-      //     else {
-      //       alert('Unable to Update!');
-      //     }
-      //   });
-      // }
+          if (q && q.message === 'Customer Type Successfully Updated!!') {
+            alert("Customer Type Successfully Updated!!!!!");
+            this.router.navigate(['/custTypeList']);
+          }
+          else {
+            alert('Unable to Update!');
+          }
+        });
+      }
     }
     else {
       // Navigate

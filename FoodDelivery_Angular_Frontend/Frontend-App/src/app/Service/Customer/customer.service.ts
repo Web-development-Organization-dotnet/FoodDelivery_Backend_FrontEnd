@@ -29,23 +29,23 @@ export class CustomerService {
     );
 
   }
-  // getSupplierTypebyId(id:string) {
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
+  getCustomerTypebyId(id:string) {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
 
-  //   return this.http.get<any>('https://localhost:44369/api/FoodSupplier/GetAllSupplierTypeByID?id='+ id, { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
+    return this.http.get<any>('https://localhost:44369/api/Customer/GetCustType?id'+ id, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
 
-  // }
+  }
   registerCustomerType(obj: any){
    const httpHeader = new HttpHeaders({
      'Content-Type': 'application/json',
@@ -61,21 +61,21 @@ export class CustomerService {
       })
    );
  }
-  // updateSupplierType(obj: any){
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
-  // return this.http.put<any>('https://localhost:44369/api/FoodSupplier/UpdateSupplierType',  obj, { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
-  // }
+  updateCustomerType(obj: any){
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+  return this.http.put<any>('https://localhost:44369/api/Customer/UpdateCustType',  obj, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+  }
 //Supplier info methods:
 
   // registerSupplierInfo(obj: any){
