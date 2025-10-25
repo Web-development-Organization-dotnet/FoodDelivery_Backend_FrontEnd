@@ -35,7 +35,7 @@ export class CustomerService {
       'Access-Control-Allow-Origin': 'true'
     });
 
-    return this.http.get<any>('https://localhost:44369/api/Customer/GetCustType?id'+ id, { headers: httpHeader }).pipe(
+    return this.http.get<any>('https://localhost:44369/api/Customer/GetCustType?cust_type_cd='+ id, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),

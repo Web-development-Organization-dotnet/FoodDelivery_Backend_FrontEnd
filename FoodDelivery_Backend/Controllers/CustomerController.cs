@@ -123,7 +123,7 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpGet]
         [ActionName("GetCustType")]
-        public async Task<IHttpActionResult> FetchCustType(String cust_type_cd)
+        public async Task<IHttpActionResult> FetchCustType(string cust_type_cd)
         {
             try
             {
