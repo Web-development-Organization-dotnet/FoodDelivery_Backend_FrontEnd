@@ -76,6 +76,26 @@ export class CustomerService {
       })
     );
   }
+
+  getAllCustomerInfo() {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+
+    return this.http.get<any>('https://localhost:44369/api/CustomerInfo/GetAllCustomerInfo', { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+
+  }
+
+
 //Supplier info methods:
 
   // registerSupplierInfo(obj: any){

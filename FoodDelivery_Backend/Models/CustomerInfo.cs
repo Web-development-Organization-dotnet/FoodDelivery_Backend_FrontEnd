@@ -14,7 +14,5 @@ namespace FoodDelivery_Backend.Models
         public decimal cust_phno { get; set; }
         public decimal cust_pin { get; set; }
 
-
-
     }
 }

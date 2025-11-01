@@ -13,6 +13,8 @@ import { FoodInfoListComponent } from './Pages/Admin/food/food-info/food-info-li
 import { AddEditFoodInfoComponent } from './Pages/Admin/food/food-info/add-edit-food-info/add-edit-food-info.component';
 import { AddEditCustomerTypeComponent } from './Pages/Admin/customer/customer-type/add-edit-customer-type/add-edit-customer-type.component';
 import { CustomerTypeListComponent } from './Pages/Admin/customer/customer-type/customer-type-list/customer-type-list.component';
+import { AddEditCustomerInfoComponent } from './Pages/Admin/customer/customer-info/add-edit-customer-info/add-edit-customer-info.component';
+import { CustomerInfoListComponent } from './Pages/Admin/customer/customer-info/customer-info-list/customer-info-list.component';
 
 
 export const routes: Routes = [
@@ -37,5 +39,8 @@ export const routes: Routes = [
   { path: 'addEditCustomerType', component: AddEditCustomerTypeComponent },
   { path: 'addEditCustomerType/:id', component: AddEditCustomerTypeComponent },
   { path: 'custTypeList', component: CustomerTypeListComponent },
+  { path: 'addEditCustomerInfo', component: AddEditCustomerInfoComponent },
+  { path: 'addEditCustomerInfo/:id', component: AddEditCustomerInfoComponent },
+  { path: 'custInfoList', component: CustomerInfoListComponent },
   
 ];
