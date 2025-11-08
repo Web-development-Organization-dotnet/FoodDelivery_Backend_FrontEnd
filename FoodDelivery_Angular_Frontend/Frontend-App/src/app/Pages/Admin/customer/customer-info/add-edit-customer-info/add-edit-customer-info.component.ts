@@ -54,9 +54,9 @@ export class AddEditCustomerInfoComponent {
           this.custServ.registerCustomerType(this.custInfoobj).subscribe(q => {
             console.log('Registered response', q);
   
-            if (q && q.message === 'Customer Type Successfully Registered!!') {
-              alert("Customer Type Successfully Registered!!");
-              this.router.navigate(['/custTypeList']);
+            if (q && q.message === 'Customer Info Successfully Registered!!') {
+              alert("Customer Info Successfully Registered!!");
+              this.router.navigate(['/custInfoList']);
             }
             else {
               alert('Unable to Register!');

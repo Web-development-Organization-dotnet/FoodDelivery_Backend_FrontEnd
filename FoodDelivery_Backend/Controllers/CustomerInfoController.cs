@@ -62,5 +62,67 @@ namespace FoodDelivery_Backend.Controllers
             }
 
         }
+
+        [HttpPost]
+        [ActionName("RegisterCustomerInfo")]
+        public async Task<GenericResponse> InsertCustInfo([FromBody] CustomerInfo val)
+        {
+
+            try
+            {
+
+                decimal cd = val.cust_phno;
+                var query = await db_obj.tbl_cust_info.Where(a => a.cust_phno == cd).FirstOrDefaultAsync();
+                if (query == null)
+                {
+                    var model = new tbl_cust_info()
+                    {
+                        cust_type_cd = val.cust_type_cd,
+                        cust_name = val.cust_name,
+                        cust_email = val.cust_email,
+                        cust_phno = cd,
+                        cust_pin = val.cust_pin
+
+                    };
+                    db_obj.tbl_cust_info.Add(model);
+                    db_obj.SaveChanges();
+
+                    //return Ok("Food Type Successfully Registered!!");
+                    return new GenericResponse()
+                    {
+                        message = "Customer Info Successfully Registered!!",
+                        Status = "Success"
+                    };
+
+                }
+                else
+                {
+                    //return BadRequest("Supplier Type Not Registered!!");
+                    return new GenericResponse()
+                    {
+                        message = "This phone number already exists!!",
+                        Status = "Failed"
+                    };
+                }
+
+            }
+            catch (Exception e)
+            {
+                //return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //{
+                //    stackTrace = e.StackTrace,
+                //    originalExceptionMessage = e.Message,
+                //    message = "Exception Occured",
+                //    innerException = e.InnerException.ToString()
+                //});
+                return new GenericResponse()
+                {
+                    message = $"Exception Occurred: {e.Message}. Inner Exception: {e.InnerException.ToString()}",
+                    Status = "Exception"
+                };
+            }
+
+        }
+
     }
 }

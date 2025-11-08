@@ -9,18 +9,18 @@
                
                 <!-- To DO -->
                
-                <!-- <div class="col-12 grid-margin stretch-card">
+                <div class="col-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Manage Customer Type</h4>
-                            <p class="card-type_desc">{{custTypeModel.isEdit?'Edit':'Insert'}} Customer Type</p>
+                            <h4 class="card-title">Manage Customer Info</h4>
+                            <p class="card-type_desc">{{custInfoModel.isEdit?'Edit':'Insert'}} Customer Info</p>
                             <form class="forms-sample" #AdminForm="ngForm" (ngSubmit)="onSubmit(AdminForm)">
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Type Description</label>
+                                    <label for="exampleInputName1">Customer Type Code</label>
                                     <input type="text" class="form-control" id="exampleInputName1"
                                         placeholder="Enter Customer Type" name="type_desc" #type_desc="ngModel"
-                                        [(ngModel)]="custTypeModel.type_desc" required minlength="3"  
-                                        [disabled]="custTypeModel.isEdit">
+                                        [(ngModel)]="custInfoModel.type_desc" required minlength="3"  
+                                        [disabled]="custInfoModel.isEdit">
                                        
                                     <div class="text-danger"
                                         *ngIf="type_desc.invalid && (type_desc.touched || type_desc.dirty)">
@@ -29,34 +29,56 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPhone">Order Limit</label>
+                                    <label for="exampleInputPhone">Customer Name</label>
                                     <input type="text" class="form-control" id="foodcategory"
                                         placeholder="Enter Order Limit" name="order_limit" #order_limit="ngModel"
-                                        [(ngModel)]="custTypeModel.order_limit" required
-                                        [disabled]="custTypeModel.isEdit">
+                                        [(ngModel)]="custInfoModel.order_limit" required
+                                        [disabled]="custInfoModel.isEdit">
                                     <div class="text-danger"
                                         *ngIf="order_limit.invalid && (order_limit.touched || order_limit.dirty)">
                                         <span *ngIf="order_limit.errors?.['required']">Required Property</span>
                                         </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail3">Total Turnover</label>
+                                    <label for="exampleInputEmail3">Email</label>
                                     <input type="text" class="form-control" id="typedesc"
                                         placeholder="Enter Total Turnover" name="total_turnover" #total_turnover="ngModel"
-                                        [(ngModel)]="custTypeModel.total_turnover" required>
+                                        [(ngModel)]="custInfoModel.total_turnover" required>
                                     <div class="text-danger"
                                         *ngIf="total_turnover.invalid && (total_turnover.touched || total_turnover.dirty)">
                                         <span *ngIf="total_turnover.errors?.['required']">Required Property</span>
                                         <span *ngIf="total_turnover.errors?.['minlength']">Minimum 20 characters</span>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary me-2">{{custTypeModel.isEdit?'Update':'Register'}}</button>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Phone Number</label>
+                                    <input type="text" class="form-control" id="typedesc"
+                                        placeholder="Enter Total Turnover" name="total_turnover" #total_turnover="ngModel"
+                                        [(ngModel)]="custInfoModel.total_turnover" required>
+                                    <div class="text-danger"
+                                        *ngIf="total_turnover.invalid && (total_turnover.touched || total_turnover.dirty)">
+                                        <span *ngIf="total_turnover.errors?.['required']">Required Property</span>
+                                        <span *ngIf="total_turnover.errors?.['minlength']">Minimum 20 characters</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Pin</label>
+                                    <input type="text" class="form-control" id="typedesc"
+                                        placeholder="Enter Total Turnover" name="total_turnover" #total_turnover="ngModel"
+                                        [(ngModel)]="custInfoModel.total_turnover" required>
+                                    <div class="text-danger"
+                                        *ngIf="total_turnover.invalid && (total_turnover.touched || total_turnover.dirty)">
+                                        <span *ngIf="total_turnover.errors?.['required']">Required Property</span>
+                                        <span *ngIf="total_turnover.errors?.['minlength']">Minimum 20 characters</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary me-2">{{custInfoModel.isEdit?'Update':'Register'}}</button>
                                 <a class="btn btn-light" routerLink="/custTypeList" routerLinkActive="active"
                                     ariaCurrentWhenActive="page">Cancel</a>
                             </form>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
             </div>
         </div>

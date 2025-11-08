@@ -76,8 +76,24 @@ export class CustomerService {
       })
     );
   }
+//Supplier info methods:
 
-  getAllCustomerInfo() {
+  registerCustomerInfo(obj: any){
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+  return this.http.post<any>('https://localhost:44369/api/CustomerInfo/RegisterCustomerInfo',  obj, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+  }
+  getAllCustomerInfo(){
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
@@ -92,44 +108,8 @@ export class CustomerService {
         return err;
       })
     );
-
   }
-
-
-//Supplier info methods:
-
-  // registerSupplierInfo(obj: any){
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
-  // return this.http.post<any>('https://localhost:44369/api/SupplierInfo/InsertSupplierInfo',  obj, { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
-  // }
-  // getAllSupplierInfo(){
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
-
-  //   return this.http.get<any>('https://localhost:44369/api/SupplierInfo/GetAllSupplierInfo', { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
-  // }
-  // getSupplierInfobyId(id:string) {
+  // getCustomerInfobyId(id:string) {
   //   const httpHeader = new HttpHeaders({
   //     'Content-Type': 'application/json',
   //     'Access-Control-Allow-Origin': 'true'
