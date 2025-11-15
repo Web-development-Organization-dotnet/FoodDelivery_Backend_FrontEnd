@@ -9,7 +9,7 @@ import { Config } from 'datatables.net';
 import { Subject } from 'rxjs';
 
 import { DataTablesModule } from 'angular-datatables';
-import { custInfoModel } from '../../../../../Models/customerInfo';
+import { custInfoModel } from '../../../../../Models/custInfo';
 import { CustomerService } from '../../../../../Service/Customer/customer.service';
 
 @Component({

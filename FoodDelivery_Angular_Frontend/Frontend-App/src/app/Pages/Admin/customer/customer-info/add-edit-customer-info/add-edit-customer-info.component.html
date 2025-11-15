@@ -7,74 +7,110 @@
         <div class="content-wrapper">
             <div class="row">
                
-                <!-- To DO -->
-               
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Manage Customer Info</h4>
-                            <p class="card-type_desc">{{custInfoModel.isEdit?'Edit':'Insert'}} Customer Info</p>
+                            <p class="card-type_desc">{{custInfoModelObj.cust_id > 0?'Edit':'Insert'}} Customer Info</p>
+                            
                             <form class="forms-sample" #AdminForm="ngForm" (ngSubmit)="onSubmit(AdminForm)">
+
+                                <!-- Customer Type -->
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Customer Type Code</label>
-                                    <input type="text" class="form-control" id="exampleInputName1"
-                                        placeholder="Enter Customer Type" name="type_desc" #type_desc="ngModel"
-                                        [(ngModel)]="custInfoModel.type_desc" required minlength="3"  
-                                        [disabled]="custInfoModel.isEdit">
-                                       
-                                    <div class="text-danger"
-                                        *ngIf="type_desc.invalid && (type_desc.touched || type_desc.dirty)">
-                                        <span *ngIf="type_desc.errors?.['required']">Required Property</span>
-                                        <span *ngIf="type_desc.errors?.['minlength']">Minimum 3 characters</span>
+                                    <label for="exampleInputPhone">Customer Type</label>
+                                    <select aria-label="Select Customer Type" class="form-control dropdown-toggle" 
+                                            id="custType" name="custType" 
+                                            #custType="ngModel" 
+                                            [(ngModel)]="custInfoModelObj.custType.cust_type_cd" 
+                                            required>
+                                        
+                                        <option value="" disabled selected>Select Customer Type</option>
+                                        <option [ngValue]="item.cust_type_cd" *ngFor="let item of custTypeList">
+                                            {{item.type_desc}}
+                                        </option>
+                                    </select>
+
+                                    <div class="text-danger" *ngIf="custType.invalid && (custType.touched || custType.dirty)">
+                                        <span *ngIf="custType.errors?.['required']">Required Property</span>
                                     </div>
                                 </div>
+
+                                <!-- Customer Name -->
                                 <div class="form-group">
                                     <label for="exampleInputPhone">Customer Name</label>
-                                    <input type="text" class="form-control" id="foodcategory"
-                                        placeholder="Enter Order Limit" name="order_limit" #order_limit="ngModel"
-                                        [(ngModel)]="custInfoModel.order_limit" required
-                                        [disabled]="custInfoModel.isEdit">
+                                    <input type="text" class="form-control" id="cust_name"
+                                        placeholder="Enter Customer Name" name="cust_name" 
+                                        #cust_name="ngModel"
+                                        [(ngModel)]="custInfoModelObj.cust_name" 
+                                        required
+                                        [disabled]="custInfoModelObj.isEdit">
+
                                     <div class="text-danger"
-                                        *ngIf="order_limit.invalid && (order_limit.touched || order_limit.dirty)">
-                                        <span *ngIf="order_limit.errors?.['required']">Required Property</span>
-                                        </div>
+                                        *ngIf="cust_name.invalid && (cust_name.touched || cust_name.dirty)">
+                                        <span *ngIf="cust_name.errors?.['required']">Required Property</span>
+                                    </div>
                                 </div>
+
+                                <!-- Email -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail3">Email</label>
-                                    <input type="text" class="form-control" id="typedesc"
-                                        placeholder="Enter Total Turnover" name="total_turnover" #total_turnover="ngModel"
-                                        [(ngModel)]="custInfoModel.total_turnover" required>
+
+                                    <input type="email" class="form-control" id="cust_email"
+                                        placeholder="Enter Valid Email" name="cust_email" 
+                                        #cust_email="ngModel"
+                                        [(ngModel)]="custInfoModelObj.cust_email" 
+                                        required
+                                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+
+                                    <!-- DEBUG LINE TO SEE VALIDATION ERRORS -->
+                                    <!-- <pre>{{ cust_email.errors | json }}</pre> -->
+
                                     <div class="text-danger"
-                                        *ngIf="total_turnover.invalid && (total_turnover.touched || total_turnover.dirty)">
-                                        <span *ngIf="total_turnover.errors?.['required']">Required Property</span>
-                                        <span *ngIf="total_turnover.errors?.['minlength']">Minimum 20 characters</span>
+                                        *ngIf="cust_email.invalid && (cust_email.touched || cust_email.dirty)">
+                                        
+                                        <span *ngIf="cust_email.errors?.['required']">Required Property</span>
+                                        <span *ngIf="cust_email.errors?.['email']">Invalid email format</span>
+                                        <span *ngIf="cust_email.errors?.['pattern']"> Invalid email format </span>
                                     </div>
                                 </div>
+
+                                <!-- Phone Number -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail3">Phone Number</label>
-                                    <input type="text" class="form-control" id="typedesc"
-                                        placeholder="Enter Total Turnover" name="total_turnover" #total_turnover="ngModel"
-                                        [(ngModel)]="custInfoModel.total_turnover" required>
+                                    <input type="number" class="form-control" id="cust_phno"
+                                        placeholder="Enter Total Turnover" name="cust_phno" #cust_phno="ngModel"
+                                        [(ngModel)]="custInfoModelObj.cust_phno" required maxlength="10" minlength="8">
+                                    
                                     <div class="text-danger"
-                                        *ngIf="total_turnover.invalid && (total_turnover.touched || total_turnover.dirty)">
-                                        <span *ngIf="total_turnover.errors?.['required']">Required Property</span>
-                                        <span *ngIf="total_turnover.errors?.['minlength']">Minimum 20 characters</span>
+                                        *ngIf="cust_phno.invalid && (cust_phno.touched || cust_phno.dirty)">
+                                        <span *ngIf="cust_phno.errors?.['required']">Required Property</span>
+                                        <span *ngIf="cust_phno.errors?.['maxlength']">Maximum 10 characters</span>
+                                        <span *ngIf="cust_phno.errors?.['minlength']">Minimum 8 characters</span>
                                     </div>
                                 </div>
+
+                                <!-- Pin -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail3">Pin</label>
-                                    <input type="text" class="form-control" id="typedesc"
-                                        placeholder="Enter Total Turnover" name="total_turnover" #total_turnover="ngModel"
-                                        [(ngModel)]="custInfoModel.total_turnover" required>
+                                    <input type="text" class="form-control" id="cust_pin"
+                                        placeholder="Enter Total Turnover" name="cust_pin" #cust_pin="ngModel"
+                                        [(ngModel)]="custInfoModelObj.cust_pin" required>
+                                    
                                     <div class="text-danger"
-                                        *ngIf="total_turnover.invalid && (total_turnover.touched || total_turnover.dirty)">
-                                        <span *ngIf="total_turnover.errors?.['required']">Required Property</span>
-                                        <span *ngIf="total_turnover.errors?.['minlength']">Minimum 20 characters</span>
+                                        *ngIf="cust_pin.invalid && (cust_pin.touched || cust_pin.dirty)">
+                                        <span *ngIf="cust_pin.errors?.['required']">Required Property</span>
+                                        <span *ngIf="cust_pin.errors?.['minlength']">Minimum 20 characters</span>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary me-2">{{custInfoModel.isEdit?'Update':'Register'}}</button>
-                                <a class="btn btn-light" routerLink="/custTypeList" routerLinkActive="active"
-                                    ariaCurrentWhenActive="page">Cancel</a>
+
+                                <button type="submit" class="btn btn-primary me-2">
+                                    {{custInfoModelObj.isEdit?'Update':'Register'}}
+                                </button>
+
+                                <a class="btn btn-light" routerLink="/custInfoList" 
+                                   routerLinkActive="active" ariaCurrentWhenActive="page">
+                                   Cancel
+                                </a>
                             </form>
                         </div>
                     </div>
@@ -82,6 +118,7 @@
 
             </div>
         </div>
+
         <!-- content-wrapper ends -->
         <app-footer></app-footer>
     </div>

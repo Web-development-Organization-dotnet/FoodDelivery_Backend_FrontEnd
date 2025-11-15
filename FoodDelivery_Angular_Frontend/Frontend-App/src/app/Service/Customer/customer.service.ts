@@ -109,36 +109,36 @@ export class CustomerService {
       })
     );
   }
-  // getCustomerInfobyId(id:string) {
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
+  getCustomerInfobyId(id:string) {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
 
-  //   return this.http.get<any>('https://localhost:44369/api/SupplierInfo/GetAllSupplierInfoById?id='+ id, { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
+    return this.http.get<any>('https://localhost:44369/api/CustomerInfo/GetCustInfoById?cust_id='+ id, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
 
-  // }
-  // updateSupplierInfo(obj: any){
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
-  // return this.http.put<any>('https://localhost:44369/api/SupplierInfo/UpdateSupplierInfo',  obj, { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
-  // }
+  }
+  updateCustomerInfo(obj: any){
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+  return this.http.put<any>('https://localhost:44369/api/CustomerInfo/UpdateCustInfo',  obj, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+  }
 }
