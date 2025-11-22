@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { UserloginComponent } from './Auth/userlogin/userlogin.component';
-import { UserregisterComponent } from './Auth/userregister/userregister.component';
+import { UserloginComponent } from './Auth/Admin/userlogin/userlogin.component';
+import { UserregisterComponent } from './Auth/Admin/userregister/userregister.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyAccountComponent } from './Pages/Admin/my-account/my-account.component';
 import { SupplierTypeComponent } from './Pages/Admin/supplier-type/SupplierTypeList/supplier-type.component';
@@ -15,12 +15,24 @@ import { AddEditCustomerTypeComponent } from './Pages/Admin/customer/customer-ty
 import { CustomerTypeListComponent } from './Pages/Admin/customer/customer-type/customer-type-list/customer-type-list.component';
 import { AddEditCustomerInfoComponent } from './Pages/Admin/customer/customer-info/add-edit-customer-info/add-edit-customer-info.component';
 import { CustomerInfoListComponent } from './Pages/Admin/customer/customer-info/customer-info-list/customer-info-list.component';
+import { AgentLoginComponent } from './Auth/Agent/agent-login/agent-login.component';
+import { AgentRegisterComponent } from './Auth/Agent/agent-register/agent-register.component';
 
 
 export const routes: Routes = [
 
-  { path: '', component: UserloginComponent },
+  { path: '', component: UserloginComponent},
   { path: 'login', component: UserloginComponent },
+  {
+    path: 'agent',
+    //component: AgentRegisterComponent,
+    children: [
+      { path: 'login', component: AgentLoginComponent }, // matches /agent/login
+      { path: 'register', component: AgentRegisterComponent } // /agent/register
+    ]
+  },
+  { path: 'agentlogin', component: AgentLoginComponent},
+  { path: 'agentregister', component: AgentRegisterComponent},
   { path: 'register', component: UserregisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'adminMyAccount', component: MyAccountComponent },
@@ -43,4 +55,4 @@ export const routes: Routes = [
   { path: 'addEditCustomerInfo/:id', component: AddEditCustomerInfoComponent },
   { path: 'custInfoList', component: CustomerInfoListComponent },
   
-];
+  ];
