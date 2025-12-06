@@ -226,6 +226,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\CustomerInfoController.cs" />
     <Compile Include="Controllers\FoodInfoController.cs" />
@@ -313,6 +314,7 @@
     </Compile>
     <Compile Include="Models\adminInfoModelClass.cs" />
     <Compile Include="Models\adminInfoModelClass2.cs" />
+    <Compile Include="Models\agentInfoModelClass.cs" />
     <Compile Include="Models\Common\ErrorResponse.cs" />
     <Compile Include="Models\Common\FileMetaDataModel.cs" />
     <Compile Include="Models\CustomerInfo.cs" />
@@ -401,6 +403,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Agent\" />
     <Folder Include="Views\CustomerInfo\" />
     <Folder Include="Views\FoodType\" />
   </ItemGroup>
