@@ -18,21 +18,20 @@ import { CustomerInfoListComponent } from './Pages/Admin/customer/customer-info/
 import { AgentLoginComponent } from './Auth/Agent/agent-login/agent-login.component';
 import { AgentRegisterComponent } from './Auth/Agent/agent-register/agent-register.component';
 
-
 export const routes: Routes = [
 
   { path: '', component: UserloginComponent},
   { path: 'login', component: UserloginComponent },
-  {
-    path: 'agent',
-    //component: AgentRegisterComponent,
-    children: [
-      { path: 'login', component: AgentLoginComponent }, // matches /agent/login
-      { path: 'register', component: AgentRegisterComponent } // /agent/register
-    ]
-  },
-  { path: 'agentlogin', component: AgentLoginComponent},
-  { path: 'agentregister', component: AgentRegisterComponent},
+  // {
+  //   path: 'agent',
+  //   component: AgentlandingPageComponent,
+  //   children: [
+  //     { path: 'login', component: AgentLoginComponent }, // matches /agent/login
+  //     { path: 'register', component: AgentRegisterComponent } // /agent/register
+  //   ]
+  // },
+  { path: 'agent/login', component: AgentLoginComponent},
+  { path: 'agent/register', component: AgentRegisterComponent},
   { path: 'register', component: UserregisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'adminMyAccount', component: MyAccountComponent },
