@@ -36,7 +36,7 @@ ngOnInit() {
 
     if (!form.invalid) {
       // API Call
-      this.agentLoginServ.login(this.agentLoginModelObj).subscribe(q => {
+      this.agentLoginServ.agentlogin(this.agentLoginModelObj).subscribe(q => {
         console.log('Login response', q);
 
         if (q && q.message === 'Login successful') {

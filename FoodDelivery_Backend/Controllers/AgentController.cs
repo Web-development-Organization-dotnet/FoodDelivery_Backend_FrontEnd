@@ -72,5 +72,79 @@ namespace FoodDelivery_Backend.Controllers
                 };
             }
         }
+
+        [HttpPost]
+        [ActionName("Login")]
+        public async Task<LoginResponse> AgentLogin([FromBody] agentInfoModelClass val)
+        {
+
+            try
+            {
+                var model = new List<agentInfoModelClass>();
+                var query = await db_obj.tbl_agent_info.Where(a => a.email == val.email && a.password == val.password && a.status == "active").FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    return new LoginResponse()
+                    {
+                        id = query.agent_id,
+                        message = "Login successful",
+                        name = query.name,
+                        profileImageURL = null,
+                        role = "AGENT",
+                        status = "OK"
+                    };
+                }
+
+                else
+                {
+                    return new LoginResponse()
+                    {
+                        id = 0,
+                        message = "User not found",
+                        name = null,
+                        profileImageURL = null,
+                        role = null,
+                        status = null
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new LoginResponse()
+                {
+                    id = 0,
+                    message = e.Message + " / " + e.StackTrace,
+                    name = null,
+                    profileImageURL = null,
+                    role = null,
+                    status = null
+                };
+            }
+        }
+
+        [HttpPost]
+        [ActionName("Register")]
+        public LoginResponse InsertAgent([FromBody] agentInfoModelClass val)
+        {
+            var model = new tbl_agent_info
+            {
+                name = val.name,
+                email = val.email,
+                status = "active",
+                reg_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                phone = val.phone,
+                photo_id_no = val.photo_id_no,
+                password = val.password
+            };
+
+            db_obj.tbl_agent_info.Add(model);
+            db_obj.SaveChanges();
+
+            return new LoginResponse()
+            {
+                message = "Agent Registration Successful"
+            };
+        }
     }
 }
