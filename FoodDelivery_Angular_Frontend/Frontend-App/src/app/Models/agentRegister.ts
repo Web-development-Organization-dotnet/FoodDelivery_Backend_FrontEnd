@@ -1,5 +1,5 @@
 export class agentRegisterModel {
-  name: string;
+  agentname: string;
   email: string;
   status: string;
   reg_date: string;
@@ -10,7 +10,7 @@ export class agentRegisterModel {
   agent_img: string;
 
   constructor() {
-    this.name = '';
+    this.agentname = '';
     this.email = '';
     this.status = '';
     this.reg_date = '';

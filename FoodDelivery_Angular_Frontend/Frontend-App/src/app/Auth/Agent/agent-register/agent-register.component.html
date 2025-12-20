@@ -20,9 +20,9 @@
                 <form class="pt-3" #uForm="ngForm" (ngSubmit)="onSubmit(uForm)">
                 
                 <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="User Name"
-                    name="name" #name="ngModel" [(ngModel)]="agentregisterModelObj.name" required>
-                <div class="text-danger" *ngIf="name.invalid && (name.touched || name.dirty)">
-                <span *ngIf="name.errors?.['required']">Required Property</span>
+                    name="agentname" #agentname="ngModel" [(ngModel)]="agentregisterModelObj.agentname" required>
+                <div class="text-danger" *ngIf="agentname.invalid && (agentname.touched || agentname.dirty)">
+                <span *ngIf="agentname.errors?.['required']">Required Property</span>
                 </div>
                 <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Email ID"
                     name="email" #email="ngModel" [(ngModel)]="agentregisterModelObj.email" required>

@@ -29,10 +29,11 @@ export class AgentRegisterComponent {
     
         if (!form.invalid) {
           // API Call
+          //this.agentregisterModelObj.name = this.agentregisterModelObj.agentname
           this.regServ.agentRegistration(this.agentregisterModelObj).subscribe(q => {
             console.log('Registration response', q);
     
-            if (q && q.message === 'Registration Successful') {
+            if (q && q.message === 'Agent Registration Successful') {
               alert('Registration Successful');
               this.router.navigate(['agent/login']);
             }

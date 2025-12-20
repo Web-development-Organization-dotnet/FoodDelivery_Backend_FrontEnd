@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable } from 'rxjs';
 import { loginModel } from '../../Models/login';
 import { registerModel } from '../../Models/register';
+import { agentRegisterModel } from '../../Models/agentRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -84,14 +85,14 @@ agentlogin(e: loginModel) {
 
   }
 
-  agentRegistration(e: registerModel) {
+  agentRegistration(e: agentRegisterModel) {
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
 
     const data = {
-      name: e.fullname,
+      name: e.agentname,
       password: e.password,
       email: e.email,
       phone: e.phone,
