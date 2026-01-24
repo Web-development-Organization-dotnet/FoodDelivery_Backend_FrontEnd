@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   //AGENT----
-agentlogin(e: loginModel) {
+  agentlogin(e: loginModel) {
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
@@ -100,6 +100,56 @@ agentlogin(e: loginModel) {
     };
 
     return this.http.post<any>('https://localhost:44369/api/Agent/Register', data, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+
+  }
+  //CUSTOMER----
+  // agentlogin(e: loginModel) {
+  //   const httpHeader = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': 'true'
+  //   });
+
+  //   const data = {
+  //     email: e.username,
+  //     password: e.password
+  //   };
+
+  //   return this.http.post<any>('https://localhost:44369/api/Agent/Login', data, { headers: httpHeader }).pipe(
+  //     map((d) => {
+  //       return d;
+  //     }),
+  //     catchError((err) => {
+  //       console.log(err);
+  //       return err;
+  //     })
+  //   );
+
+  // }
+
+  customerRegistration(e: custRegisterModel) {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+
+    const data = {
+      name: e.cust_name,
+      password: e.cust_pin,
+      email: e.cust_email,
+      phone: e.cust_phno,
+      type: e.cust_type_cd
+      //photo_id_no: e.photo_id_no
+    };
+
+    return this.http.post<any>('https://localhost:44369/api/Customer/Register', data, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),

@@ -220,5 +220,135 @@ namespace FoodDelivery_Backend.Controllers
 
         }
 
+        //[HttpGet]
+        //[ActionName("LoginDetails")]
+        //public async Task<AdminInfoResponse> AdminDetails(int agent_id)
+        //{
+
+        //    try
+        //    {
+        //        var model = new List<agentInfoModelClass>();
+        //        var query = await db_obj.tbl_agent_info.Where(a => a.agent_id == agent_id).FirstOrDefaultAsync();
+        //        if (query != null)
+        //        {
+        //            return new AdminInfoResponse()
+        //            {
+        //                emp_id = query.agent_id,
+        //                email = query.email,
+        //                name = query.name,
+        //                phone = query.phone,
+        //                reg_date = query.reg_date,
+        //                status = query.status,
+        //                photo_id_no = query.photo_id_no,
+        //                message = "RECORD FOUND"
+        //            };
+        //        }
+        //        else
+        //        {
+        //            return new AdminInfoResponse()
+        //            {
+        //                emp_id = 0,
+        //                email = null,
+        //                name = null,
+        //                phone = null,
+        //                reg_date = null,
+        //                status = null,
+        //                photo_id_no = null,
+        //                message = "RECORD NOT FOUND"
+        //            };
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        return new AdminInfoResponse()
+        //        {
+        //            emp_id = 0,
+        //            email = null,
+        //            name = null,
+        //            phone = null,
+        //            reg_date = null,
+        //            status = null,
+        //            photo_id_no = null,
+        //            message = e.Message + '|' + e.StackTrace
+        //        };
+        //    }
+        //}
+
+        //[HttpPost]
+        //[ActionName("Login")]
+        //public async Task<LoginResponse> AgentLogin([FromBody] agentInfoModelClass val)
+        //{
+
+        //    try
+        //    {
+        //        var model = new List<agentInfoModelClass>();
+        //        var query = await db_obj.tbl_agent_info.Where(a => a.email == val.email && a.password == val.password && a.status == "active").FirstOrDefaultAsync();
+        //        if (query != null)
+        //        {
+        //            return new LoginResponse()
+        //            {
+        //                id = query.agent_id,
+        //                message = "Login successful",
+        //                name = query.name,
+        //                profileImageURL = null,
+        //                role = "AGENT",
+        //                status = "OK"
+        //            };
+        //        }
+
+        //        else
+        //        {
+        //            return new LoginResponse()
+        //            {
+        //                id = 0,
+        //                message = "User not found",
+        //                name = null,
+        //                profileImageURL = null,
+        //                role = null,
+        //                status = null
+        //            };
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        return new LoginResponse()
+        //        {
+        //            id = 0,
+        //            message = e.Message + " / " + e.StackTrace,
+        //            name = null,
+        //            profileImageURL = null,
+        //            role = null,
+        //            status = null
+        //        };
+        //    }
+        //}
+
+        [HttpPost]
+        [ActionName("Register")]
+        public LoginResponse InsertCustomer([FromBody] CustomerInfo val)
+        {
+            var model = new tbl_cust_info
+            {
+                cust_name = val.cust_name,
+                cust_email = val.cust_email,
+                cust_type_cd = val.cust_type_cd,
+                //status = "active",
+                //reg_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                cust_phno = val.cust_phno,
+                //photo_id_no = val.photo_id_no,
+                cust_pin = val.cust_pin
+            };
+
+            db_obj.tbl_cust_info.Add(model);
+            db_obj.SaveChanges();
+
+            return new LoginResponse()
+            {
+                message = "Customer Registration Successful"
+            };
+        }
+
     }
 }
