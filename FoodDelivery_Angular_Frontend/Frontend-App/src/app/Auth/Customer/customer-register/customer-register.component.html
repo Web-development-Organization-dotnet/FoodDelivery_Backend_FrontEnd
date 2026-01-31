@@ -19,34 +19,53 @@
                 <h2>Create Account ✨</h2>
                 <form class="pt-3" #uForm="ngForm" (ngSubmit)="onSubmit(uForm)">
                 
-                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="User Name"
-                    name="agentname" #agentname="ngModel" [(ngModel)]="agentregisterModelObj.agentname" required>
-                <div class="text-danger" *ngIf="agentname.invalid && (agentname.touched || agentname.dirty)">
-                <span *ngIf="agentname.errors?.['required']">Required Property</span>
+                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Enter Name"
+                    name="cust_name" #cust_name="ngModel" [(ngModel)]="custRegisterModelObj.cust_name" required>
+                <div class="text-danger" *ngIf="cust_name.invalid && (cust_name.touched || cust_name.dirty)">
+                <span *ngIf="cust_name.errors?.['required']">Required Property</span>
                 </div>
-                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Email ID"
-                    name="email" #email="ngModel" [(ngModel)]="agentregisterModelObj.email" required>
-                <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty)">
-                <span *ngIf="email.errors?.['required']">Required Property</span>
+                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Enter Email ID"
+                    name="cust_email" #cust_email="ngModel" [(ngModel)]="custRegisterModelObj.cust_email" required>
+                <div class="text-danger" *ngIf="cust_email.invalid && (cust_email.touched || cust_email.dirty)">
+                <span *ngIf="cust_email.errors?.['required']">Required Property</span>
                 </div>
                 <input type="text" class="form-control form-control-lg" id="exampleInputUsername1"
-                    placeholder="Phone Number" name="phone" #phone="ngModel" [(ngModel)]="agentregisterModelObj.phone" required>
-                <div class="text-danger" *ngIf="phone.invalid && (phone.touched || phone.dirty)">
-                <span *ngIf="phone.errors?.['required']">Required Property</span>
+                    placeholder="Enter Phone Number" name="cust_phno" #cust_phno="ngModel" [(ngModel)]="custRegisterModelObj.cust_phno" required>
+                <div class="text-danger" *ngIf="cust_phno.invalid && (cust_phno.touched || cust_phno.dirty)">
+                <span *ngIf="cust_phno.errors?.['required']">Required Property</span>
                 </div>
                 <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
-                    placeholder="Password" name="password" #password="ngModel" [(ngModel)]="agentregisterModelObj.password"
+                    placeholder="Enter Password" name="cust_pin" #cust_pin="ngModel" [(ngModel)]="custRegisterModelObj.cust_pin"
                     required>
-                <div class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty)">
-                <span *ngIf="password.errors?.['required']">Required Property</span>
+                <div class="text-danger" *ngIf="cust_pin.invalid && (cust_pin.touched || cust_pin.dirty)">
+                <span *ngIf="cust_pin.errors?.['required']">Required Property</span>
                 </div>
                 <!-- <input type="password" class="form-control mb-4" placeholder="Confirm Password"> -->
-                <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"
+                <!-- <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"
                     placeholder="Photo ID Number" name="photo_id_no" #photo_id_no="ngModel"
-                    [(ngModel)]="agentregisterModelObj.photo_id_no" required>
+                    [(ngModel)]="custRegisterModelObj.photo_id_no" required>
                 <div class="text-danger" *ngIf="photo_id_no.invalid && (photo_id_no.touched || photo_id_no.dirty)">
                 <span *ngIf="photo_id_no.errors?.['required']">Required Property</span>
-                </div>
+                </div> -->
+                <div class="form-group">
+                                <!-- <label for="exampleInputPhone">Customer Type</label> -->
+                                    <select aria-label="Select Customer Type" class="form-control dropdown-toggle" 
+                                            id="custType" name="custType" 
+                                            #custType="ngModel" 
+                                            [(ngModel)]="custRegisterModelObj.custType.cust_type_cd" 
+                                            required>
+                                        
+                                        <option value="" disabled selected>Select Customer Type</option>
+                                        <option [ngValue]="item.cust_type_cd" *ngFor="let item of custTypeList">
+                                            {{item.type_desc}}
+                                        </option>
+                                    </select>
+
+                                    <div class="text-danger" *ngIf="custType.invalid && (custType.touched || custType.dirty)">
+                                        <span *ngIf="custType.errors?.['required']">Required Property</span>
+                                    </div>
+                                </div>
+
                 <div class="mt-3 d-grid gap-2">
                 <button [disabled]="!uForm.form.valid" class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn"
                     type="submit">Register</button>

@@ -4,6 +4,7 @@ import { catchError, map, Observable } from 'rxjs';
 import { loginModel } from '../../Models/login';
 import { registerModel } from '../../Models/register';
 import { agentRegisterModel } from '../../Models/agentRegister';
+import { custRegisterModel } from '../../Models/custRegister';
 
 @Injectable({
   providedIn: 'root'

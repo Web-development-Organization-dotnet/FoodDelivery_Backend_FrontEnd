@@ -1,3 +1,5 @@
+import { custTypeModel } from "./custType";
+
 export class custRegisterModel {
   cust_name: string;
   cust_email: string;
@@ -8,6 +10,7 @@ export class custRegisterModel {
   cust_pin: string;
   cust_type_cd: string;
   //agent_img: string;
+  custType: custTypeModel;
 
   constructor() {
     this.cust_name = '';
@@ -19,5 +22,6 @@ export class custRegisterModel {
     this.cust_pin = '';
     this.cust_type_cd = '';
     //this.agent_img = '';  
+    this.custType=new custTypeModel();
     }
 }
