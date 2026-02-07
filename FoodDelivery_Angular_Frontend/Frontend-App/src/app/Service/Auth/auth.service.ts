@@ -162,4 +162,22 @@ export class AuthService {
 
   }
 
+  getCustomerTypes() {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+
+    return this.http.get<any>('https://localhost:44369/api/Customer/GetAllCustomerType', { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+
+  }
+
 }
