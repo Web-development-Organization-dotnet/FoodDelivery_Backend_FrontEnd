@@ -34,11 +34,16 @@
                 <div class="text-danger" *ngIf="cust_phno.invalid && (cust_phno.touched || cust_phno.dirty)">
                 <span *ngIf="cust_phno.errors?.['required']">Required Property</span>
                 </div>
-                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
-                    placeholder="Enter Password" name="cust_pin" #cust_pin="ngModel" [(ngModel)]="custRegisterModelObj.cust_pin"
-                    required>
+                <input type="pin" class="form-control form-control-lg" id="exampleInputUsername1"
+                    placeholder="Enter Address Pin Code" name="cust_pin" #cust_pin="ngModel" [(ngModel)]="custRegisterModelObj.cust_pin" required>
                 <div class="text-danger" *ngIf="cust_pin.invalid && (cust_pin.touched || cust_pin.dirty)">
                 <span *ngIf="cust_pin.errors?.['required']">Required Property</span>
+                </div>
+                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
+                    placeholder="Enter Password" name="cust_passwd" #cust_passwd="ngModel" [(ngModel)]="custRegisterModelObj.cust_passwd"
+                    required>
+                <div class="text-danger" *ngIf="cust_passwd.invalid && (cust_passwd.touched || cust_passwd.dirty)">
+                <span *ngIf="cust_passwd.errors?.['required']">Required Property</span>
                 </div>
                 <!-- <input type="password" class="form-control mb-4" placeholder="Confirm Password"> -->
                 <!-- <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"

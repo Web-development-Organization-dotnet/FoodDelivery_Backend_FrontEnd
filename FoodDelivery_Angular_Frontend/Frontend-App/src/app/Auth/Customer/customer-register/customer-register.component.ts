@@ -37,12 +37,7 @@ export class CustomerRegisterComponent {
 
   onSubmit(form: NgForm) {
     console.log("custRegisterModelObj: ", this.custRegisterModelObj);
-
-    this.regServ.getCustomerTypes().subscribe(q => {
-      console.log(q);
-      this.custTypeList = q;
-    });
-
+    
     if (!form.invalid) {
       // API Call
       //this.agentregisterModelObj.name = this.agentregisterModelObj.agentname

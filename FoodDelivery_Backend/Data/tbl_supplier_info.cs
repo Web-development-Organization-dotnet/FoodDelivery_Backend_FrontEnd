@@ -34,6 +34,7 @@ namespace FoodDelivery_Backend.Data
         public string longtitude { get; set; }
         public string latitude { get; set; }
         public string serv_pin_list { get; set; }
+        public Nullable<decimal> supplier_menu_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_cart_info> tbl_cart_info { get; set; }

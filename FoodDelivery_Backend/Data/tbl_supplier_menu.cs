@@ -23,6 +23,7 @@ namespace FoodDelivery_Backend.Data
         public Nullable<decimal> available_qty { get; set; }
         public string serv_cl_time { get; set; }
         public string serv_op_time { get; set; }
+        public string food_type_code { get; set; }
     
         public virtual tbl_food_info tbl_food_info { get; set; }
         public virtual tbl_supplier_info tbl_supplier_info { get; set; }

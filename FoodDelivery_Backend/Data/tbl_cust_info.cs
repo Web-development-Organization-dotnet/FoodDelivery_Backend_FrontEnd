@@ -31,6 +31,7 @@ namespace FoodDelivery_Backend.Data
         public string cust_email { get; set; }
         public Nullable<decimal> cust_phno { get; set; }
         public Nullable<decimal> cust_pin { get; set; }
+        public string cust_passwd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_cart_info> tbl_cart_info { get; set; }

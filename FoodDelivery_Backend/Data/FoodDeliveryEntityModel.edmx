@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Food_Delivery_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Food_Delivery_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_admin_info">
           <Key>
             <PropertyRef Name="emp_id" />
@@ -77,6 +77,7 @@
           <Property Name="cust_email" Type="varchar" MaxLength="50" />
           <Property Name="cust_phno" Type="numeric" Precision="12" Scale="0" />
           <Property Name="cust_pin" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="cust_passwd" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_cust_payment_mode">
           <Key>
@@ -187,6 +188,7 @@
           <Property Name="pincode" Type="numeric" Precision="18" Scale="0" />
           <Property Name="supplier_type" Type="varchar" MaxLength="50" />
           <Property Name="supplier_status" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_menu_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="longtitude" Type="varchar(max)" />
           <Property Name="latitude" Type="varchar(max)" />
           <Property Name="serv_pin_list" Type="varchar(max)" />
@@ -200,6 +202,7 @@
           <Property Name="item_type" Type="varchar" MaxLength="50" />
           <Property Name="supplier_menu_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="food_type_code" Type="varchar" MaxLength="50" />
           <Property Name="food_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="available_qty" Type="numeric" Precision="18" Scale="0" />
           <Property Name="serv_cl_time" Type="varchar(max)" />
@@ -743,6 +746,7 @@
           <NavigationProperty Name="tbl_cust_wallet" Relationship="Self.FK_tbl_cust_wallet_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_cust_wallet" />
           <NavigationProperty Name="tbl_order_info" Relationship="Self.FK_tbl_order_info_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_order_info" />
           <NavigationProperty Name="tbl_transaction_info" Relationship="Self.FK_tbl_transaction_info_tbl_cust_info" FromRole="tbl_cust_info" ToRole="tbl_transaction_info" />
+          <Property Name="cust_passwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_cust_payment_mode">
           <Key>
@@ -880,6 +884,7 @@
           <NavigationProperty Name="tbl_supplier_type" Relationship="Self.FK_tbl_supplier_info_tbl_supplier_type" FromRole="tbl_supplier_info" ToRole="tbl_supplier_type" />
           <NavigationProperty Name="tbl_supplier_menu" Relationship="Self.FK_tbl_supplier_menu_tbl_supplier_info" FromRole="tbl_supplier_info" ToRole="tbl_supplier_menu" />
           <NavigationProperty Name="tbl_transaction_info" Relationship="Self.FK_tbl_transaction_info_tbl_supplier_info" FromRole="tbl_supplier_info" ToRole="tbl_transaction_info" />
+          <Property Name="supplier_menu_id" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="tbl_supplier_menu">
           <Key>
@@ -896,6 +901,7 @@
           <Property Name="serv_op_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbl_food_info" Relationship="Self.FK_tbl_supplier_menu_tbl_food_info" FromRole="tbl_supplier_menu" ToRole="tbl_food_info" />
           <NavigationProperty Name="tbl_supplier_info" Relationship="Self.FK_tbl_supplier_menu_tbl_supplier_info" FromRole="tbl_supplier_menu" ToRole="tbl_supplier_info" />
+          <Property Name="food_type_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_supplier_type">
           <Key>
@@ -1423,6 +1429,7 @@
           <EntitySetMapping Name="tbl_cust_info">
             <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_cust_info">
               <MappingFragment StoreEntitySet="tbl_cust_info">
+                <ScalarProperty Name="cust_passwd" ColumnName="cust_passwd" />
                 <ScalarProperty Name="cust_id" ColumnName="cust_id" />
                 <ScalarProperty Name="cust_type_cd" ColumnName="cust_type_cd" />
                 <ScalarProperty Name="cust_name" ColumnName="cust_name" />
@@ -1541,6 +1548,7 @@
           <EntitySetMapping Name="tbl_supplier_info">
             <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_supplier_info">
               <MappingFragment StoreEntitySet="tbl_supplier_info">
+                <ScalarProperty Name="supplier_menu_id" ColumnName="supplier_menu_id" />
                 <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
                 <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
                 <ScalarProperty Name="supplier_address" ColumnName="supplier_address" />
@@ -1558,6 +1566,7 @@
           <EntitySetMapping Name="tbl_supplier_menu">
             <EntityTypeMapping TypeName="Food_Delivery_DbModel.tbl_supplier_menu">
               <MappingFragment StoreEntitySet="tbl_supplier_menu">
+                <ScalarProperty Name="food_type_code" ColumnName="food_type_code" />
                 <ScalarProperty Name="item_name" ColumnName="item_name" />
                 <ScalarProperty Name="item_rate" ColumnName="item_rate" />
                 <ScalarProperty Name="item_type" ColumnName="item_type" />

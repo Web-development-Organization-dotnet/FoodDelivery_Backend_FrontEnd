@@ -13,6 +13,7 @@ namespace FoodDelivery_Backend.Models
         public string cust_email { get; set; }
         public decimal cust_phno { get; set; }
         public decimal cust_pin { get; set; }
+        public string cust_passwd { get; set; }
 
         public CustomerType custType { get; set; }
 
