@@ -277,22 +277,22 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("Login")]
-        public async Task<LoginResponse> CustLogin([FromBody] agentInfoModelClass val)
+        public async Task<LoginResponse> CustLogin([FromBody] CustomerInfo val)
         {
 
             try
             {
-                var model = new List<agentInfoModelClass>();
-                var query = await db_obj.tbl_agent_info.Where(a => a.email == val.email && a.password == val.password && a.status == "active").FirstOrDefaultAsync();
+                var model = new List<CustomerInfo>();
+                var query = await db_obj.tbl_cust_info.Where(a => a.cust_email == val.cust_email && a.cust_passwd == val.cust_passwd /*&& a.status == "active"*/).FirstOrDefaultAsync();
                 if (query != null)
                 {
                     return new LoginResponse()
                     {
-                        id = query.agent_id,
+                        id = query.cust_id,
                         message = "Login successful",
-                        name = query.name,
+                        name = query.cust_name,
                         profileImageURL = null,
-                        role = "AGENT",
+                        role = "CUSTOMER",
                         status = "OK"
                     };
                 }

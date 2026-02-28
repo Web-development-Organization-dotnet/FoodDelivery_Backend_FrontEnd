@@ -5,6 +5,7 @@ import { loginModel } from '../../Models/login';
 import { registerModel } from '../../Models/register';
 import { agentRegisterModel } from '../../Models/agentRegister';
 import { custRegisterModel } from '../../Models/custRegister';
+import { custLoginModel } from '../../Models/custLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -112,18 +113,18 @@ export class AuthService {
 
   }
   //CUSTOMER----
-  custlogin(e: loginModel) {
+  custlogin(e: custLoginModel) {
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
 
     const data = {
-      email: e.username,
-      password: e.password
+      cust_email: e.cust_email,
+      cust_passwd: e.cust_passwd
     };
 
-    return this.http.post<any>('https://localhost:44369/api/Agent/Login', data, { headers: httpHeader }).pipe(
+    return this.http.post<any>('https://localhost:44369/api/Customer/Login', data, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),

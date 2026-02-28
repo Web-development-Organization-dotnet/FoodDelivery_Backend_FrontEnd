@@ -1,9 +1,9 @@
 export class custLoginModel {
-  username: string;
-  password: string;
+  cust_email: string;
+  cust_passwd: string;
 
   constructor() {
-    this.username = '';
-    this.password = '';
+    this.cust_email = '';
+    this.cust_passwd = '';
   }
 }

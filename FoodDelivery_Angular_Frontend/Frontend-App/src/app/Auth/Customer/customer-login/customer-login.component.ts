@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { custLoginModel } from '../../../Models/custLogin';
+import { AuthService } from '../../../Service/Auth/auth.service';
 
 @Component({
   selector: 'app-customer-login',
@@ -31,11 +32,11 @@ export class CustomerLoginComponent {
     onSubmit(form: NgForm) {
   
       console.log(form.invalid);
-      console.log(this.loginModelObj);
+      console.log(this.custloginModelObj);
   
       if (!form.invalid) {
         // API Call
-        this.loginServ.login(this.loginModelObj).subscribe(q => {
+        this.loginServ.custlogin(this.custloginModelObj).subscribe(q => {
           console.log('Login response', q);
   
           if (q && q.message === 'Login successful') {
@@ -52,7 +53,7 @@ export class CustomerLoginComponent {
       else {
         // Navigate
         console.log('Error');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/customer/login']);
       }
   
   

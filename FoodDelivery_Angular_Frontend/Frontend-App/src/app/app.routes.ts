@@ -18,6 +18,7 @@ import { CustomerInfoListComponent } from './Pages/Admin/customer/customer-info/
 import { AgentLoginComponent } from './Auth/Agent/agent-login/agent-login.component';
 import { AgentRegisterComponent } from './Auth/Agent/agent-register/agent-register.component';
 import { CustomerRegisterComponent } from './Auth/Customer/customer-register/customer-register.component';
+import { CustomerLoginComponent } from './Auth/Customer/customer-login/customer-login.component';
 
 export const routes: Routes = [
 
@@ -33,6 +34,7 @@ export const routes: Routes = [
   // },
   { path: 'agent/login', component: AgentLoginComponent},
   { path: 'agent/register', component: AgentRegisterComponent},
+  { path: 'customer/login', component: CustomerLoginComponent},
   { path: 'customer/register', component: CustomerRegisterComponent},
   { path: 'register', component: UserregisterComponent },
   { path: 'dashboard', component: DashboardComponent },
