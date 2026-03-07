@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Dashboard",
+    "roles": ["Admin", "Agent", "Customer","Supplier"]
+  },
+  {
+    "name": "My Account",
+    "roles": ["Admin", "Agent", "Customer","Supplier"],
+    "children": [
+      {
+        "name": "Info",
+        "roles": ["Admin", "Agent", "Customer","Supplier"]
+      }
+    ]
+  },
+  {
+    "name": "Manage Suppliers",
+    "roles": ["Admin", "Supplier"],
+    "children": [
+      {
+        "name": "Supplier Types",
+        "roles": ["Admin"]
+      },
+      {
+        "name": "Supplier Info",
+        "roles": ["Admin", "Supplier"]
+      },
+      {
+        "name": "Supplier Menu",
+        "roles": ["Admin", "Supplier"]
+      }
+    ]
+  },
+  {
+    "name": "Manage Food",
+    "roles": ["Customer"],
+    "children": [
+      {
+        "name": "My Orders",
+        "roles": ["Customer"]
+      },
+      {
+        "name": "Support",
+        "roles": ["Customer"]
+      }
+    ]
+  },
+  {
+    "name": "Manage Customers",
+    "roles": ["Admin"],
+    "children": [
+      {
+        "name": "Profile",
+        "roles": ["Admin", "Agent", "Customer"]
+      },
+      {
+        "name": "Security",
+        "roles": ["Admin"]
+      },
+      {
+        "name": "Notifications",
+        "roles": ["Admin", "Agent"]
+      }
+    ]
+  }
+]
