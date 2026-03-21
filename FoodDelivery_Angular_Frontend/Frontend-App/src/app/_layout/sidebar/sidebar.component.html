@@ -1,29 +1,42 @@
 <!-- partial:partials/_sidebar.html -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <ng-container *ngFor="let menu of filteredMenus">
+    <li class="nav-item" *ngIf="!menu.children || menu.children.length==0">
+      <a class="nav-link" [routerLink]="menu.route" routerLinkActive="active" ariaCurrentWhenActive="page">
         <i class="mdi mdi-grid-large menu-icon"></i>
-        <span class="menu-title">Dashboard</span>
+        <span class="menu-title">{{menu.name}}</span>
       </a>
     </li>
 
-    <li class="nav-item nav-category">My Account</li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#ui-account" aria-expanded="false" aria-controls="ui-basic">
-        <i class="menu-icon mdi mdi-floor-plan"></i>
-        <span class="menu-title">My Account</span>
-        <i class="menu-arrow"></i>
+    
+    <!-- <li class="nav-item nav-category" >{{menu.name}}</li> -->
+    <li class="nav-item" *ngIf="menu.children && menu.children.length>0">
+      <a class="nav-link" 
+      data-bs-toggle="collapse" 
+      [attr.href]="'#menu-'+menu.name.replace(' ','')" 
+      aria-expanded="false" 
+      aria-controls="ui-basic">
+      <i class="menu-icon mdi mdi-floor-plan"></i>
+      <span class="menu-title">{{menu.name}}</span>
+      <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="ui-account">
+      <div class="collapse" [id]="'menu-'+menu.name.replace(' ','')">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" routerLink="/adminMyAccount" routerLinkActive="active"
-              ariaCurrentWhenActive="page">Info</a></li>
+
+          <li class="nav-item" *ngFor="let child of menu.children"> 
+            <a class="nav-link" 
+            routerLink="/adminMyAccount" 
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page">{{child.name}}</a>
+          </li>
         </ul>
       </div>
     </li>
 
-    <li class="nav-item nav-category">Manage Suppliers</li>
+    </ng-container>
+
+    <!-- <li class="nav-item nav-category">Manage Suppliers</li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-manageSupplier" aria-expanded="false" aria-controls="ui-manageSupplier">
         <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -57,7 +70,7 @@
       </div>
     </li>
 
-     <li class="nav-item nav-category">Manage Customers</li>
+    <li class="nav-item nav-category">Manage Customers</li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-manageCust" aria-expanded="false" aria-controls="ui-manageCust">
         <i class="menu-icon mdi mdi-floor-plan"></i>
@@ -145,7 +158,7 @@
         <i class="menu-icon mdi mdi-file-document"></i>
         <span class="menu-title">Documentation</span>
       </a>
-    </li>
+    </li> -->
   </ul>
 </nav>
 <!-- partial -->

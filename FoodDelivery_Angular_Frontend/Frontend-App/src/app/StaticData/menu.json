@@ -1,65 +1,67 @@
 [
   {
     "name": "Dashboard",
-    "roles": ["Admin", "Agent", "Customer","Supplier"]
+    "route":"/dashboard",
+    "roles": ["ADMIN", "AGENT", "CUSTOMER","Supplier"]
   },
   {
     "name": "My Account",
-    "roles": ["Admin", "Agent", "Customer","Supplier"],
+    "roles": ["ADMIN", "AGENT", "CUSTOMER","Supplier"],
+    "route":"/dashboard",
     "children": [
       {
         "name": "Info",
-        "roles": ["Admin", "Agent", "Customer","Supplier"]
+        "roles": ["ADMIN", "AGENT", "CUSTOMER","Supplier"]
       }
     ]
   },
   {
     "name": "Manage Suppliers",
-    "roles": ["Admin", "Supplier"],
+    "roles": ["ADMIN", "Supplier"],
     "children": [
       {
         "name": "Supplier Types",
-        "roles": ["Admin"]
+        "roles": ["ADMIN"]
       },
       {
         "name": "Supplier Info",
-        "roles": ["Admin", "Supplier"]
+        "roles": ["ADMIN", "Supplier"]
       },
       {
         "name": "Supplier Menu",
-        "roles": ["Admin", "Supplier"]
+        "roles": ["ADMIN", "Supplier"]
       }
     ]
   },
   {
     "name": "Manage Food",
-    "roles": ["Customer"],
+    "roles": ["CUSTOMER"],
     "children": [
       {
         "name": "My Orders",
-        "roles": ["Customer"]
+        "roles": ["CUSTOMER"]
       },
       {
         "name": "Support",
-        "roles": ["Customer"]
+        "roles": ["CUSTOMER"]
       }
     ]
   },
   {
     "name": "Manage Customers",
-    "roles": ["Admin"],
+    "roles": ["ADMIN"],
     "children": [
       {
         "name": "Profile",
-        "roles": ["Admin", "Agent", "Customer"]
+        "roles": ["ADMIN", "AGENT", "CUSTOMER"]
       },
       {
         "name": "Security",
-        "roles": ["Admin"]
+        "roles": ["ADMIN"]
       },
       {
         "name": "Notifications",
-        "roles": ["Admin", "Agent"]
+        "roles": ["ADMIN", "AGENT"]
       }
     ]
   }
