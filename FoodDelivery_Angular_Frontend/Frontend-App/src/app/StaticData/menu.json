@@ -2,22 +2,34 @@
   {
     "name": "Dashboard",
     "route":"/dashboard",
-    "roles": ["ADMIN", "AGENT", "CUSTOMER","Supplier"]
+    "roles": ["ADMIN", "AGENT", "CUSTOMER","SUPPLIER"]
   },
   {
     "name": "My Account",
-    "roles": ["ADMIN", "AGENT", "CUSTOMER","Supplier"],
+    "roles": ["ADMIN", "AGENT", "CUSTOMER","SUPPLIER"],
     "route":"/dashboard",
     "children": [
       {
         "name": "Info",
-        "roles": ["ADMIN", "AGENT", "CUSTOMER","Supplier"]
+        "roles": ["ADMIN"],
+        "route": "/adminMyAccount"
+      },
+      {
+        
+        "name": "Info",
+        "roles": ["SUPPLIER"],
+        "route": "/AddEditSupplierInfo"
+      },
+      {
+        "name": "Info",
+        "roles": ["CUSTOMER"],
+        "route": "/addEditCustomerInfo"
       }
     ]
   },
   {
     "name": "Manage Suppliers",
-    "roles": ["ADMIN", "Supplier"],
+    "roles": ["ADMIN", "SUPPLIER"],
     "children": [
       {
         "name": "Supplier Types",
@@ -25,25 +37,25 @@
       },
       {
         "name": "Supplier Info",
-        "roles": ["ADMIN", "Supplier"]
-      },
-      {
-        "name": "Supplier Menu",
-        "roles": ["ADMIN", "Supplier"]
+        "roles": ["ADMIN", "SUPPLIER"]
       }
     ]
   },
   {
     "name": "Manage Food",
-    "roles": ["CUSTOMER"],
+    "roles": ["ADMIN","SUPPLIER"],
     "children": [
       {
-        "name": "My Orders",
-        "roles": ["CUSTOMER"]
+        "name": "Food Info",
+        "roles": ["ADMIN","SUPPLIER"]
+      },
+       {
+        "name": "Food Type",
+        "roles": ["ADMIN"]
       },
       {
         "name": "Support",
-        "roles": ["CUSTOMER"]
+        "roles": ["SUPPLIER"]
       }
     ]
   },

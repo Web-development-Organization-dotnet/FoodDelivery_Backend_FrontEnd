@@ -26,7 +26,7 @@
 
           <li class="nav-item" *ngFor="let child of menu.children"> 
             <a class="nav-link" 
-            routerLink="/adminMyAccount" 
+            [routerLink]="child.route"
             routerLinkActive="active"
             ariaCurrentWhenActive="page">{{child.name}}</a>
           </li>
