@@ -194,7 +194,7 @@ export class AuthService {
       supplier_passwd: e.supplier_passwd
     };
 
-    return this.http.post<any>('https://localhost:44369/api/Customer/Login', data, { headers: httpHeader }).pipe(
+    return this.http.post<any>('https://localhost:44369/api/Supplier/Login', data, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),

@@ -21,6 +21,7 @@ namespace FoodDelivery_Backend.Data
             this.tbl_order_breakup = new HashSet<tbl_order_breakup>();
             this.tbl_supplier_menu = new HashSet<tbl_supplier_menu>();
             this.tbl_transaction_info = new HashSet<tbl_transaction_info>();
+            this.tbl_supplier_wallet = new HashSet<tbl_supplier_wallet>();
         }
     
         public decimal supplier_id { get; set; }
@@ -35,6 +36,8 @@ namespace FoodDelivery_Backend.Data
         public string latitude { get; set; }
         public string serv_pin_list { get; set; }
         public Nullable<decimal> supplier_menu_id { get; set; }
+        public string supplier_email { get; set; }
+        public string supplier_passwd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_cart_info> tbl_cart_info { get; set; }
@@ -45,5 +48,7 @@ namespace FoodDelivery_Backend.Data
         public virtual ICollection<tbl_supplier_menu> tbl_supplier_menu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_transaction_info> tbl_transaction_info { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_supplier_wallet> tbl_supplier_wallet { get; set; }
     }
 }

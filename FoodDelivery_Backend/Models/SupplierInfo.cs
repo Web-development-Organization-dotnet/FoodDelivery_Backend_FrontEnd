@@ -19,6 +19,5 @@ namespace FoodDelivery_Backend.Models
         public string latitude { get; set; }
         public string serv_pin_list { get; set; }
 
-
     }
 }

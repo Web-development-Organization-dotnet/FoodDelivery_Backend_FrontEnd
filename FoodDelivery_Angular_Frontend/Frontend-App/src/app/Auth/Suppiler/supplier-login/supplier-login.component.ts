@@ -35,7 +35,7 @@ ngOnInit() {
   
       if (!form.invalid) {
         // API Call
-        this.loginServ.custlogin(this.supplierloginModelObj).subscribe(q => {
+        this.loginServ.supplierlogin(this.supplierloginModelObj).subscribe(q => {
           console.log('Login response', q);
   
           if (q && q.message === 'Login successful') {

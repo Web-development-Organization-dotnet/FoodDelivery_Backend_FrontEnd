@@ -20,6 +20,7 @@ namespace FoodDelivery_Backend.Data
             this.tbl_delivery_info = new HashSet<tbl_delivery_info>();
             this.tbl_order_info = new HashSet<tbl_order_info>();
             this.tbl_transaction_info = new HashSet<tbl_transaction_info>();
+            this.tbl_agent_wallet = new HashSet<tbl_agent_wallet>();
         }
     
         public decimal agent_id { get; set; }
@@ -40,5 +41,7 @@ namespace FoodDelivery_Backend.Data
         public virtual ICollection<tbl_order_info> tbl_order_info { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_transaction_info> tbl_transaction_info { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_agent_wallet> tbl_agent_wallet { get; set; }
     }
 }

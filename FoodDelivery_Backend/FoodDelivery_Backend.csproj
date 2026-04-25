@@ -234,6 +234,7 @@
     <Compile Include="Controllers\FoodTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\SupplierInfoController.cs" />
     <Compile Include="Controllers\SupplierMenuController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -252,6 +253,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FoodDeliveryEntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\sysdiagram.cs">
+      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\tbl_admin_info.cs">
       <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
     </Compile>
@@ -259,6 +263,9 @@
       <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_agent_info.cs">
+      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_agent_wallet.cs">
       <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_cart_info.cs">
@@ -306,6 +313,9 @@
     <Compile Include="Data\tbl_supplier_type.cs">
       <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\tbl_supplier_wallet.cs">
+      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\tbl_transaction_info.cs">
       <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
     </Compile>
@@ -325,6 +335,7 @@
     <Compile Include="Models\ResponseModel\LoginResponse.cs" />
     <Compile Include="Models\ResponseModel\GenericResponse.cs" />
     <Compile Include="Models\SupplierInfo.cs" />
+    <Compile Include="Models\SupplierLogin.cs" />
     <Compile Include="Models\SupplierMenu.cs" />
     <Compile Include="Models\SupplierType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -406,6 +417,7 @@
     <Folder Include="Views\Agent\" />
     <Folder Include="Views\CustomerInfo\" />
     <Folder Include="Views\FoodType\" />
+    <Folder Include="Views\Supplier\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
