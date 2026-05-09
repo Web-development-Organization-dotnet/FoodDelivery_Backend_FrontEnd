@@ -1,6 +1,6 @@
 import { supplierTypeModel } from "./supplierType";
 
-export class supplierInfoModel {
+export class supplierRegisterModel {
     supplier_name: string;
     latitude: string;
     longtitude: string;

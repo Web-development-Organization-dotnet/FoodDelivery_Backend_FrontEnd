@@ -46,7 +46,7 @@ export class CustomerRegisterComponent {
 
         if (q && q.message === 'Customer Registration Successful') {
           alert('Registration Successful');
-          this.router.navigate(['agent/login']);
+          this.router.navigate(['customer/login']);
         }
         else {
           alert('Unable to register!');

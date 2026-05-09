@@ -206,32 +206,32 @@ export class AuthService {
 
   }
 
-  // supplierRegistration(e: custRegisterModel) {
-  //   const httpHeader = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': 'true'
-  //   });
+  supplierRegistration(e: custRegisterModel) {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
 
-  //   const data = {
-  //     cust_name: e.cust_name,
-  //     cust_passwd: e.cust_passwd,
-  //     cust_pin: e.cust_pin,
-  //     cust_email: e.cust_email,
-  //     cust_phno: e.cust_phno,
-  //     cust_type_cd: e.custType.cust_type_cd
-  //     //photo_id_no: e.photo_id_no
-  //   };
+    const data = {
+      cust_name: e.cust_name,
+      cust_passwd: e.cust_passwd,
+      cust_pin: e.cust_pin,
+      cust_email: e.cust_email,
+      cust_phno: e.cust_phno,
+      cust_type_cd: e.custType.cust_type_cd
+      //photo_id_no: e.photo_id_no
+    };
 
-  //   return this.http.post<any>('https://localhost:44369/api/Customer/Register', data, { headers: httpHeader }).pipe(
-  //     map((d) => {
-  //       return d;
-  //     }),
-  //     catchError((err) => {
-  //       console.log(err);
-  //       return err;
-  //     })
-  //   );
+    return this.http.post<any>('https://localhost:44369/api/Customer/Register', data, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
 
-  // }
+  }
 
 }

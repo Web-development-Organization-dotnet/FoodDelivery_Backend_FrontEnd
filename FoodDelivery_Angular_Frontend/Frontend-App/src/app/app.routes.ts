@@ -20,6 +20,7 @@ import { AgentRegisterComponent } from './Auth/Agent/agent-register/agent-regist
 import { CustomerRegisterComponent } from './Auth/Customer/customer-register/customer-register.component';
 import { CustomerLoginComponent } from './Auth/Customer/customer-login/customer-login.component';
 import { SupplierLoginComponent } from './Auth/Suppiler/supplier-login/supplier-login.component';
+import { SupplierRegisterComponent } from './Auth/Suppiler/supplier-register/supplier-register.component';
 
 export const routes: Routes = [
 
@@ -38,7 +39,7 @@ export const routes: Routes = [
   { path: 'customer/login', component: CustomerLoginComponent},
   { path: 'customer/register', component: CustomerRegisterComponent},
   { path: 'supplier/login', component: SupplierLoginComponent},
-  //{ path: 'supplier/register', component: SupplierLoginComponent},
+  { path: 'supplier/register', component: SupplierRegisterComponent},
   { path: 'register', component: UserregisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'adminMyAccount', component: MyAccountComponent },
