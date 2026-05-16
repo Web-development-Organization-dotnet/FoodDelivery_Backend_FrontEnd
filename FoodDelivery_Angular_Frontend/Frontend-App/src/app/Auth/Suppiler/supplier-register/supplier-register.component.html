@@ -39,6 +39,41 @@
                 <div class="text-danger" *ngIf="pincode.invalid && (pincode.touched || pincode.dirty)">
                 <span *ngIf="pincode.errors?.['required']">Required Property</span>
                 </div>
+                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1"
+                    placeholder="Enter Address" name="supplier_address" #supplier_address="ngModel" [(ngModel)]="supplierRegisterModelObj.supplier_address" required>
+                <div class="text-danger" *ngIf="supplier_address.invalid && (supplier_address.touched || supplier_address.dirty)">
+                <span *ngIf="supplier_address.errors?.['required']">Required Property</span>
+                </div>
+                <input type="date" class="form-control form-control-lg" id="reg_date" 
+                    name="reg_date" #reg_date="ngModel" [(ngModel)]="supplierRegisterModelObj.reg_date" [value]="todayDate" required>
+                <div class="text-danger" *ngIf="reg_date.invalid && (reg_date.touched || reg_date.dirty)">
+                <span *ngIf="reg_date.errors?.['required']">Required Property</span>
+                </div>
+                <select class="form-control form-control-lg" id="supplier_status" name="supplier_status"
+                    #supplier_status="ngModel" [(ngModel)]="supplierRegisterModelObj.supplier_status" required>
+                <option value="" disabled selected>Select Supplier Status</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <option value="On Pause">On Pause</option>
+                </select>
+                <div class="text-danger" *ngIf="supplier_status.invalid && (supplier_status.touched || supplier_status.dirty)">
+                <span *ngIf="supplier_status.errors?.['required']">Required Property</span>
+                </div>
+                <input type="text" class="form-control" id="lblLatitude" placeholder="Latitude" name="latitude"
+                    #latitude="ngModel" [(ngModel)]="supplierRegisterModelObj.latitude">
+                <div class="text-danger" *ngIf="latitude.invalid && (latitude.touched || latitude.dirty)">
+                <span *ngIf="latitude.errors?.['required']">Required Property</span>   
+                </div>
+                <input type="text" class="form-control" id="lblLongitude" placeholder="Longitude"
+                    name="longtitude" #longtitude="ngModel" [(ngModel)]="supplierRegisterModelObj.longtitude" required>
+                <div class="text-danger" *ngIf="longtitude.invalid && (longtitude.touched || longtitude.dirty)">
+                <span *ngIf="longtitude.errors?.['required']">Required Property</span>
+                </div>
+                <input type="text" class="form-control form-control-lg" id="exampleInputUsername1"
+                    placeholder="Enter serviceable Pin Codes separated with comma" name="serv_pin_list" #serv_pin_list="ngModel" [(ngModel)]="supplierRegisterModelObj.serv_pin_list" required>
+                <div class="text-danger" *ngIf="serv_pin_list.invalid && (serv_pin_list.touched || serv_pin_list.dirty)">
+                <span *ngIf="serv_pin_list.errors?.['required']">Required Property</span>
+                </div>
                 <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
                     placeholder="Enter Password" name="supplier_passwd" #supplier_passwd="ngModel" [(ngModel)]="supplierRegisterModelObj.supplier_passwd"
                     required>

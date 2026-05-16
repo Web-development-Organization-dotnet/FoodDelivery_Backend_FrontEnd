@@ -21,6 +21,8 @@ import { supplierTypeModel } from '../../../Models/supplierType';
 export class SupplierRegisterComponent {supplierRegisterModelObj: any = new supplierRegisterModel();
   supplierTypeList: supplierTypeModel[] = [];
 
+  todayDate: string = new Date().toISOString().split('T')[0];
+
   constructor(private router: Router, private regServ: AuthService) {
   }
 

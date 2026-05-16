@@ -18,6 +18,8 @@ namespace FoodDelivery_Backend.Models
         public string longtitude { get; set; }
         public string latitude { get; set; }
         public string serv_pin_list { get; set; }
+        public string supplier_email { get; set; }
+        public string supplier_passwd { get; set; }
 
     }
 }

@@ -20,12 +20,12 @@ namespace FoodDelivery_Backend.Controllers
         // GET: Supplier
         [HttpPost]
         [ActionName("Login")]
-        public async Task<LoginResponse> CustLogin([FromBody] SupplierLogin val)
+        public async Task<LoginResponse> SupplierLogin([FromBody] SupplierInfo val)
         {
 
             try
             {
-                var model = new List<SupplierLogin>();
+                var model = new List<SupplierInfo>();
                 var query = await db_obj.tbl_supplier_info.Where(a => a.supplier_email == val.supplier_email && a.supplier_passwd == val.supplier_passwd /*&& a.status == "active"*/).FirstOrDefaultAsync();
                 if (query != null)
                 {
@@ -70,21 +70,29 @@ namespace FoodDelivery_Backend.Controllers
 
         [HttpPost]
         [ActionName("Register")]
-        public LoginResponse InsertCustomer([FromBody] SupplierLogin val)
+        public LoginResponse InsertSupplier([FromBody] SupplierInfo val)
         {
-            var model = new tbl_cust_info
+            var model = new tbl_supplier_info
             {
-                cust_name = val.supplier_name,
-                cust_email = val.supplier_email,
-                cust_passwd = val.supplier_passwd
+                supplier_name = val.supplier_name,
+                supplier_address = val.supplier_address,
+                supplier_gst_num = val.supplier_gst_num,
+                reg_date = val.reg_date,
+                pincode = val.pincode,
+                supplier_status = val.supplier_status,
+                longtitude = val.longtitude,
+                latitude = val.latitude,
+                serv_pin_list = val.serv_pin_list,
+                supplier_email = val.supplier_email,
+                supplier_passwd = val.supplier_passwd
             };
 
-            db_obj.tbl_cust_info.Add(model);
+            db_obj.tbl_supplier_info.Add(model);
             db_obj.SaveChanges();
 
             return new LoginResponse()
             {
-                message = "Customer Registration Successful"
+                message = "Supplier Registration Successful"
             };
         }
 

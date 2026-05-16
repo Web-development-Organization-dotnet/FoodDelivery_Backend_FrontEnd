@@ -7,6 +7,7 @@ import { agentRegisterModel } from '../../Models/agentRegister';
 import { custRegisterModel } from '../../Models/custRegister';
 import { custLoginModel } from '../../Models/custLogin';
 import { supplierLoginModel } from '../../Models/supplierLogin';
+import { supplierRegisterModel } from '../../Models/supplierRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -206,23 +207,27 @@ export class AuthService {
 
   }
 
-  supplierRegistration(e: custRegisterModel) {
+  supplierRegistration(e: supplierRegisterModel) {
     const httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'true'
     });
 
     const data = {
-      cust_name: e.cust_name,
-      cust_passwd: e.cust_passwd,
-      cust_pin: e.cust_pin,
-      cust_email: e.cust_email,
-      cust_phno: e.cust_phno,
-      cust_type_cd: e.custType.cust_type_cd
-      //photo_id_no: e.photo_id_no
+      supplier_name: e.supplier_name,
+      supplier_address: e.supplier_address,
+      supplier_gst_num: e.supplier_gst_num,
+      reg_date: e.reg_date,
+      pincode: e.pincode,
+      supplier_type: e.ST.supplier_type,
+      longtitude: e.longtitude,
+      latitude: e.latitude,
+      serv_pin_list: e.serv_pin_list,
+      supplier_email: e.supplier_email,
+      supplier_passwd: e.supplier_passwd,
     };
 
-    return this.http.post<any>('https://localhost:44369/api/Customer/Register', data, { headers: httpHeader }).pipe(
+    return this.http.post<any>('https://localhost:44369/api/Supplier/Register', data, { headers: httpHeader }).pipe(
       map((d) => {
         return d;
       }),
