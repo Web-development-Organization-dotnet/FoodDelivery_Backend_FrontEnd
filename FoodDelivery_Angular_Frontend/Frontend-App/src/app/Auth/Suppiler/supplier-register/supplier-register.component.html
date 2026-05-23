@@ -95,7 +95,7 @@
                                             [(ngModel)]="supplierRegisterModelObj.ST.supplier_type" 
                                             required>
                                         
-                                        <option value="" disabled selected>Select Customer Type</option>
+                                        <option value="" disabled selected>Select Supplier Type</option>
                                         <option [ngValue]="item.supplier_type" *ngFor="let item of supplierTypeList">
                                             {{item.description}}
                                         </option>

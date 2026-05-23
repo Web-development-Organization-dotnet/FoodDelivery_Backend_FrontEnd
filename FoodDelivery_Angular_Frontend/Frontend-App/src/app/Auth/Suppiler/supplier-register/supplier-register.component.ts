@@ -29,7 +29,7 @@ export class SupplierRegisterComponent {supplierRegisterModelObj: any = new supp
 
   ngOnInit() {
     //Get Supplier Type For DropDown
-    this.regServ.getCustomerTypes().subscribe(q => {
+    this.regServ.getSupplierTypes().subscribe(q => {
       console.log(q);
       this.supplierTypeList = q;
     });

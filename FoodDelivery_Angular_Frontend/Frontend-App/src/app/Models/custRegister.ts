@@ -12,6 +12,17 @@ export class custRegisterModel {
   cust_type_cd: string;
   //agent_img: string;
   custType: custTypeModel;
+  supplier_name: any;
+  supplier_address: any;
+  supplier_gst_num: any;
+  reg_date: any;
+  pincode: any;
+  ST: any;
+  longtitude: any;
+  serv_pin_list: any;
+  latitude: any;
+  supplier_email: any;
+  supplier_passwd: any;
 
   constructor() {
     this.cust_name = '';

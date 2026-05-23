@@ -18,6 +18,49 @@ namespace FoodDelivery_Backend.Controllers
     {
         Food_Delivery_DbEntities db_obj = new Food_Delivery_DbEntities();
         // GET: Supplier
+        [HttpGet]
+        [ActionName("GetAllSupplierType")]
+
+        public async Task<IHttpActionResult> GetAllSupplierType()
+        {
+            try
+            {
+                var query = await db_obj.tbl_supplier_type.ToListAsync();
+                if (query != null)
+                {
+                    var resultModel = new List<SupplierType>();
+                    foreach (var item in query)
+                    {
+                        var subModel = new SupplierType()
+                        {
+                            supplier_type = item.supplier_type,
+                            description = item.description,
+                            yearly_turnover = item.yearly_turnover ?? 0
+                        };
+                        resultModel.Add(subModel);
+                    }
+                    return Ok(resultModel);
+                }
+                else
+                {
+                    return BadRequest("Supplier Type not Found!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+
         [HttpPost]
         [ActionName("Login")]
         public async Task<LoginResponse> SupplierLogin([FromBody] SupplierInfo val)
