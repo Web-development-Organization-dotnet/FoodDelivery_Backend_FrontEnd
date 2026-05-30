@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LandingpageComponent } from './_layout/landingpage/landingpage.component';
 import { UserloginComponent } from './Auth/Admin/userlogin/userlogin.component';
 import { UserregisterComponent } from './Auth/Admin/userregister/userregister.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -24,8 +25,9 @@ import { SupplierRegisterComponent } from './Auth/Suppiler/supplier-register/sup
 
 export const routes: Routes = [
 
-  { path: '', component: UserloginComponent},
+  { path: '', component: LandingpageComponent},
   { path: 'login', component: UserloginComponent },
+  { path: 'admin/login', component: UserloginComponent },
   // {
   //   path: 'agent',
   //   component: AgentlandingPageComponent,

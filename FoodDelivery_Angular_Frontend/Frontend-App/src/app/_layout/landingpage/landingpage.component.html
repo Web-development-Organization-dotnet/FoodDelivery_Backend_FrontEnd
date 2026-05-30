@@ -1,0 +1,76 @@
+<div class="container landing-container d-flex flex-column justify-content-center">
+    
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Food Delivery System</h1>
+        <p class="text-muted">Select your portal to continue</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+        <!-- Admin -->
+        <div class="col-md-3">
+            <div class="card role-card text-center p-4 h-100">
+                <div class="card-body">
+                    <i class="bi bi-person-gear role-icon admin"></i>
+                    <h3>Admin</h3>
+                    <p class="text-muted">
+                        Manage users, products, orders and system settings.
+                    </p>
+                    <a routerLink="/admin/login" class="btn btn-primary">
+                        Login as Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer -->
+        <div class="col-md-3">
+            <div class="card role-card text-center p-4 h-100">
+                <div class="card-body">
+                    <i class="bi bi-person-circle role-icon customer"></i>
+                    <h3>Customer</h3>
+                    <p class="text-muted">
+                        Browse restaurants, place orders and track deliveries.
+                    </p>
+                    <a routerLink="/customer/login" class="btn btn-success">
+                        Login as Customer
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supplier -->
+        <div class="col-md-3">
+            <div class="card role-card text-center p-4 h-100">
+                <div class="card-body">
+                    <i class="bi bi-truck role-icon supplier"></i>
+                    <h3>Supplier</h3>
+                    <p class="text-muted">
+                        Manage inventory, products and supply chain operations.
+                    </p>
+                    <a routerLink="/supplier/login" class="btn btn-info text-white">
+                        Login as Supplier
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent -->
+         <div class="col-md-3">
+            <div class="card role-card text-center p-4 h-100">
+                <div class="card-body">
+                    <i class="bi bi-truck role-icon supplier"></i>
+                    <h3>Agent</h3>
+                    <p class="text-muted">
+                        Manage inventory, products and supply chain operations.
+                    </p>
+                    <a routerLink="/agent/login" class="btn btn-warning text-white">
+                        Login as Agent
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
