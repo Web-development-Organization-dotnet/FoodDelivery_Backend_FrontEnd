@@ -51,12 +51,9 @@
           <Property Name="agent_type_cd" Type="varchar" MaxLength="50" />
           <Property Name="agent_img" Type="varchar(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Food_Delivery_Db.dbo.tbl_agent_wallet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tbl_agent_wallet">
           <Key>
             <PropertyRef Name="agent_wallet_id" />
-            <PropertyRef Name="agent_id" />
           </Key>
           <Property Name="agent_wallet_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="agent_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
@@ -240,17 +237,14 @@ warning 6002: The table/view 'Food_Delivery_Db.dbo.tbl_agent_wallet' does not ha
           <Property Name="description" Type="varchar(max)" />
           <Property Name="yearly_turnover" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Food_Delivery_Db.dbo.tbl_supplier_wallet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tbl_supplier_wallet">
           <Key>
             <PropertyRef Name="supplier_wallet_id" />
-            <PropertyRef Name="supplier_id" />
           </Key>
           <Property Name="supplier_wallet_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="wallet_balance" Type="numeric" Precision="16" Scale="2" />
-          <Property Name="last_updated" Type="datetime" />
+          <Property Name="last_updated" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tbl_transaction_info">
           <Key>
@@ -596,6 +590,7 @@ warning 6002: The table/view 'Food_Delivery_Db.dbo.tbl_supplier_wallet' does not
           <EntitySet Name="tbl_admin_info" EntityType="Self.tbl_admin_info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_agent_category" EntityType="Self.tbl_agent_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_agent_info" EntityType="Self.tbl_agent_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_agent_wallet" EntityType="Self.tbl_agent_wallet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_cart_info" EntityType="Self.tbl_cart_info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_cust_addr" EntityType="Self.tbl_cust_addr" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_cust_info" EntityType="Self.tbl_cust_info" Schema="dbo" store:Type="Tables" />
@@ -611,23 +606,8 @@ warning 6002: The table/view 'Food_Delivery_Db.dbo.tbl_supplier_wallet' does not
           <EntitySet Name="tbl_supplier_info" EntityType="Self.tbl_supplier_info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_supplier_menu" EntityType="Self.tbl_supplier_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_supplier_type" EntityType="Self.tbl_supplier_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_supplier_wallet" EntityType="Self.tbl_supplier_wallet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_transaction_info" EntityType="Self.tbl_transaction_info" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_agent_wallet" EntityType="Self.tbl_agent_wallet" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbl_agent_wallet].[agent_wallet_id] AS [agent_wallet_id], 
-    [tbl_agent_wallet].[agent_id] AS [agent_id], 
-    [tbl_agent_wallet].[wallet_balance] AS [wallet_balance], 
-    [tbl_agent_wallet].[last_updated] AS [last_updated]
-    FROM [dbo].[tbl_agent_wallet] AS [tbl_agent_wallet]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tbl_supplier_wallet" EntityType="Self.tbl_supplier_wallet" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbl_supplier_wallet].[supplier_wallet_id] AS [supplier_wallet_id], 
-    [tbl_supplier_wallet].[supplier_id] AS [supplier_id], 
-    [tbl_supplier_wallet].[wallet_balance] AS [wallet_balance], 
-    [tbl_supplier_wallet].[last_updated] AS [last_updated]
-    FROM [dbo].[tbl_supplier_wallet] AS [tbl_supplier_wallet]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_tbl_agent_info_tbl_agent_category" Association="Self.FK_tbl_agent_info_tbl_agent_category">
             <End Role="tbl_agent_category" EntitySet="tbl_agent_category" />
             <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
@@ -1482,7 +1462,7 @@ warning 6002: The table/view 'Food_Delivery_Db.dbo.tbl_supplier_wallet' does not
           <Property Name="supplier_wallet_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="supplier_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="wallet_balance" Type="Decimal" Precision="16" Scale="2" />
-          <Property Name="last_updated" Type="DateTime" Precision="3" />
+          <Property Name="last_updated" Type="DateTime" />
           <NavigationProperty Name="tbl_supplier_info" Relationship="Food_Delivery_DbModel.FK_tbl_supplier_wallet_tbl_supplier_info" FromRole="tbl_supplier_wallet" ToRole="tbl_supplier_info" />
         </EntityType>
         <Association Name="FK_tbl_agent_wallet_tbl_agent_info">

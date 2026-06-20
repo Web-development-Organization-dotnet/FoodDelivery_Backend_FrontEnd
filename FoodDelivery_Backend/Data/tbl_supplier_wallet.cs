@@ -17,7 +17,7 @@ namespace FoodDelivery_Backend.Data
         public decimal supplier_wallet_id { get; set; }
         public decimal supplier_id { get; set; }
         public Nullable<decimal> wallet_balance { get; set; }
-        public Nullable<System.DateTime> last_updated { get; set; }
+        public string last_updated { get; set; }
     
         public virtual tbl_supplier_info tbl_supplier_info { get; set; }
     }

@@ -238,6 +238,7 @@
     <Compile Include="Controllers\SupplierInfoController.cs" />
     <Compile Include="Controllers\SupplierMenuController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WalletController.cs" />
     <Compile Include="Data\FoodDeliveryEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -338,6 +339,7 @@
     <Compile Include="Models\SupplierLogin.cs" />
     <Compile Include="Models\SupplierMenu.cs" />
     <Compile Include="Models\SupplierType.cs" />
+    <Compile Include="Models\SupplierWallet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -418,6 +420,7 @@
     <Folder Include="Views\CustomerInfo\" />
     <Folder Include="Views\FoodType\" />
     <Folder Include="Views\Supplier\" />
+    <Folder Include="Views\Wallet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
