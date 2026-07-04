@@ -28,6 +28,7 @@ namespace FoodDelivery_Backend.Data
         public virtual DbSet<tbl_admin_info> tbl_admin_info { get; set; }
         public virtual DbSet<tbl_agent_category> tbl_agent_category { get; set; }
         public virtual DbSet<tbl_agent_info> tbl_agent_info { get; set; }
+        public virtual DbSet<tbl_agent_wallet> tbl_agent_wallet { get; set; }
         public virtual DbSet<tbl_cart_info> tbl_cart_info { get; set; }
         public virtual DbSet<tbl_cust_addr> tbl_cust_addr { get; set; }
         public virtual DbSet<tbl_cust_info> tbl_cust_info { get; set; }
@@ -43,9 +44,7 @@ namespace FoodDelivery_Backend.Data
         public virtual DbSet<tbl_supplier_info> tbl_supplier_info { get; set; }
         public virtual DbSet<tbl_supplier_menu> tbl_supplier_menu { get; set; }
         public virtual DbSet<tbl_supplier_type> tbl_supplier_type { get; set; }
-        public virtual DbSet<tbl_transaction_info> tbl_transaction_info { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<tbl_agent_wallet> tbl_agent_wallet { get; set; }
         public virtual DbSet<tbl_supplier_wallet> tbl_supplier_wallet { get; set; }
+        public virtual DbSet<tbl_transaction_info> tbl_transaction_info { get; set; }
     }
 }
