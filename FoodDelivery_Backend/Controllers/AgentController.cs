@@ -146,5 +146,7 @@ namespace FoodDelivery_Backend.Controllers
                 message = "Agent Registration Successful"
             };
         }
+
+        
     }
 }

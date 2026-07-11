@@ -335,6 +335,7 @@
     <Compile Include="Models\SupplierLogin.cs" />
     <Compile Include="Models\SupplierMenu.cs" />
     <Compile Include="Models\SupplierType.cs" />
+    <Compile Include="Models\SupplierWallet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

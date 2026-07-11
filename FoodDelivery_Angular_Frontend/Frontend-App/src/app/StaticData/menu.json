@@ -76,5 +76,27 @@
         "roles": ["ADMIN", "AGENT"]
       }
     ]
+  },
+  {
+    "name": "Manage Wallet",
+    "roles": ["ADMIN", "AGENT", "CUSTOMER", "SUPPLIER"],
+    "route":"/dashboard",
+    "children": [
+      {
+        "name": "Agent Wallet",
+        "roles": ["ADMIN","AGENT"],
+        "route": "/adminMyAccount"
+      },
+      {
+        "name": "Supplier Wallet",
+        "roles": ["ADMIN","SUPPLIER"],
+        "route": "/AddEditSupplierInfo"
+      },
+      {
+        "name": "Customer Wallet",
+        "roles": ["ADMIN","CUSTOMER"],
+        "route": "/addEditCustomerInfo"
+      }
+    ]
   }
 ]

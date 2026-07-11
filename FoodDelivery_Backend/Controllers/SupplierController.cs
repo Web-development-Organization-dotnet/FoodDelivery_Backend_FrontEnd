@@ -139,5 +139,57 @@ namespace FoodDelivery_Backend.Controllers
             };
         }
 
+        [HttpPut]
+        [ActionName("UpdateSupplierWallet")]
+
+        public async Task<GenericResponse> UpdateSupplierWallet([FromBody] SupplierWallet val)
+        {
+            try
+            {
+                var query = await db_obj.tbl_supplier_wallet.Where(a => a.supplier_id == val.supplier_id).FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    query.supplier_wallet_id = val.supplier_wallet_id;
+                    query.wallet_balance = val.wallet_balance;
+                    query.last_update_date = DateTime.Now.ToString();
+
+                    db_obj.SaveChanges();
+
+                    //return Ok("Supplier Wallet Successfully Updated!!");
+                    return new GenericResponse()
+                    {
+                        message = "Supplier Wallet Successfully Updated!!",
+                        Status = "Success"
+                    };
+                }
+                else
+                {
+                    //return BadRequest("Supplier Info Not Updated!!");
+                    return new GenericResponse()
+                    {
+                        message = "Supplier Wallet not Updated!!",
+                        Status = "Failed"
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                //return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                //{
+                //    stackTrace = e.StackTrace,
+                //    originalExceptionMessage = e.Message,
+                //    message = "Exception Occured",
+                //    innerException = e.InnerException.ToString()
+                //});
+                return new GenericResponse()
+                {
+                    message = "Supplier Info Updation Failed!!" + e.Message.ToString(),
+                    Status = "Failed"
+                };
+
+            }
+
+        }
+
     }
 }
