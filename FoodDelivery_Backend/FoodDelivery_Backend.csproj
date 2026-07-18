@@ -238,83 +238,83 @@
     <Compile Include="Controllers\SupplierInfoController.cs" />
     <Compile Include="Controllers\SupplierMenuController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Data\FoodDeliveryEntityModel.Context.cs">
+    <Compile Include="Data\Food_Delivery_DbEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FoodDeliveryEntityModel.Context.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\FoodDeliveryEntityModel.cs">
+    <Compile Include="Data\Food_Delivery_DbEntityModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\FoodDeliveryEntityModel.Designer.cs">
+    <Compile Include="Data\Food_Delivery_DbEntityModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FoodDeliveryEntityModel.edmx</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_admin_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_agent_category.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_agent_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_agent_wallet.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_cart_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_cust_addr.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_cust_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_cust_payment_mode.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_cust_type.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_cust_wallet.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_delivery_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_food_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_food_type.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_issue_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_order_breakup.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_order_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_supplier_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_supplier_menu.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_supplier_type.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_supplier_wallet.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\tbl_transaction_info.cs">
-      <DependentUpon>FoodDeliveryEntityModel.tt</DependentUpon>
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -344,15 +344,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Data\FoodDeliveryEntityModel.Context.tt">
+    <Content Include="Data\Food_Delivery_DbEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodDeliveryEntityModel.edmx</DependentUpon>
-      <LastGenOutput>FoodDeliveryEntityModel.Context.cs</LastGenOutput>
+      <DependentUpon>Food_Delivery_DbEntityModel.edmx</DependentUpon>
+      <LastGenOutput>Food_Delivery_DbEntityModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Data\FoodDeliveryEntityModel.tt">
+    <Content Include="Data\Food_Delivery_DbEntityModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodDeliveryEntityModel.edmx</DependentUpon>
-      <LastGenOutput>FoodDeliveryEntityModel.cs</LastGenOutput>
+      <DependentUpon>Food_Delivery_DbEntityModel.edmx</DependentUpon>
+      <LastGenOutput>Food_Delivery_DbEntityModel.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -382,12 +382,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Data\FoodDeliveryEntityModel.edmx">
+    <EntityDeploy Include="Data\Food_Delivery_DbEntityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FoodDeliveryEntityModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Food_Delivery_DbEntityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Data\FoodDeliveryEntityModel.edmx.diagram">
-      <DependentUpon>FoodDeliveryEntityModel.edmx</DependentUpon>
+    <Content Include="Data\Food_Delivery_DbEntityModel.edmx.diagram">
+      <DependentUpon>Food_Delivery_DbEntityModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

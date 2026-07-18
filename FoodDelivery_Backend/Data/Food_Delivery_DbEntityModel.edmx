@@ -48,7 +48,7 @@
           <Property Name="agent_wallet_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="agent_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="wallet_balance" Type="numeric" Precision="16" Scale="2" />
-          <Property Name="last_updated" Type="datetime" />
+          <Property Name="last_updated_date" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tbl_cart_info">
           <Key>
@@ -112,7 +112,7 @@
           <Property Name="cust_wallet_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="cust_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="wallet_balance" Type="numeric" Precision="16" Scale="2" />
-          <Property Name="last_updated" Type="datetime" />
+          <Property Name="last_updated_date" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tbl_delivery_info">
           <Key>
@@ -760,7 +760,7 @@
           <Property Name="agent_wallet_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="agent_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="wallet_balance" Type="Decimal" Precision="16" Scale="2" />
-          <Property Name="last_updated" Type="DateTime" Precision="3" />
+          <Property Name="last_updated_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbl_agent_info" Relationship="Self.FK_tbl_agent_wallet_tbl_agent_info" FromRole="tbl_agent_wallet" ToRole="tbl_agent_info" />
         </EntityType>
         <EntityType Name="tbl_cart_info">
@@ -840,7 +840,7 @@
           <Property Name="cust_wallet_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="cust_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="wallet_balance" Type="Decimal" Precision="16" Scale="2" />
-          <Property Name="last_updated" Type="DateTime" Precision="3" />
+          <Property Name="last_updated_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbl_cust_info" Relationship="Self.FK_tbl_cust_wallet_tbl_cust_info" FromRole="tbl_cust_wallet" ToRole="tbl_cust_info" />
         </EntityType>
         <EntityType Name="tbl_delivery_info">
@@ -1517,7 +1517,7 @@
                 <ScalarProperty Name="agent_wallet_id" ColumnName="agent_wallet_id" />
                 <ScalarProperty Name="agent_id" ColumnName="agent_id" />
                 <ScalarProperty Name="wallet_balance" ColumnName="wallet_balance" />
-                <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+                <ScalarProperty Name="last_updated_date" ColumnName="last_updated_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1587,7 +1587,7 @@
                 <ScalarProperty Name="cust_wallet_id" ColumnName="cust_wallet_id" />
                 <ScalarProperty Name="cust_id" ColumnName="cust_id" />
                 <ScalarProperty Name="wallet_balance" ColumnName="wallet_balance" />
-                <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+                <ScalarProperty Name="last_updated_date" ColumnName="last_updated_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
