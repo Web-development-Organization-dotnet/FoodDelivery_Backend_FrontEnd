@@ -90,7 +90,7 @@
       {
         "name": "Supplier Wallet",
         "roles": ["ADMIN","SUPPLIER"],
-        "route": "/AddEditSupplierInfo"
+        "route": "/supplierWallet"
       },
       {
         "name": "Customer Wallet",

@@ -158,7 +158,7 @@ namespace FoodDelivery_Backend.Controllers
                     //return Ok("Supplier Wallet Successfully Updated!!");
                     return new GenericResponse()
                     {
-                        message = "Supplier Wallet Successfully Updated!!",
+                        message = "Amount added to your Supplier Wallet successfully!!",
                         Status = "Success"
                     };
                 }
@@ -167,7 +167,7 @@ namespace FoodDelivery_Backend.Controllers
                     //return BadRequest("Supplier Info Not Updated!!");
                     return new GenericResponse()
                     {
-                        message = "Supplier Wallet not Updated!!",
+                        message = "Failed to add amount to your Supplier Wallet!!",
                         Status = "Failed"
                     };
                 }
@@ -183,13 +183,59 @@ namespace FoodDelivery_Backend.Controllers
                 //});
                 return new GenericResponse()
                 {
-                    message = "Supplier Info Updation Failed!!" + e.Message.ToString(),
+                    message = "Supplier Wallet updation Failed!!" + e.Message.ToString(),
                     Status = "Failed"
                 };
 
             }
 
         }
+
+        [HttpGet]
+        [ActionName("GetSupplierWalletInfoById")]
+
+        public async Task<IHttpActionResult> GetSupplierWalletInfoById(Decimal id)
+        {
+            try
+            {
+                var query = await db_obj.tbl_supplier_wallet.Where(t => t.supplier_id == id).Select(t => new SupplierWallet
+                {
+                    SI = new SupplierInfo()
+                    {
+                        supplier_name = t.tbl_supplier_info.supplier_name,
+                        //reg_date = t.tbl_supplier_info.reg_date,
+                        //supplier_email = t.tbl_supplier_info.supplier_email,
+                    },
+                    supplier_wallet_id = t.supplier_wallet_id,
+                    wallet_balance = t.wallet_balance ?? 0,
+                    last_update_date = t.last_update_date
+
+                }).FirstOrDefaultAsync();
+                if (query != null)
+                {
+                    return Ok(query);
+                }
+                else
+                {
+                    return BadRequest("Supplier Wallet Info not Found!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+
+
 
     }
 }

@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FooterComponent } from '../../../../_layout/footer/footer.component';
 import { HeaderComponent } from '../../../../_layout/header/header.component';
 import { SidebarComponent } from '../../../../_layout/sidebar/sidebar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SupplierService } from '../../../../Service/Supplier/supplier.service';
 import { supplierWalletModel } from '../../../../Models/supplierWallet';
+import { supplierInfoModel } from '../../../../Models/supplierInfo';
 
 @Component({
   selector: 'app-supplier-wallet',
@@ -28,7 +29,7 @@ import { supplierWalletModel } from '../../../../Models/supplierWallet';
 export class SupplierWalletComponent {
 
   supplierWalletModelObj:supplierWalletModel=new supplierWalletModel();
-    supplierTypeList:supplierWalletModel[]=[];
+    supplierNameList:supplierInfoModel[]=[];
     id:any;
     constructor (private router:Router, private SupplierServ:SupplierService, private route:ActivatedRoute)
     {
@@ -37,9 +38,9 @@ export class SupplierWalletComponent {
     ngOnInit(){
   
       //Get Supplier Type For DropDown
-      this.SupplierServ.getSupplierTypes().subscribe(q=>{
+      this.SupplierServ.getAllSupplierInfo().subscribe(q=>{
         console.log(q);      
-        this.supplierTypeList=q;
+        this.supplierNameList=q;
       });
   
       this.id=this.route.snapshot.paramMap.get('id')?.toString();
@@ -47,36 +48,20 @@ export class SupplierWalletComponent {
       console.log(this.id);
       if (this.id) 
       {
-        this.SupplierServ.getSupplierInfobyId(this.id).subscribe(q=>{
+        this.SupplierServ.GetSupplierWalletInfoById(this.id).subscribe(q=>{
         this.supplierWalletModelObj = q;
-        this.supplierWalletModelObj.supplier_type=this.supplierWalletModelObj.SI.supplier_name;
+        this.supplierWalletModelObj.supplier_name=this.supplierWalletModelObj.SI.supplier_name;
         });
       }
     }
      onSubmit(form: NgForm) {
         console.log(this.supplierWalletModelObj);
-    
-        if (!form.invalid) {
-          if(!this.id){
-            this.supplierWalletModelObj.SI.supplier_name=this.supplierWalletModelObj.supplier_name;
-            // API Call
-            this.SupplierServ.registerSupplierInfo(this.supplierWalletModelObj).subscribe(q => {
-              console.log('Updateed response', q);
-      
-              if (q && q.message === 'Supplier Info Successfully Registered!!') {
-                alert('Supplier Info Successfully registered!!');
-                this.router.navigate(['/supplierInfoList']);
-              }
-              else {
-                alert('Supplier Info Failed to register!!');
-              }
-            })
-          }        
-          else{
+
+          if (!form.invalid) {
             this.supplierWalletModelObj.SI.supplier_name=this.supplierWalletModelObj.supplier_name;
             // API Call
             this.SupplierServ.UpdateSupplierWallet(this.supplierWalletModelObj).subscribe(q => {
-              console.log('Updateed response', q);
+              console.log('Updated response', q);
       
               if (q && q.message === 'Amount added to your Supplier Wallet successfully!!') {
                 alert('Amount added to your Supplier Wallet successfully!!');
@@ -88,7 +73,6 @@ export class SupplierWalletComponent {
             })
   
           }
-        }
         else {
           // Navigate
           console.log('Error');
