@@ -1,76 +1,300 @@
-<div class="container landing-container d-flex flex-column justify-content-center">
-    
-    <div class="text-center mb-5">
-        <h1 class="fw-bold">Food Delivery System</h1>
-        <p class="text-muted">Select your portal to continue</p>
+<div class="swiggy-home">
+  <header class="topbar">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg align-items-center py-3">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <span class="brand-mark">S</span>
+          <span class="brand-name">Swad Service</span>
+        </a>
+
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <a routerLink="/login-landing" class="btn btn-outline-warning btn-sm px-4 fw-bold">Login</a>
+          <a routerLink="/customer/register" class="btn btn-warning btn-sm px-4 fw-bold text-dark">Sign up</a>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <div class="row g-4 justify-content-center">
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <div class="hero-copy">
+              <span class="eyebrow">Kitchen in minutes</span>
+              <h1>Order food from favourite restaurants near you.</h1>
+              <p>Enjoy the best meals delivered fast with live tracking, easy payments, and handpicked restaurant deals.</p>
 
-        <!-- Admin -->
-        <div class="col-md-3">
-            <div class="card role-card text-center p-4 h-100">
-                <div class="card-body">
-                    <i class="bi bi-person-gear role-icon admin"></i>
-                    <h3>Admin</h3>
-                    <p class="text-muted">
-                        Manage users, products, orders and system settings.
-                    </p>
-                    <a routerLink="/admin/login" class="btn btn-primary">
-                        Login as Admin
-                    </a>
+              <div class="search-bar">
+                <div class="search-field location-field">
+                  <select class="form-select border-0 shadow-none">
+                    <option selected>500001</option>
+                    <option>560001</option>
+                    <option>600001</option>
+                    <option>400001</option>
+                  </select>
                 </div>
+                <div class="search-field restaurant-field">
+                  <select class="form-select border-0 shadow-none">
+                    <option selected>Restaurant</option>
+                    <option>Pizza Hut</option>
+                    <option>Domino's</option>
+                    <option>McDonald's</option>
+                    <option>Local Bites</option>
+                  </select>
+                </div>
+                <button class="btn btn-warning fw-bold px-4">Find Food</button>
+              </div>
+
+              <div class="popular-tags mt-4">
+                <span>Popular:</span>
+                <button class="btn btn-sm btn-light">Pizza</button>
+                <button class="btn btn-sm btn-light">Biryani</button>
+                <button class="btn btn-sm btn-light">Burger</button>
+                <button class="btn btn-sm btn-light">Sushi</button>
+              </div>
             </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="hero-visual">
+              <div class="feature-badge">
+                <span class="badge-rating">4.8</span>
+                <small>Over 20k+ reviews</small>
+              </div>
+
+              <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" alt="Food delivery" class="img-fluid main-food-image" />
+
+              <div class="floating-card">
+                <div class="mini-card">
+                  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=300&q=80" alt="Restaurant" />
+                  <div>
+                    <strong>Paneer Paradise</strong>
+                    <small>32 mins • ₹299</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container">
+        <div class="row text-center g-4">
+          <div class="col-md-3">
+            <div class="trust-item">
+              <i class="bi bi-stopwatch"></i>
+              <h5>15 min</h5>
+              <p>Fast deliveries</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="trust-item">
+              <i class="bi bi-shield-check"></i>
+              <h5>Safe</h5>
+              <p>Verified partners</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="trust-item">
+              <i class="bi bi-cash-stack"></i>
+              <h5>Easy pay</h5>
+              <p>UPI & card support</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="trust-item">
+              <i class="bi bi-emoji-smile"></i>
+              <h5>1M+</h5>
+              <p>Happy customers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-section">
+      <div class="container">
+        <div class="section-heading d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <span class="eyebrow dark">Popular cuisines</span>
+            <h2>Craving something tasty?</h2>
+          </div>
+          <a href="#" class="text-decoration-none fw-bold">View all</a>
         </div>
 
-        <!-- Customer -->
-        <div class="col-md-3">
-            <div class="card role-card text-center p-4 h-100">
-                <div class="card-body">
-                    <i class="bi bi-person-circle role-icon customer"></i>
-                    <h3>Customer</h3>
-                    <p class="text-muted">
-                        Browse restaurants, place orders and track deliveries.
-                    </p>
-                    <a routerLink="/customer/login" class="btn btn-success">
-                        Login as Customer
-                    </a>
-                </div>
+        <div class="row g-4">
+          <div class="col-md-3 col-sm-6">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80" alt="Pizza" />
+              <div class="category-info">
+                <h5>Pizza</h5>
+                <small>245 places</small>
+              </div>
             </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=500&q=80" alt="Biryani" />
+              <div class="category-info">
+                <h5>Biryani</h5>
+                <small>188 places</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" alt="Burger" />
+              <div class="category-info">
+                <h5>Burger</h5>
+                <small>320 places</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="category-card">
+              <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=500&q=80" alt="Desserts" />
+              <div class="category-info">
+                <h5>Desserts</h5>
+                <small>142 places</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="restaurant-section">
+      <div class="container">
+        <div class="section-heading d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <span class="eyebrow dark">Top restaurants</span>
+            <h2>Fresh picks for you</h2>
+          </div>
+          <a href="#" class="text-decoration-none fw-bold">See more</a>
         </div>
 
-        <!-- Supplier -->
-        <div class="col-md-3">
-            <div class="card role-card text-center p-4 h-100">
-                <div class="card-body">
-                    <i class="bi bi-truck role-icon supplier"></i>
-                    <h3>Supplier</h3>
-                    <p class="text-muted">
-                        Manage inventory, products and supply chain operations.
-                    </p>
-                    <a routerLink="/supplier/login" class="btn btn-info text-white">
-                        Login as Supplier
-                    </a>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+              <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80" alt="Restaurant" />
+              <div class="restaurant-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5>Grill Kitchen</h5>
+                    <p>North Indian, Biryani</p>
+                  </div>
+                  <span class="rating">4.7 ★</span>
                 </div>
+                <div class="meta-row d-flex justify-content-between">
+                  <span>₹350 for two</span>
+                  <span>30 min</span>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant" />
+              <div class="restaurant-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5>Paneer Joy</h5>
+                    <p>Veg, Chinese, Snacks</p>
+                  </div>
+                  <span class="rating">4.8 ★</span>
+                </div>
+                <div class="meta-row d-flex justify-content-between">
+                  <span>₹280 for two</span>
+                  <span>25 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="restaurant-card">
+              <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" alt="Restaurant" />
+              <div class="restaurant-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5>Ocean Spice</h5>
+                    <p>Seafood, Sushi, Rolls</p>
+                  </div>
+                  <span class="rating">4.9 ★</span>
+                </div>
+                <div class="meta-row d-flex justify-content-between">
+                  <span>₹499 for two</span>
+                  <span>35 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-section">
+      <div class="container">
+        <div class="section-heading text-center mb-5">
+          <span class="eyebrow dark">Why choose us</span>
+          <h2>Everything you need for a great meal</h2>
         </div>
 
-        <!-- Agent -->
-         <div class="col-md-3">
-            <div class="card role-card text-center p-4 h-100">
-                <div class="card-body">
-                    <i class="bi bi-truck role-icon supplier"></i>
-                    <h3>Agent</h3>
-                    <p class="text-muted">
-                        Manage inventory, products and supply chain operations.
-                    </p>
-                    <a routerLink="/agent/login" class="btn btn-warning text-white">
-                        Login as Agent
-                    </a>
-                </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-box">
+              <div class="icon-wrap">
+                <i class="bi bi-bicycle"></i>
+              </div>
+              <h4>Fast delivery</h4>
+              <p>Track your order in real time and get fresh food delivered at lightning speed.</p>
             </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-box">
+              <div class="icon-wrap orange">
+                <i class="bi bi-shop-window"></i>
+              </div>
+              <h4>Curated menus</h4>
+              <p>Discover top-rated restaurants with chef specials, combos, and quick bites nearby.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-box">
+              <div class="icon-wrap green">
+                <i class="bi bi-wallet2"></i>
+              </div>
+              <h4>Secure payments</h4>
+              <p>Pay with cards, UPI, wallets, or cash on delivery with a smooth checkout experience.</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
-
+    <section class="download-cta">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <div class="cta-copy">
+              <span class="eyebrow dark">Download app</span>
+              <h2>Get our app and enjoy exclusive offers.</h2>
+              <p>Order cravings with just a tap. Discover daily food deals, loyalty perks, and seamless checkout on the go.</p>
+              <div class="store-buttons d-flex gap-3">
+                <button class="btn btn-dark">App Store</button>
+                <button class="btn btn-dark">Google Play</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center">
+            <img src="https://images.unsplash.com/photo-1526327431454-7f3a1300d4de?auto=format&fit=crop&w=700&q=80" alt="Mobile app" class="cta-phone" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
