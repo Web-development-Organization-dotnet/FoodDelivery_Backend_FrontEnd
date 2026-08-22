@@ -23,6 +23,7 @@ import { CustomerRegisterComponent } from './Auth/Customer/customer-register/cus
 import { CustomerLoginComponent } from './Auth/Customer/customer-login/customer-login.component';
 import { SupplierLoginComponent } from './Auth/Suppiler/supplier-login/supplier-login.component';
 import { SupplierRegisterComponent } from './Auth/Suppiler/supplier-register/supplier-register.component';
+import { SupplierWalletComponent } from './Pages/Admin/Wallet/supplier-wallet/supplier-wallet.component';
 
 export const routes: Routes = [
 
@@ -53,6 +54,7 @@ export const routes: Routes = [
   { path: 'supplierInfoList', component: SupplierInfoListComponent },
   { path: 'AddEditSupplierInfo', component: AddEditSupplierInfoComponent },
   { path: 'AddEditSupplierInfo/:id', component: AddEditSupplierInfoComponent },
+  { path: 'supplierWallet', component: SupplierWalletComponent},
   { path: 'foodTypeList', component: FoodTypeListComponent },
   { path: 'addEditFoodType', component: AddEditFoodTypeComponent },
   { path: 'addEditFoodType/:id', component: AddEditFoodTypeComponent },

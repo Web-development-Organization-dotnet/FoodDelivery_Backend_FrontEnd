@@ -141,4 +141,36 @@ export class SupplierService {
       })
     );
   }
+  UpdateSupplierWallet(obj: any){
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+  return this.http.put<any>('https://localhost:44369/api/Supplier/UpdateSupplierWallet',  obj, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+  }
+  GetSupplierWalletInfoById(id:string) {
+    const httpHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'true'
+    });
+
+    return this.http.get<any>('https://localhost:44369/api/Supplier/GetSupplierWalletInfoById?id='+ id, { headers: httpHeader }).pipe(
+      map((d) => {
+        return d;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return err;
+      })
+    );
+
+  }
 }
