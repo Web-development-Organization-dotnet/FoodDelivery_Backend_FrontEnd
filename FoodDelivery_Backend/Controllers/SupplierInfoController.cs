@@ -274,7 +274,107 @@ namespace FoodDelivery_Backend.Controllers
 
         }
 
+        [HttpGet]
+        [ActionName("GetAllSupplierPincode")]
 
+        public async Task<IHttpActionResult> GetAllSupplierPincode()
+        {
+            try
+            {
+                var query = await db_obj.tbl_supplier_info.Where(t => t.supplier_status != "Inactive").Select(t => new SupplierInfo
+                {
+                    pincode = t.pincode ?? 0
+                }).Distinct().ToListAsync();
+                if (query != null)
+                {                    
+                    return Ok(query);
+                }
+                else
+                {
+                    return BadRequest("No Supplier Pincode available!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+        [HttpGet]
+        [ActionName("GetAllSupplierInfoByPincode")]
+
+        public async Task<IHttpActionResult> GetAllSupplierInfoByPincode(Decimal? pincode)
+        {
+            try
+            {
+                //if pincode == 0
+                //{
+
+                //}
+                //else
+                //{
+                    var query = await db_obj.tbl_supplier_info.Where(t => (!pincode.HasValue || pincode.Value == 0 || t.pincode == pincode) && t.supplier_status != "Inactive").Include(t => t.supplier_type).Select(t => new SupplierInfo
+                {
+                    ST = new SupplierType()
+                    {
+                        supplier_type = t.tbl_supplier_type.supplier_type,
+                        description = t.tbl_supplier_type.description,
+                        yearly_turnover = t.tbl_supplier_type.yearly_turnover ?? 0,
+                    },
+                    latitude = t.latitude,
+                    longtitude = t.longtitude,
+                    pincode = t.pincode ?? 0,
+                    reg_date = t.reg_date,
+                    serv_pin_list = t.serv_pin_list,
+                    supplier_address = t.supplier_address,
+                    supplier_gst_num = t.supplier_gst_num ?? 0,
+                    supplier_id = t.supplier_id,
+                    supplier_name = t.supplier_name,
+                    supplier_status = t.supplier_status,
+
+                //}
+                    }).ToListAsync();
+                if (query != null)
+                {
+                    //var resultModel = new List<SupplierInfo>();
+                    //foreach (var item in query)
+                    //{
+                    //    var subModel = new SupplierType()
+                    //    {
+                    //        supplier_type = item.supplier_type,
+                    //        description = item.description,
+                    //        yearly_turnover = item.yearly_turnover ?? 0
+                    //    };
+                    //    resultModel.Add(subModel);
+                    //}
+                    return Ok(query);
+                }
+                else
+                {
+                    return BadRequest("No Supplier Found for this Pincode!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
 
     }
 }
