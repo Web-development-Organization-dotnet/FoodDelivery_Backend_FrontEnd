@@ -46,5 +46,6 @@ namespace FoodDelivery_Backend.Data
         public virtual DbSet<tbl_supplier_type> tbl_supplier_type { get; set; }
         public virtual DbSet<tbl_supplier_wallet> tbl_supplier_wallet { get; set; }
         public virtual DbSet<tbl_transaction_info> tbl_transaction_info { get; set; }
+        public virtual DbSet<VU_Supplier_FoodType_Info> VU_Supplier_FoodType_Info { get; set; }
     }
 }

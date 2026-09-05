@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Food_Delivery_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Food_Delivery_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_admin_info">
           <Key>
             <PropertyRef Name="emp_id" />
@@ -250,6 +250,38 @@
           <Property Name="trans_datetime" Type="datetime" />
           <Property Name="trans_status" Type="varchar" MaxLength="50" />
           <Property Name="trans_remarks" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Food_Delivery_Db.dbo.VU_Supplier_FoodType_Info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VU_Supplier_FoodType_Info">
+          <Key>
+            <PropertyRef Name="supplier_id" />
+            <PropertyRef Name="supplier_menu_id" />
+          </Key>
+          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="supplier_name" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_address" Type="varchar(max)" />
+          <Property Name="pincode" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="reg_date" Type="varchar(max)" />
+          <Property Name="supplier_gst_num" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="supplier_type" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_status" Type="varchar" MaxLength="50" />
+          <Property Name="longtitude" Type="varchar(max)" />
+          <Property Name="latitude" Type="varchar(max)" />
+          <Property Name="serv_pin_list" Type="varchar(max)" />
+          <Property Name="supplier_email" Type="varchar(max)" />
+          <Property Name="item_name" Type="varchar" MaxLength="50" />
+          <Property Name="item_rate" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="item_type" Type="varchar" MaxLength="50" />
+          <Property Name="supplier_menu_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="food_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="food_type_code" Type="varchar" MaxLength="50" />
+          <Property Name="available_qty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="serv_cl_time" Type="varchar(max)" />
+          <Property Name="serv_op_time" Type="varchar(max)" />
+          <Property Name="food_type" Type="varchar" MaxLength="50" />
+          <Property Name="type_desc" Type="varchar(max)" />
+          <Property Name="food_category" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_tbl_agent_info_tbl_agent_category">
           <End Role="tbl_agent_category" Type="Self.tbl_agent_category" Multiplicity="0..1" />
@@ -597,6 +629,34 @@
           <EntitySet Name="tbl_supplier_type" EntityType="Self.tbl_supplier_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_supplier_wallet" EntityType="Self.tbl_supplier_wallet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_transaction_info" EntityType="Self.tbl_transaction_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VU_Supplier_FoodType_Info" EntityType="Self.VU_Supplier_FoodType_Info" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VU_Supplier_FoodType_Info].[supplier_id] AS [supplier_id], 
+    [VU_Supplier_FoodType_Info].[supplier_name] AS [supplier_name], 
+    [VU_Supplier_FoodType_Info].[supplier_address] AS [supplier_address], 
+    [VU_Supplier_FoodType_Info].[pincode] AS [pincode], 
+    [VU_Supplier_FoodType_Info].[reg_date] AS [reg_date], 
+    [VU_Supplier_FoodType_Info].[supplier_gst_num] AS [supplier_gst_num], 
+    [VU_Supplier_FoodType_Info].[supplier_type] AS [supplier_type], 
+    [VU_Supplier_FoodType_Info].[supplier_status] AS [supplier_status], 
+    [VU_Supplier_FoodType_Info].[longtitude] AS [longtitude], 
+    [VU_Supplier_FoodType_Info].[latitude] AS [latitude], 
+    [VU_Supplier_FoodType_Info].[serv_pin_list] AS [serv_pin_list], 
+    [VU_Supplier_FoodType_Info].[supplier_email] AS [supplier_email], 
+    [VU_Supplier_FoodType_Info].[item_name] AS [item_name], 
+    [VU_Supplier_FoodType_Info].[item_rate] AS [item_rate], 
+    [VU_Supplier_FoodType_Info].[item_type] AS [item_type], 
+    [VU_Supplier_FoodType_Info].[supplier_menu_id] AS [supplier_menu_id], 
+    [VU_Supplier_FoodType_Info].[food_id] AS [food_id], 
+    [VU_Supplier_FoodType_Info].[food_type_code] AS [food_type_code], 
+    [VU_Supplier_FoodType_Info].[available_qty] AS [available_qty], 
+    [VU_Supplier_FoodType_Info].[serv_cl_time] AS [serv_cl_time], 
+    [VU_Supplier_FoodType_Info].[serv_op_time] AS [serv_op_time], 
+    [VU_Supplier_FoodType_Info].[food_type] AS [food_type], 
+    [VU_Supplier_FoodType_Info].[type_desc] AS [type_desc], 
+    [VU_Supplier_FoodType_Info].[food_category] AS [food_category]
+    FROM [dbo].[VU_Supplier_FoodType_Info] AS [VU_Supplier_FoodType_Info]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_tbl_agent_info_tbl_agent_category" Association="Self.FK_tbl_agent_info_tbl_agent_category">
             <End Role="tbl_agent_category" EntitySet="tbl_agent_category" />
             <End Role="tbl_agent_info" EntitySet="tbl_agent_info" />
@@ -706,8 +766,7 @@
             <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Food_Delivery_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1465,7 +1524,38 @@
             <End Role="tbl_supplier_info" EntitySet="tbl_supplier_info" />
             <End Role="tbl_transaction_info" EntitySet="tbl_transaction_info" />
           </AssociationSet>
+          <EntitySet Name="VU_Supplier_FoodType_Info" EntityType="Food_Delivery_DbModel.VU_Supplier_FoodType_Info" />
         </EntityContainer>
+        <EntityType Name="VU_Supplier_FoodType_Info">
+          <Key>
+            <PropertyRef Name="supplier_id" />
+            <PropertyRef Name="supplier_menu_id" />
+          </Key>
+          <Property Name="supplier_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="supplier_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pincode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="reg_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_gst_num" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="supplier_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longtitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serv_pin_list" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="item_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="item_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_menu_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="food_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="food_type_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="available_qty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="serv_cl_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serv_op_time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="food_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="food_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1736,6 +1826,36 @@
                 <ScalarProperty Name="trans_datetime" ColumnName="trans_datetime" />
                 <ScalarProperty Name="trans_status" ColumnName="trans_status" />
                 <ScalarProperty Name="trans_remarks" ColumnName="trans_remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VU_Supplier_FoodType_Info">
+            <EntityTypeMapping TypeName="Food_Delivery_DbModel.VU_Supplier_FoodType_Info">
+              <MappingFragment StoreEntitySet="VU_Supplier_FoodType_Info">
+                <ScalarProperty Name="food_category" ColumnName="food_category" />
+                <ScalarProperty Name="type_desc" ColumnName="type_desc" />
+                <ScalarProperty Name="food_type" ColumnName="food_type" />
+                <ScalarProperty Name="serv_op_time" ColumnName="serv_op_time" />
+                <ScalarProperty Name="serv_cl_time" ColumnName="serv_cl_time" />
+                <ScalarProperty Name="available_qty" ColumnName="available_qty" />
+                <ScalarProperty Name="food_type_code" ColumnName="food_type_code" />
+                <ScalarProperty Name="food_id" ColumnName="food_id" />
+                <ScalarProperty Name="supplier_menu_id" ColumnName="supplier_menu_id" />
+                <ScalarProperty Name="item_type" ColumnName="item_type" />
+                <ScalarProperty Name="item_rate" ColumnName="item_rate" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="supplier_email" ColumnName="supplier_email" />
+                <ScalarProperty Name="serv_pin_list" ColumnName="serv_pin_list" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longtitude" ColumnName="longtitude" />
+                <ScalarProperty Name="supplier_status" ColumnName="supplier_status" />
+                <ScalarProperty Name="supplier_type" ColumnName="supplier_type" />
+                <ScalarProperty Name="supplier_gst_num" ColumnName="supplier_gst_num" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="supplier_address" ColumnName="supplier_address" />
+                <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

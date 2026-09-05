@@ -315,12 +315,6 @@ namespace FoodDelivery_Backend.Controllers
         {
             try
             {
-                //if pincode == 0
-                //{
-
-                //}
-                //else
-                //{
                     var query = await db_obj.tbl_supplier_info.Where(t => (!pincode.HasValue || pincode.Value == 0 || t.pincode == pincode) && t.supplier_status != "Inactive").Include(t => t.supplier_type).Select(t => new SupplierInfo
                 {
                     ST = new SupplierType()
@@ -344,22 +338,50 @@ namespace FoodDelivery_Backend.Controllers
                     }).ToListAsync();
                 if (query != null)
                 {
-                    //var resultModel = new List<SupplierInfo>();
-                    //foreach (var item in query)
-                    //{
-                    //    var subModel = new SupplierType()
-                    //    {
-                    //        supplier_type = item.supplier_type,
-                    //        description = item.description,
-                    //        yearly_turnover = item.yearly_turnover ?? 0
-                    //    };
-                    //    resultModel.Add(subModel);
-                    //}
+                    
                     return Ok(query);
                 }
                 else
                 {
                     return BadRequest("No Supplier Found for this Pincode!!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.BadRequest, new ErrorResponse()
+                {
+                    stackTrace = e.StackTrace,
+                    originalExceptionMessage = e.Message,
+                    message = "Exception Occured",
+                    innerException = e.InnerException.ToString()
+                });
+
+            }
+
+        }
+
+        [HttpGet]
+        [ActionName("GetAllSupplierInfoByFoodType")]
+
+        public async Task<IHttpActionResult> GetAllSupplierInfoByFoodType(string food_type)
+        {
+            try
+            {
+                var query = await db_obj.VU_Supplier_FoodType_Info.Where(t => (t.food_type == food_type) && (t.supplier_status != "Inactive")).Select(t => new SupplierFoodTypeInfo
+                {
+                    supplier_id = t.supplier_id,
+                    supplier_name = t.supplier_name,
+                    supplier_status = t.supplier_status,
+
+                }).FirstOrDefaultAsync();
+                if (query != null)
+                {
+
+                    return Ok(query);
+                }
+                else
+                {
+                    return BadRequest("No Supplier Found for this Food Type!!");
                 }
             }
             catch (Exception e)

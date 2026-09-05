@@ -53,6 +53,7 @@
         <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_supplier_menu_tbl_supplier_info" ManuallyRouted="false" />
         <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_supplier_wallet_tbl_supplier_info" ManuallyRouted="false" />
         <AssociationConnector Association="Food_Delivery_DbModel.FK_tbl_transaction_info_tbl_supplier_info" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Food_Delivery_DbModel.VU_Supplier_FoodType_Info" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

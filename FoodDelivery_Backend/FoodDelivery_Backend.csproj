@@ -316,6 +316,9 @@
     <Compile Include="Data\tbl_transaction_info.cs">
       <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\VU_Supplier_FoodType_Info.cs">
+      <DependentUpon>Food_Delivery_DbEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -331,6 +334,7 @@
     <Compile Include="Models\ResponseModel\AdminInfoResponse.cs" />
     <Compile Include="Models\ResponseModel\LoginResponse.cs" />
     <Compile Include="Models\ResponseModel\GenericResponse.cs" />
+    <Compile Include="Models\SupplierFoodTypeInfo.cs" />
     <Compile Include="Models\SupplierInfo.cs" />
     <Compile Include="Models\SupplierLogin.cs" />
     <Compile Include="Models\SupplierMenu.cs" />
