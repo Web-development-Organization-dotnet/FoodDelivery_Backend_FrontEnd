@@ -24,10 +24,12 @@ import { CustomerLoginComponent } from './Auth/Customer/customer-login/customer-
 import { SupplierLoginComponent } from './Auth/Suppiler/supplier-login/supplier-login.component';
 import { SupplierRegisterComponent } from './Auth/Suppiler/supplier-register/supplier-register.component';
 import { SupplierWalletComponent } from './Pages/Admin/Wallet/supplier-wallet/supplier-wallet.component';
+import { LandingFoodtypeComponent } from './_layout/landing-foodtype/landing-foodtype.component';
 
 export const routes: Routes = [
 
   { path: '', component: LandingpageComponent},
+  { path: 'landing-foodtype', component: LandingFoodtypeComponent },
   { path: 'login-landing', component: LoginLandingComponent },
   { path: 'login', component: UserloginComponent },
   { path: 'admin/login', component: UserloginComponent },

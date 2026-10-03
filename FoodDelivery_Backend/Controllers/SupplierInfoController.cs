@@ -363,17 +363,18 @@ namespace FoodDelivery_Backend.Controllers
         [HttpGet]
         [ActionName("GetAllSupplierInfoByFoodType")]
 
-        public async Task<IHttpActionResult> GetAllSupplierInfoByFoodType(string food_type)
+        public async Task<IHttpActionResult> GetAllSupplierInfoByFoodType(string food_type_code)
         {
             try
             {
-                var query = await db_obj.VU_Supplier_FoodType_Info.Where(t => (t.food_type == food_type) && (t.supplier_status != "Inactive")).Select(t => new SupplierFoodTypeInfo
+                var query = await db_obj.VU_Supplier_FoodType_Info.Where(t => (t.food_type_code == food_type_code) && (t.supplier_status != "Inactive")).Select(t => new SupplierFoodTypeInfo
                 {
                     supplier_id = t.supplier_id,
                     supplier_name = t.supplier_name,
                     supplier_status = t.supplier_status,
+                    food_type = t.food_type
 
-                }).FirstOrDefaultAsync();
+                }).ToListAsync();
                 if (query != null)
                 {
 

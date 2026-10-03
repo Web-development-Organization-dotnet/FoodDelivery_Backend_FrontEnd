@@ -1,0 +1,117 @@
+<div class="food-results-page">
+  <header class="topbar">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg align-items-center py-3">
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+          <span class="brand-mark">S</span>
+          <span class="brand-name">Swad Service</span>
+        </a>
+
+        <div class="header-search ms-lg-4 flex-grow-1">
+          <div class="search-chip location-chip">Hyderabad, 500001</div>
+          <div class="search-chip search-term-chip">{{ searchTerm }}</div>
+        </div>
+
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <a routerLink="/login-landing" class="btn btn-outline-warning btn-sm px-4 fw-bold">Login</a>
+          <a routerLink="/customer/register" class="btn btn-warning btn-sm px-4 fw-bold text-dark">Sign up</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="results-main">
+    <section class="results-hero">
+      <div class="container">
+        <div class="hero-head">
+          <div>
+            <span class="eyebrow">Best in town</span>
+            <h1>{{ searchTerm }} restaurants</h1>
+          </div>
+          <div class="result-summary">
+            <strong>{{ resultCount }} places</strong>
+            <span>Available for delivery</span>
+          </div>
+        </div>
+
+        <div class="quick-filter-row">
+          <button class="filter-pill active">Popular</button>
+          <button *ngFor="let filter of quickFilters" class="filter-pill">{{ filter }}</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-body">
+      <div class="container">
+        <div class="row g-4">
+          <aside class="col-lg-3">
+            <div class="sidebar-panel">
+              <h4>Filters</h4>
+
+              <div class="filter-group">
+                <h6>Sort by</h6>
+                <label><input type="radio" checked> Relevance</label>
+                <label><input type="radio"> Delivery time</label>
+                <label><input type="radio"> Rating</label>
+                <label><input type="radio"> Cost: Low to High</label>
+              </div>
+
+              <div class="filter-group">
+                <h6>Cuisine</h6>
+                <label><input type="checkbox" checked> Pizza</label>
+                <label><input type="checkbox"> Italian</label>
+                <label><input type="checkbox"> Veg only</label>
+                <label><input type="checkbox"> Family meals</label>
+              </div>
+
+              <div class="filter-group">
+                <h6>Offer</h6>
+                <label><input type="checkbox"> Free delivery</label>
+                <label><input type="checkbox"> 10% off</label>
+                <label><input type="checkbox"> Cashback</label>
+              </div>
+            </div>
+          </aside>
+
+          <div class="col-lg-9">
+            <div class="restaurant-list">
+              <article *ngFor="let restaurant of supplierByFoodTypeModel" class="restaurant-card">
+                <div class="restaurant-image-wrap">
+                  <img [src]="restaurant.image" [alt]="restaurant.name" />
+                  <span class="offer-tag">20% OFF</span>
+                </div>
+
+                <div class="restaurant-content">
+                  <div class="content-top">
+                    <div>
+                      <h3>{{ restaurant.supplier_name }}</h3>
+                      <p>{{ restaurant.food_type }}</p>
+                    </div>
+                    <span class="rating-badge">4.8 ★</span>
+                  </div>
+
+                  <div class="meta-row">
+                    <span>20</span>
+                    <span>300</span>
+                  </div>
+
+                  <div class="feature-row">
+                    <span class="feature-item">Free delivery above ₹199</span>
+                    <span class="feature-item accent">Popular</span>
+                  </div>
+
+                  <div class="card-footer">
+                    <button class="btn btn-warning fw-bold text-dark">View menu</button>
+                    <small>Serves fresh and hot</small>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</div>
